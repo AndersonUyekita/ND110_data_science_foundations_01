@@ -2,9 +2,11 @@
 
 Essa primeira parte destina-se ao aprendizado da linguagem de programação Python.
 
+Instrutora: Juno Lee
+
 #### Anotações
 
-As anotações de aula foram registradas no arquivos `notes.md`.
+As anotações de aula foram registradas no arquivos [`notes.md`](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Parte/notes.md).
 
 #### Outline
 
