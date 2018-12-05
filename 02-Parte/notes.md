@@ -48,6 +48,8 @@ teste = int(100.987) # Convertendo para integer
 print(teste)         # Note que o valor impresso é 100
                      # perdeu-se tudo o que estava após a vírgula
 ```
+Além de `integer` e `float`, também há o `bool` que se refere aos booleanos (`True` e `False`). Observe que para o Python `True` e `False` (1 e 0) devem ser escritos exatamete como está neste texto, em `R` eles são escritos todos em caixa alta.
+
 **********************************************************
 ## Operadores
 
@@ -107,7 +109,7 @@ print(5 // 3) # Retorna 1
 
 Conforme abordado em sala de aula, essa forma de notação é para simplificar o código. É muito parecido com o `i++`(que é o mesmo que `i=i+1`) do C++.
 
-#### +=
+#### `+=`
 
 Atualização da variável a partir de soma.
 
@@ -116,7 +118,7 @@ teste = teste + 100   # Como eu faço
 teste += 100          # Como um programador faz
 ```
 
-#### -=
+#### `-=`
 
 Atualização da variável a partir de uma subtração.
 
@@ -125,7 +127,7 @@ teste = teste - 100   # Como eu faço
 teste -= 100          # Como um programador faz
 ```
 
-#### *=
+#### `*=`
 
 Atualização da variável a partir de uma multiplicação.
 
@@ -134,7 +136,7 @@ teste = teste * 100   # Como eu faço
 teste *= 100          # Como um programador faz
 ```
 
-#### /=
+#### `/=`
 
 Atualização da variável a partir de uma divisão.
 
@@ -143,7 +145,7 @@ teste = teste / 100   # Como eu faço
 teste /= 100          # Como um programador faz
 ```
 
-#### //=
+#### `//=`
 
 Atualização da variável pelo quociente de uma divisão.
 
@@ -151,7 +153,7 @@ Atualização da variável pelo quociente de uma divisão.
 teste = teste // 100   # Como eu faço
 teste //= 100          # Como um programador faz
 ```
-#### %=
+#### `%=`
 
 Atualização da variável pelo resto de uma divisão.
 
@@ -160,7 +162,7 @@ teste = teste % 100   # Como eu faço
 teste %= 100          # Como um programador faz
 ```
 
-#### **=
+#### `**=`
 
 Atualização da variável pelo resto de uma divisão.
 
@@ -168,9 +170,90 @@ Atualização da variável pelo resto de uma divisão.
 teste = teste ** 100  # Como eu faço
 teste %= 100          # Como um programador faz
 ```
-
-
 Há outros mais complicados no site do [Programiz](https://www.programiz.com/python-programming/operators).
+
+**********************************************************
+## _Comparison Operators_
+
+Lógica básica de comparação entre dois argumentos, igual a qualquer outra linguagem de programação.
+
+#### `<` Menor
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 < 90  # 100 é menor que 90
+False     # Não
+```
+#### `>` Maior
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 > 90  # 100 é maior que 90
+True      # Sim
+```
+#### `<=` Menor ou igual
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 <= 90  # 100 é menor ou igual a 90
+False      # Não
+```
+#### `>=` Maior ou igual
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 > 90  # 100 é maior ou igual a 90
+True      # Sim
+```
+#### `==` Igual
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 == 90  # 100 é igual (ou idêntico) a 90
+False      # Não
+```
+#### `!=` Diferente (ou _não igual_)
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 != 90  # 100 é differente de 90
+True       # Sim
+```
+**********************************************************
+## _Logical Operators_
+
+O Python possui 3 operadores de lógica que são: `and`, `or` e `not`. Eles devem ser escritos necessariamente em letras minúsculas.
+
+#### `and`
+
+Comporta-se conforme a tabela abaixo
+
+|a|b|**s**|
+|:-:|:-:|:-:|
+|0|0|**0**|
+|0|1|**0**|
+|1|0|**0**|
+|1|1|**1**|
+
+#### `or`
+
+Comporta-se conforme a tabela abaixo
+
+|a|b|**s**|
+|:-:|:-:|:-:|
+|0|0|**0**|
+|0|1|**1**|
+|1|0|**1**|
+|1|1|**1**|
+
+#### `not`
+
+Retorna o booleano contrário.
+
+|a|**s**|
+|:-:|:-:|
+|0|**1**|
+|1|**0**|
 
 **********************************************************
 
