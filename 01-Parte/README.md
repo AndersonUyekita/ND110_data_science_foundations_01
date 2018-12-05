@@ -8,5 +8,5 @@ Não foram feitas anotações.
 
 #### Outline
 
-* Lesson 01 - Orientações importantes para o Nanodegree
-* Lesson 02 - Dicas para o seu programa Nanodegree
+* [x] Lesson 01 - Orientações importantes para o Nanodegree
+* [x] Lesson 02 - Dicas para o seu programa Nanodegree
