@@ -22,6 +22,10 @@ Instalei o [Anaconda](https://www.anaconda.com/download/) e estou rodando o Spyd
 
 ### Classes de Variáveis
 
+Define-se as variáveis conforme as suas características e do seu uso, por exemplo, um `32` pode ser um número inteiro, até mesmo um número flutuante e um caracter. Tudo dependerá de como se define ele, usando-se as aspas ter-se-á um caracter, sem o "ponto final" é um número inteiro e com o ponto final o número de ponto flutuante (mais conhecido como _float_).
+
+#### Inteiros e _float_'s
+
 Como atribuir um `integer` e um `float` nas variáveis?
 
 ```
@@ -69,6 +73,33 @@ Surpreenda-se pois no Python pode-se usar os operadores (`+`, `*` etc.) para rea
 
 * `+` Une/concatena duas `strings`;
 * `*` Multiplica a `string`.
+
+#### Containers
+
+A `list` é uma estrutura de dados que pode conter `integer`, `floats`, `strings` e `booleans`. Os benefícios das `lists` é que elas podem ser alteradas (_mutability_) e também podem ser reorganizadas.
+
+```
+minha_lista = [33 , "anderson" , True , 123.45] # Pode ser tudo misturado
+minha_lista[0]                                  # Começa no zero - zero index based
+minha_lista[-1]                                 # Tem os seus truques! Último elemento.
+minha_lista[2:]                # Slicing        # Retorna os elementos cujo index é maior que 2
+minha_lista[:2]                # Slicing        # Retorna os elementos cujo index é menor ou igual a 2
+minha_lista[2:3]               # Slicing        # Retorna os elementos cujo index é maior que 2 e menor ou igual a 3
+```
+
+Uma variable da classe `tuple` é um tipo de lista imutável, isto é, não tem como usar `.sorted()`. Eles possuem uso específico, por exemplo, em latitude e longitude, pois sempre estão juntos.
+
+```
+# Defining a tuple variable
+my_name = "anderson","uyekita"
+
+# Tuple unpacking
+pri_nom,sob_nom = my_name
+
+# Editing/Updating a tuple variable
+my_name = "jose","silva"
+```
+Observe que não é necessário o uso dos parêntesis. Há a particularidade do "tuple unpacking" que é atribuir todos os valores do `tuple` de uma só vez em outras variáveis, conforme o exemplo.
 
 **********************************************************
 ## Operadores
@@ -128,6 +159,12 @@ Divide dois elementos e retorna o quociente da divisão.
 print(5 // 3) # Retorna 1
 ```
 
+#### `in` e `not it` Possui/Pertecen/Tem
+O retorno desse operador é um valor booleano resultante da busca do primeiro elemento no segundo.
+```
+print("hitoshi" in ["anderson","hitoshi","uyekita"])       # Retorna True
+print("hitoshi" not in ["anderson","hitoshi","uyekita"])   # Retorna False
+```
 **********************************************************
 ## _Assignment Operators_
 
@@ -323,6 +360,26 @@ str(43)
 ```
 Converte o elemento declarado na função para um `float`.
 
+### `max()`
+```
+print(max([100,40,50,30,20]))                                       # Retorna 100
+print(max(["anderson","hitoshi","uyekita","mogi","das","cruzes"]))  # Retorna uyekita
+```
+Retorna o maior número dentro de uma lista. Note que só funcionará quando a lista for só de um tipo de variável.
+
+### `min()`
+```
+print(min([100,40,50,30,20]))                                       # Retorna 20
+print(min(["anderson","hitoshi","uyekita","mogi","das","cruzes"]))  # Retorna anderson
+```
+Retorna o maior número dentro de uma lista. Note que só funcionará quando a lista for só de um tipo de variável.
+
+### `sorted()`
+```
+print(sorted(["anderson","hitoshi","uyekita","mogi","das","cruzes"]))                  # Retorna uma lista começando por anderson e terminando com uyekita
+print(sorted(["anderson","hitoshi","uyekita","mogi","das","cruzes"], reverse = True))  # Retorna uma lista começando por uyekita e terminando com anderson
+```
+Conforme a sua tradução, ordenará a lista de forma alfabética ou do menor para o maior. Ele pode reverter a forma de ordenar os retornos "setando" o argumento `reverse` para `True`.
 
 ## Methods
 
@@ -350,12 +407,34 @@ O retorno da aplicação deste método retorna um `booleano` e significa se há 
 # Exemplo 1
 print("Eu sou o Hitoshi e tenho {} anos".format(33))
 
-# Examplo 2 (retirado das notas de aula)
+# Exemplo 2 (retirado das notas de aula)
 animal = "dog"
 action = "bite"
 print("Does your {} {}?".format(animal, action))
 ```
 O retorno desse método é a substituição dos `{}` pelo `33`.
+
+### `.split()`
+```
+meu_nome = "anderson hitoshi uyekita"
+
+print(meu_nome.split())  # Como resultado tem-se uma lista
+                         # ['anderson', 'hitoshi', 'uyekita']
+```
+Conforme o nome diz, divide uma `string` baseado em algum separador que pode ser o espaço (_default_), tabulação, traços, pontos, etc.
+
+### `.join()`
+```
+print(" ".join(["anderson","hitoshi","uyekita","mogi","das","cruzes"])) # Retorna uma string com espaços separando os elementos da lista.
+```
+É o inverso do `.split()`. Atente-se que o "separador" é declarado antes do método `.join()`, neste exemplo é o `" "` é o espaço.
+
+### `.append()`
+```
+meu_nome = ["anderson","hitoshi"] # Minha lista
+meu_nome.append("uyekita")        # Agregando na minha lista o meu sobrenome
+```
+Esse `method` altera a lista original `meu_nome`.
 
 
 ## Referências
