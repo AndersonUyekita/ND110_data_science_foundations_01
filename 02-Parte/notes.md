@@ -48,7 +48,27 @@ teste = int(100.987) # Convertendo para integer
 print(teste)         # Note que o valor impresso é 100
                      # perdeu-se tudo o que estava após a vírgula
 ```
+
+#### Boolean `bool`
+
 Além de `integer` e `float`, também há o `bool` que se refere aos booleanos (`True` e `False`). Observe que para o Python `True` e `False` (1 e 0) devem ser escritos exatamete como está neste texto, em `R` eles são escritos todos em caixa alta.
+
+#### Strings `str`
+
+O `strings` é uma cadeia de letras, um exemplo é o texto que estou escrevendo agora.
+
+```
+print("Hello World")  # É a impressão de uma simples string "Hello World", mas poderia
+                      # ser bem mais complexa.
+
+meu_texto = "Vamos fazer um teste!111"   # Note que esse exemplo é um pouco mais complexo
+print(meu_texto)                         # já que tem espaços, números e caracteres especiais.
+```
+
+Surpreenda-se pois no Python pode-se usar os operadores (`+`, `*` etc.) para realizar algumas funções.
+
+* `+` Une/concatena duas `strings`;
+* `*` Multiplica a `string`.
 
 **********************************************************
 ## Operadores
@@ -60,7 +80,9 @@ São os operadores matemáticos básicos:
 Adiciona dois elementos.
 
 ```
-print(5 + 3)
+print(5 + 3) # Somando dois números inteiros
+
+print("Hello" + " " + "World") # Somando três strings
 ```
 
 #### `-` Subtração
@@ -77,6 +99,8 @@ Multiplica dois elementos.
 
 ```
 print(5 * 3)
+
+print("Ha" * 5)  # Terá como saída HaHaHaHaHa
 ```
 #### `/` Divisão
 
@@ -267,10 +291,73 @@ print("Hello World")  # Imprime Hello World
 ```
 Imprime a variável.
 
-
 ### `type()`
 ```
-teste = type(100)   # Atribui o resultado da função em teste
+teste = type(100)    # Atribui o resultado da função em teste
 print(teste)         # Imprime a classe da variável dentro do type()
                      # que no caso é 100. Logo, será <class 'int'>
 ```
+Retorna o tipo de variável.
+
+### `len()`
+```
+print(len("Hello World"))  # Retorna 11, pois conta o espaço também.
+```
+Retorna o comprimento de uma `strings`, isto é, a quantidade de caracteres. E para os casos de um vetor retorna o comprimento.
+
+### `int()`
+```
+int(43.3)
+```
+Converte o elemento declarado na função para um `integer`.
+
+### `str()`
+```
+str(43.3)
+```
+Converte o elemento declarado na função para um `string`.
+
+### `float()`
+```
+str(43)
+```
+Converte o elemento declarado na função para um `float`.
+
+
+## Methods
+
+Como o Python é uma linguagem orientada a objeto, há alguns `methods` relacionado a alguma `classe`. O funcionamento de um método é similar ao de uma função, contudo o método está ligado a alguma classe e só será útil para essa classe. Isto quer dizer que não há possibilidade de usar o `.title()` num número `integer` ou `float`.
+
+### `.title()`
+```
+meu_nome = "anderson uyekita"
+print(meu_nome.title())
+```
+
+O retorno da aplicação do método `.title()` é a substituição das primeiras letras minúsculas do meu nome para maiúsculas, ficando assim " **A**nderson **U**yekita "
+
+
+### `.islower()`
+```
+meu_nome = "anderson uyekita"
+print(meu_nome.lower())
+```
+
+O retorno da aplicação deste método retorna um `booleano` e significa se há ou não alguma letra maiúscula, se sim `False` senão `True`.
+
+### `.format()`
+```
+# Exemplo 1
+print("Eu sou o Hitoshi e tenho {} anos".format(33))
+
+# Examplo 2 (retirado das notas de aula)
+animal = "dog"
+action = "bite"
+print("Does your {} {}?".format(animal, action))
+```
+O retorno desse método é a substituição dos `{}` pelo `33`.
+
+
+## Referências
+
+* [String methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
