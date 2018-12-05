@@ -6,8 +6,15 @@ Estas anotações fora feitas no transcurso das aulas, visam firmar o conhecimen
 
 A maior parte do curso destina-se aos conceitos básicos.
 
-* A identação é importante para o Python porque ele define quando termina um _loop_ e começa o outro ou quando termina um _statement_ do _if_.
+* A identação é importante para o Python porque ele define quando termina um _loop_ e começa o outro ou quando termina um _statement_ do _if_;
 * Como muitas outras linguagens de programação o Python é _case sensitive_, isto é, maiúsculas e minúsculas definem variáveis diferentes;
+* Os comentários dentro do código pode ser feito a partir do uso do `#`.
+**********************************************************
+## Boas práticas
+
+* Utilizar os espaçamentos de maneira adequada para que as fórmulas fiquem fáceis de ler e consequentemente de entender;
+* Comentar as linhas de código, pois o maior beneficiário desses comentários será você daqui 6 meses quando estiver revisando esse código;
+
 **********************************************************
 ## Configuração
 
@@ -39,7 +46,7 @@ teste = 100.987      # Variável float
 teste = int(100.987) # Convertendo para integer
 
 print(teste)         # Note que o valor impresso é 100
-                     # perdeu-se tudo o que era após a vírgula
+                     # perdeu-se tudo o que estava após a vírgula
 ```
 **********************************************************
 ## Operadores
@@ -96,6 +103,76 @@ print(5 // 3) # Retorna 1
 ```
 
 **********************************************************
+## _Assignment Operators_
+
+Conforme abordado em sala de aula, essa forma de notação é para simplificar o código. É muito parecido com o `i++`(que é o mesmo que `i=i+1`) do C++.
+
+#### +=
+
+Atualização da variável a partir de soma.
+
+```
+teste = teste + 100   # Como eu faço
+teste += 100          # Como um programador faz
+```
+
+#### -=
+
+Atualização da variável a partir de uma subtração.
+
+```
+teste = teste - 100   # Como eu faço
+teste -= 100          # Como um programador faz
+```
+
+#### *=
+
+Atualização da variável a partir de uma multiplicação.
+
+```
+teste = teste * 100   # Como eu faço
+teste *= 100          # Como um programador faz
+```
+
+#### /=
+
+Atualização da variável a partir de uma divisão.
+
+```
+teste = teste / 100   # Como eu faço
+teste /= 100          # Como um programador faz
+```
+
+#### //=
+
+Atualização da variável pelo quociente de uma divisão.
+
+```
+teste = teste // 100   # Como eu faço
+teste //= 100          # Como um programador faz
+```
+#### %=
+
+Atualização da variável pelo resto de uma divisão.
+
+```
+teste = teste % 100   # Como eu faço
+teste %= 100          # Como um programador faz
+```
+
+#### **=
+
+Atualização da variável pelo resto de uma divisão.
+
+```
+teste = teste ** 100  # Como eu faço
+teste %= 100          # Como um programador faz
+```
+
+
+Há outros mais complicados no site do [Programiz](https://www.programiz.com/python-programming/operators).
+
+**********************************************************
 
 ## Built-in functions
 
@@ -110,6 +187,7 @@ Imprime a variável.
 
 ### `type()`
 ```
-teste <- type(100)   # Atribui o resultado da função em teste
-print(teste)         # Imprime teste
+teste = type(100)   # Atribui o resultado da função em teste
+print(teste)         # Imprime a classe da variável dentro do type()
+                     # que no caso é 100. Logo, será <class 'int'>
 ```
