@@ -1,5 +1,12 @@
-# Python Introduction - Data Types and Operators `Lesson02`
+# Python Introduction `Lesson02`
 
+#### Tags
+* Título: Control Flow
+* Autor: AH Uyekita
+* Data: 05/12/2018
+* Cod: nd110
+
+## Data Types and Operators
 Estas anotações fora feitas no transcurso das aulas, visam firmar o conhecimento ministrado, bem como ter um arquivo digital com as funções aprendidas sempre é útil.
 **********************************************************
 ## Conceitos Gerais
