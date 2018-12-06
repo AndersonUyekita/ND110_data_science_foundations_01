@@ -13,7 +13,7 @@ Nesta aula serão abordados temas como:
 * Expressões booleanas
 * Loops usando _for_ e _while_
 * Como uma estratégia de parada dos loops _break_ e _continue_
-* Zip e enumarate (Isso eu num sei o que é)
+* Zip e enumerate (Isso eu num sei o que é)
 * List comprehensions (idem, _no idea_)
 
 ### Revisão da `Lesson02`
@@ -68,7 +68,7 @@ else:
     |---|---------------------|
 ```
 
-#### `if()`
+### `if()`
 ```{py}
 if dinheiro < 200:      # Condição
     dinheiro += 200     # Ações caso a condição
@@ -76,7 +76,7 @@ if dinheiro < 200:      # Condição
 ```
 É o principal _conditional statement_ e serve para filtrar, separar, eleger etc. algum elemento para sofrer uma determinada sequencia de comandos.
 
-#### `else`
+### `else`
 ```{py}
 if (numero % 2) == 0:                # Se o resto for igual a zero, é um número par
     print(str(numero) + " é par")    # Imprime texto se a condição for verdadeira
@@ -85,7 +85,7 @@ else:
 ```
 É o complemento do _if_ e não requer condição (já que é o resto da condição do _if_), possui uma dualidade entre `0` e `1`, mas em alguns casos há mais de dois estados, nestas situações usa-se o `elif()`.
 
-#### `elif()`
+### `elif()`
 ```{py}
 if numero > 100:
     print("maior que 100")
@@ -97,3 +97,94 @@ else:
     print("número menor ou igual a 50")
 ```
 Note que o o `elif()` é um intermediário entre o `if()` e o else, onde ele desempenha um papel de diminuir a quantidade de _nested if_.
+
+## _Loops_
+
+As estruturas (que seriam os bloquinhos de código) do _f0r_ e do _while_ são parecidos com aqueles do _conditional statements_, pois os _loops_ baseiam-se também pela indentação do código.
+
+```
+for condição:
+|---|------------------|      # 1: Espaços necessários para indentar corretamente;
+| 1 |        2         |      # 2: área do código que deverá ser executada caso
+|---|------------------|      #    a condição seja verdadeira
+```
+
+### `for()`
+```{py}
+for i in n:     # i é a variável e n é uma lista de elementos
+    print(i)    # imprime todos os elementos da lista n
+```
+O laço for será executado para cada elemento da lista _n_. Após percorrer a lista o laço termina.
+
+### `while()`
+```{py}
+money = 0
+while money < 1000:     # o laço será executo indefinidamente até que a condição seja False
+    money += 100        # imprime money
+```
+A diferença entre _for_ e _while_ é que o segundo não possui limites, ele poderá ser executado indefinidamente até que a condição de parada seja atingida.
+
+## Built-in functions
+
+Esta será um lista das funções e qualquer outra coisa que foi apresentado em sala de aula.
+
+### `range()`
+```{py}
+start,end,step = 1,6,2 # inicializa os dados
+                            # start possui valor default de zero
+                            # step possui valor default de 1
+lista = range(1,6,2)   # cria um objeto classe range
+                            # Caso imprima lista não terá um output uma lista
+                            # A lista implicita é: [1, 3, 5]
+```
+A variável criada _lista_ é um objeto de classe _range_ e só será útil se caso a utilize em associação com o _for_ (ainda não encontrei outras casos de uso do `range()`).
+
+### `sum()`
+```{py}
+minha_lista = [10, 20, 30, 40] # Um exemplo de lista
+sum(minha_lista)               # Retorna a soma dos elementos da lista
+```
+Simplesmente retorna a soma de todos os elementos de dada lista.
+
+### `Break`
+
+Interrompe a instância de _for_ ou _while_ saindo totalmente do laço.
+
+### `Continue`
+
+Pula a iteração para a próxima. É melhor porque não interrompe repentinamente a execução do _script_.
+
+### `zip()`
+```{py}
+nome = ["anderson", "hitoshi", "uyekita"] # Uma lista qualquer
+index = [1, 2, 3]                         # Outra lista qualquer
+print(zip(nome,index))                    # Unindo as duas listas para criar uma lista de tuples
+                                          # Note que se pode usar o unpacking também
+```
+Observe que é possível criar uma lista de _tuple_'s, conforme o exemplo acima, mas para realizar o _unpacking_ deve-se utilizar um "operador" que ainda não foi abordado, mas de uso específico que é o "*".
+
+```{py}
+lista_tuples = [('anderson', 1), # lista qualquer de tuples
+                ('hitoshi', 2),  # é só um exemplo
+                ('uyekita', 3)]
+
+nome, index = zip(*lista_tuples) # Unpacking usando o *
+```
+Isso é bem prático quando tempos uma lista de _tuple_'s.
+
+### `enumerate`
+
+
+## Methods
+
+### `.items()`
+```{py}
+apelidos = {"Chico": 'Francisco',    # Declarando uma biblioteca
+            "Tião": 'Sebastião',
+            "Zé": 'José'}
+
+for key,value in apelidos.items():   # Emprego do .items()
+    print("Apelido: {} e Nome:{}".format(key,value))
+```
+
+Nos casos onde é necessário as informações dos _values_ de uma biblioteca, usa-se o `.items()`.

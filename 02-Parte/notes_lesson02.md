@@ -110,7 +110,7 @@ minha_lista[2:3]               # Slicing        # Retorna os elementos cujo inde
 
 Uma variable da classe `tuple` é um tipo de lista imutável, isto é, não tem como usar `.sorted()`. Eles possuem uso específico, por exemplo, em latitude e longitude, pois sempre estão juntos.
 
-```
+```{py}
 # Defining a tuple variable
 my_name = "anderson","uyekita"
 
@@ -124,7 +124,7 @@ Observe que não é necessário o uso dos parêntesis. Há a particularidade do 
 
 Uma variável do tipo `set` possui algumas características marcantes como: é mutável, portanto, pode-se alterar os valores desse container de elementos, mas ela não é ordenada, ou seja, não se tem ideia de quem é o primeiro ou último elemento. Além dessas características, ela não admite valores duplicados.
 
-```
+```{py}
 # Definição de uma lista simples
 minha_lista = [1,2,3,1,2,3,4,5,6] # há valores duplicados
 
@@ -378,7 +378,7 @@ Retorna o booleano contrário.
 
 ## Built-in functions
 
-Esta será um lista das funções, operadores e qualquer outra coisa que foi apresentado em sala de aula.
+Esta será um lista das funções e qualquer outra coisa que foi apresentado em sala de aula.
 
 ### `print()`
 ```
@@ -516,9 +516,7 @@ meu_nome = {"anderson":1,"uyekita":2,"hitoshi":3}  # Para criar um set basta usa
 
 print(meu_nome.get("hitoshi"))                     # Retorna 3
 ```
-Isso é um pouco bizarro, mas o método `.pop()` remove um elemento aleatório do set designado.
-
-
+Isso é um pouco bizarro, mas o método `.pop()` remove um elemento aleatório do set designado. Deve-se ressaltar também que caso o `.get()` nenhum valor que procurar ele poderá retornar um valor _default_, sendo assim `.get("hitoshi",0)` ao invés de retornar "None", retornará 0.
 
 ## Referências
 
