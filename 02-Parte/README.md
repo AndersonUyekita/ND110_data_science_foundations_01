@@ -6,7 +6,10 @@ Essa primeira parte destina-se ao aprendizado da linguagem de programação Pyth
 
 #### Anotações
 
-As anotações de aula foram registradas no arquivo [`notes.md`](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Parte/notes.md).
+As anotações de aula foram registradas em anotações e cada uma foi separada de acordo com a sua aula.
+
+* [notes_lesson02;](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Parte/notes_lesson02.md).
+* [notes_lesson03;](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Parte/notes_lesson03.md).
 
 #### Outline
 

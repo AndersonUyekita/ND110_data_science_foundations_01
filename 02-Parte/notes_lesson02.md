@@ -24,6 +24,20 @@ Instalei o [Anaconda](https://www.anaconda.com/download/) e estou rodando o Spyd
 
 Define-se as variáveis conforme as suas características e do seu uso, por exemplo, um `32` pode ser um número inteiro, até mesmo um número flutuante e um caracter. Tudo dependerá de como se define ele, usando-se as aspas ter-se-á um caracter, sem o "ponto final" é um número inteiro e com o ponto final o número de ponto flutuante (mais conhecido como _float_).
 
+A tabela abaixo foi retirada do 39._Summary_ da _lesson_ 02.
+
+|Data Structure|Ordered|Mutable|Constructor|Example|
+|:-:|:-:|:-:|:-:|:-:|
+|int|NA|NA|`int()`|5|
+|float|NA|NA|`float()`|6.5|
+|string|Yes|No|' ' ou " " ou `str()`|"teste"|
+|bool|NA|NA|NA|`True` ou `False`|
+|list|Yes|Yes|[  ] ou `list()`|list[1,2]|
+|tuple|Yes|No|( ) ou `tuple()`|tuple(1,2)|
+|set|NA|Yes|{ } ou `set()`|set(1,2)|
+|dictionary|NA|Keys: No|{ } ou `dict()`|dict("jul":1,"jun":2)|
+
+
 #### Inteiros e _float_'s
 
 Como atribuir um `integer` e um `float` nas variáveis?
@@ -100,6 +114,43 @@ pri_nom,sob_nom = my_name
 my_name = "jose","silva"
 ```
 Observe que não é necessário o uso dos parêntesis. Há a particularidade do "tuple unpacking" que é atribuir todos os valores do `tuple` de uma só vez em outras variáveis, conforme o exemplo.
+
+Uma variável do tipo `set` possui algumas características marcantes como: é mutável, portanto, pode-se alterar os valores desse container de elementos, mas ela não é ordenada, ou seja, não se tem ideia de quem é o primeiro ou último elemento. Além dessas características, ela não admite valores duplicados.
+
+```
+# Definição de uma lista simples
+minha_lista = [1,2,3,1,2,3,4,5,6] # há valores duplicados
+
+meu_set = set(minha_lista)        # {4, 3, 2, 1, 5, 6}
+                                  # Agora é um <class 'set'>
+```
+Como o `set` é _unordered_ todas as vezes que imprimir essa variável dessa classe a sequencia dos elementos alterará. Ressalta-se que o `in` funciona nas variáveis da classe `set`. Además, há `methods` específicos para essa classe que será descrita adiante.
+
+O _dictionary_ é uma estrutura de dados peculiar que possui um _key_ que pode ser usado para mapear sendo esse _key_ tendo um _value_.
+
+```
+# Example dictionary
+elements = {"anderson": 1, "hitoshi": 2, "uyekita": 3}
+
+elements["key"] = "value"      # Add value mapped by key
+elements["teste"] = 9          # Add a new variable in the dictionary
+elements["uma_lista"] = [1,2]  # Add a list
+elements["100"] = "a"          # Other example
+```
+Observe que o _dictionary_ é bem eclético, tem de tudo e aceita tudo. Pode-se usar o operador `in` o qual terá um retorno `booleano`. O método `.get()` é usado para ter o retorno do _value_ da um dado _key_.
+
+O _nested dictionary_ é o uso de um _dictionary_ tendo os seus _values_ um outro _dictionary_.
+
+```
+# Exemplo retirado do site da Udacity.
+elements = {"hydrogen": {"number": 1,
+                         "weight": 1.00794,
+                         "symbol": "H"},
+              "helium": {"number": 2,
+                         "weight": 4.002602,
+                         "symbol": "He"}}
+```
+Sendo assim possível organizar informações estruturadas.
 
 **********************************************************
 ## Operadores
@@ -435,6 +486,31 @@ meu_nome = ["anderson","hitoshi"] # Minha lista
 meu_nome.append("uyekita")        # Agregando na minha lista o meu sobrenome
 ```
 Esse `method` altera a lista original `meu_nome`.
+
+### `.add()`
+```
+meu_nome = {"anderson","uyekita"}  # Para criar um set basta usar os {}
+
+meu_nome.add("hitoshi")            # {"anderson","uyekita","hitoshi"}
+```
+A função adiciona um novo elemento (ou novos elementos) na variável set designada.
+
+### `.pop()`
+```
+meu_nome = {"anderson","uyekita","hitoshi"}  # Para criar um set basta usar os {}
+
+meu_nome.pop("hitoshi")                      # Retira um elemento randomicamente
+```
+Isso é um pouco bizarro, mas o método `.pop()` remove um elemento aleatório do set designado.
+
+### `.get()`
+```
+meu_nome = {"anderson":1,"uyekita":2,"hitoshi":3}  # Para criar um set basta usar os {} e adicionar os values
+
+print(meu_nome.get("hitoshi"))                     # Retorna 3
+```
+Isso é um pouco bizarro, mas o método `.pop()` remove um elemento aleatório do set designado.
+
 
 
 ## Referências
