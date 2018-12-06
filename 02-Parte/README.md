@@ -14,7 +14,7 @@ As anotações de aula foram registradas em anotações e cada uma foi separada 
 #### Outline
 
 * [x] Lesson 01 - Why Python Programming
-* [ ] Lesson 02 - Data types and Operators
+* [x] Lesson 02 - Data types and Operators
 * [ ] Lesson 03 - Control Flow
 * [ ] Lesson 04 - Functions
 * [ ] Lesson 05 - Scripting

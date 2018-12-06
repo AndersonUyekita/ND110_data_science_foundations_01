@@ -31,17 +31,17 @@ udacity_data_science_foundation_01
 |
 |--  01-Parte
 |           |
-|           |--  READEME.md     # Dados gerais dessa parte do curso
+|           |--  README.md     # Dados gerais dessa parte do curso
 |
 |--  02-Parte
 |           |
-|           |--  READEME.md     # Dados gerais dessa parte do curso
+|           |--  README.md     # Dados gerais dessa parte do curso
 |           |--  notes.md       # Anotações de aula
 |           |--  01-Project_01  # Projeto 01
 |
 |--  03-Parte
 |           |
-|           |--  READEME.md     # Dados gerais dessa parte do curso
+|           |--  README.md     # Dados gerais dessa parte do curso
 |           |--  notes.md       # Anotações de aula
 |           |--  01-Project_02  # Projeto 02
 ```
