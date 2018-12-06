@@ -3,7 +3,8 @@
 #### Tags
 * Título: Control Flow
 * Autor: AH Uyekita
-* Data: 05/12/2018
+* Data início: 05/12/2018
+* Data fim: 06/12/2018
 * Cod: nd110
 
 ## Control Flow
@@ -45,6 +46,7 @@ if 18.5 <= weight / height**2 < 25:       # A relação weight / height**2 deve 
     print("BMI is considered 'normal'")   # entre 18.5 e 25 para que a condição seja aceita
 ```
 
+**********************************************************
 ## _Conditional statements_
 
 Note que no Python diferentemente de outras linguagem de programação não possui o maldito abre e fecha de `{}` para definir quando um _conditinal statement_ começa e termina, por este motivo a indentação é fundamental para que a linguagem seja interpretada corretamente pelo compilador. **Não se esquecer do `:`**.
@@ -53,19 +55,19 @@ O exemplo abaixo possui dois _if_'s _nested_.
 
 ```
 if condição:
-|---|------------------|      # 1: Espaços necessários para indentar corretamente;
++---+------------------+      # 1: Espaços necessários para indentar corretamente;
 | 1 |        2         |      # 2: área do código que deverá ser executada caso
-|---|------------------|      #    a condição seja verdadeira
++---+------------------+      #    a condição seja verdadeira
 
 else:
     if condição2:
-    |---|---------------------|  # 3: Espaços necessários para indentar corretamente;
+    +---+---------------------+  # 3: Espaços necessários para indentar corretamente;
     | 3 |         4           |  # 4: área de código
-    |---|---------------------|
+    +---+---------------------+
     else:
-    |---|---------------------|
+    +---+---------------------+
     | 3 |         4           |
-    |---|---------------------|
+    +---+---------------------+
 ```
 
 ### `if()`
@@ -98,15 +100,16 @@ else:
 ```
 Note que o o `elif()` é um intermediário entre o `if()` e o else, onde ele desempenha um papel de diminuir a quantidade de _nested if_.
 
+**********************************************************
 ## _Loops_
 
 As estruturas (que seriam os bloquinhos de código) do _f0r_ e do _while_ são parecidos com aqueles do _conditional statements_, pois os _loops_ baseiam-se também pela indentação do código.
 
 ```
 for condição:
-|---|------------------|      # 1: Espaços necessários para indentar corretamente;
++---+------------------+      # 1: Espaços necessários para indentar corretamente;
 | 1 |        2         |      # 2: área do código que deverá ser executada caso
-|---|------------------|      #    a condição seja verdadeira
++---+------------------+      #    a condição seja verdadeira
 ```
 
 ### `for()`
@@ -124,6 +127,29 @@ while money < 1000:     # o laço será executo indefinidamente até que a condi
 ```
 A diferença entre _for_ e _while_ é que o segundo não possui limites, ele poderá ser executado indefinidamente até que a condição de parada seja atingida.
 
+## _List Comprehensions_
+
+Isso é algo único da linguagem Python, segundo a **Juno Lee** só em Python tem essa coisa aí.
+
+```{py}
+minha_lista = ["anderson", "hitoshi", "uyekita"] # Lista qualquer
+nova_lista =[] # Uma nova lista
+
+# Um loop de exemplo.
+for nom in minha_lista:
+    nova_lista.append(nom.title())
+
+print(nova_lista) # imprime o resultado para comparar
+
+# Em uma linha faz-se tudo.
+nova_lista = [nom.title() for nom in minha_lista]
+
+print(nova_lista) # para conferir.
+```
+
+Note que o mesmo código que foi feito utilizando algumas linhas, pode ser realizada usando uma única linha.
+
+**********************************************************
 ## Built-in functions
 
 Esta será um lista das funções e qualquer outra coisa que foi apresentado em sala de aula.
@@ -134,8 +160,8 @@ start,end,step = 1,6,2 # inicializa os dados
                             # start possui valor default de zero
                             # step possui valor default de 1
 lista = range(1,6,2)   # cria um objeto classe range
-                            # Caso imprima lista não terá um output uma lista
-                            # A lista implicita é: [1, 3, 5]
+                            # print(lista) é um <class 'range'>
+                             # A lista implícita é: [1, 3, 5]
 ```
 A variável criada _lista_ é um objeto de classe _range_ e só será útil se caso a utilize em associação com o _for_ (ainda não encontrei outras casos de uso do `range()`).
 
@@ -173,8 +199,15 @@ nome, index = zip(*lista_tuples) # Unpacking usando o *
 Isso é bem prático quando tempos uma lista de _tuple_'s.
 
 ### `enumerate`
+```{py}
+letters = ['anderson', 'hitoshi', 'uyekita']  # Uma lista qualquer.
 
+for i in enumerate(letters):                  # Cria uma lista de tuple's.
+    print(i)                                  # Imprime cada tuple da lista criada.
+```
+A única maneira de entender essa função é aplicando a num _for_. O resultado é a criação de _tuple_'s.
 
+**********************************************************
 ## Methods
 
 ### `.items()`
