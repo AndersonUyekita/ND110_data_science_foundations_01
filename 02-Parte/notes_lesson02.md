@@ -13,7 +13,7 @@ Estas anotações fora feitas no transcurso das aulas, visam firmar o conhecimen
 
 A maior parte do curso destina-se aos conceitos básicos.
 
-* A identação é importante para o Python porque ele define quando termina um _loop_ e começa o outro ou quando termina um _statement_ do _if_;
+* A indentação é importante para o Python porque ele define quando termina um _loop_ e começa o outro ou quando termina um _statement_ do _if_;
 * Como muitas outras linguagens de programação o Python é _case sensitive_, isto é, maiúsculas e minúsculas definem variáveis diferentes;
 * Os comentários dentro do código pode ser feito a partir do uso do `#`.
 **********************************************************

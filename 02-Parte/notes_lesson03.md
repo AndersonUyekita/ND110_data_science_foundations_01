@@ -31,48 +31,69 @@ Nesta aula serão abordados temas como:
 
 Maiores informações acerca das `built-in` _functions_ e `methods` somente acessando as [notes_lesson02.md](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Parte/notes_lesson02.md).
 
+## Expressões Booleanas
+
+Algumas expressões booleanas dignas de nota:
+
+#### a < b < c ou a > b > c
+
+Essa expressão pode ser uma condição de avaliação de uma _conditinal statement_, por exemplo.
+
+```{py}
+# Exemplo do video
+if 18.5 <= weight / height**2 < 25:       # A relação weight / height**2 deve estar
+    print("BMI is considered 'normal'")   # entre 18.5 e 25 para que a condição seja aceita
+```
+
 ## _Conditional statements_
 
-Note que no Python diferentemente de outras linguagem de programação não possui o maldito abre e fecha de `{}` para definir quando um _conditinal statement_ começa e termina, por este motivo a identação é fundamental para que a linguagem seja interpretada corretamente pelo compilador.
+Note que no Python diferentemente de outras linguagem de programação não possui o maldito abre e fecha de `{}` para definir quando um _conditinal statement_ começa e termina, por este motivo a indentação é fundamental para que a linguagem seja interpretada corretamente pelo compilador. **Não se esquecer do `:`**.
 
 O exemplo abaixo possui dois _if_'s _nested_.
 
 ```
-if condição
-|---|------------------|      # 1: Espaços necessários para identar corretamente;
+if condição:
+|---|------------------|      # 1: Espaços necessários para indentar corretamente;
 | 1 |        2         |      # 2: área do código que deverá ser executada caso
 |---|------------------|      #    a condição seja verdadeira
-    if condição2
-    |---|---------------------|  # 3: Espaços necessários para identar corretamente;
+
+else:
+    if condição2:
+    |---|---------------------|  # 3: Espaços necessários para indentar corretamente;
     | 3 |         4           |  # 4: área de código
     |---|---------------------|
-    else
+    else:
     |---|---------------------|
     | 3 |         4           |
     |---|---------------------|
-else
-|---|------------------|
-| 1 |        2         |
-|---|------------------|
 ```
 
 #### `if()`
-```
-if dinheiro < 200       # Condição
+```{py}
+if dinheiro < 200:      # Condição
     dinheiro += 200     # Ações caso a condição
     banco -= 200        # seja satisfeita
 ```
 É o principal _conditional statement_ e serve para filtrar, separar, eleger etc. algum elemento para sofrer uma determinada sequencia de comandos.
 
 #### `else`
+```{py}
+if (numero % 2) == 0:                # Se o resto for igual a zero, é um número par
+    print(str(numero) + " é par")    # Imprime texto se a condição for verdadeira
+else:
+    print(str(numero) + " é ímpar")  # Imprime texto se a condição for falsa.
 ```
-if dia ==   chuvoso       # Condição
-    dinheiro += 200     # Ações caso a condição
-    banco -= 200        # seja satisfeita
-```
-
-
-
-
+É o complemento do _if_ e não requer condição (já que é o resto da condição do _if_), possui uma dualidade entre `0` e `1`, mas em alguns casos há mais de dois estados, nestas situações usa-se o `elif()`.
 
 #### `elif()`
+```{py}
+if numero > 100:
+    print("maior que 100")
+
+elif numero > 50:
+    print("maior que 50 e menor e igual a 100")
+
+else:
+    print("número menor ou igual a 50")
+```
+Note que o o `elif()` é um intermediário entre o `if()` e o else, onde ele desempenha um papel de diminuir a quantidade de _nested if_.
