@@ -6,10 +6,11 @@
 * Date: 07/12/2018
 * Cod: nd110
 
-## 
+## Objectives
 
+Complete the `chicago_bikeshare.py` file coding the 11 tasks.
 
-
+For further information read the [notes_project_01.md](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/01-Project/notes_project_01.md)
 
 ****************************************************
 ## 1. Project Overview
