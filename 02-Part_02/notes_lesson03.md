@@ -1,13 +1,13 @@
 # Python Introduction `Lesson03`
 
 #### Tags
-* Título: Control Flow
+* Título: _Control Flow_
 * Autor: AH Uyekita
 * Data início: 05/12/2018
 * Data fim: 06/12/2018
 * Cod: nd110
 
-## Control Flow
+## _Control Flow_
 Nesta aula serão abordados temas como:
 
 * _Conditional statements_ (Famoso _if_ e _else_)

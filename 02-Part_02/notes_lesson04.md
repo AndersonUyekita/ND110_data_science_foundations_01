@@ -1,7 +1,7 @@
 # Python Introduction `Lesson04`
 
 #### Tags
-* Título: Functions
+* Título: _Functions_
 * Autor: AH Uyekita
 * Data início: 06/12/2018
 * Cod: nd110

@@ -1,12 +1,12 @@
 # Python Introduction `Lesson02`
 
 #### Tags
-* Título: Control Flow
+* Título: _Data Types and Operators_
 * Autor: AH Uyekita
 * Data: 05/12/2018
 * Cod: nd110
 
-## Data Types and Operators
+## _Data Types and Operators_
 Estas anotações fora feitas no transcurso das aulas, visam firmar o conhecimento ministrado, bem como ter um arquivo digital com as funções aprendidas sempre é útil.
 **********************************************************
 ## Conceitos Gerais
@@ -426,14 +426,14 @@ print(max(["anderson","hitoshi","uyekita","mogi","das","cruzes"]))  # Retorna uy
 Retorna o maior número dentro de uma lista. Note que só funcionará quando a lista for só de um tipo de variável.
 
 ### `min()`
-```
+```{py}
 print(min([100,40,50,30,20]))                                       # Retorna 20
 print(min(["anderson","hitoshi","uyekita","mogi","das","cruzes"]))  # Retorna anderson
 ```
 Retorna o maior número dentro de uma lista. Note que só funcionará quando a lista for só de um tipo de variável.
 
 ### `sorted()`
-```
+```{py}
 print(sorted(["anderson","hitoshi","uyekita","mogi","das","cruzes"]))                  # Retorna uma lista começando por anderson e terminando com uyekita
 print(sorted(["anderson","hitoshi","uyekita","mogi","das","cruzes"], reverse = True))  # Retorna uma lista começando por uyekita e terminando com anderson
 ```

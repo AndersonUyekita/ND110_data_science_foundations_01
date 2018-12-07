@@ -30,6 +30,9 @@ input("Press Enter to continue...")
 # TODO: Print the first 20 rows using a loop to identify the data.
 print("\n\nTASK 1: Printing the first 20 samples")
 
+for i in range(0,20):   # The first 20 rows - The first row in the header and the other 19 rows were observations
+    print(data_list[i]) # Printing
+
 # Let's change the data_list to remove the header from it.
 data_list = data_list[1:]
 
@@ -42,6 +45,8 @@ input("Press Enter to continue...")
 
 print("\nTASK 2: Printing the genders of the first 20 samples")
 
+for i in range(0,20):   # The first 20 rows
+    print(data_list[i][6])
 
 # Cool! We can get the rows(samples) iterating with a for and the columns(features) by index.
 # But it's still hard to get a column in a list. Example: List with all genders
@@ -52,6 +57,8 @@ input("Press Enter to continue...")
 def column_to_list(data, index):
     column_list = []
     # Tip: You can use a for to iterate over the samples, get the feature by index and append into a list
+    for i in range(0,len(data)):
+        column_list.append(data[i][index])
     return column_list
 
 
@@ -69,8 +76,20 @@ input("Press Enter to continue...")
 # Now we know how to access the features, let's count how many Males and Females the dataset have
 # TASK 4
 # TODO: Count each gender. You should not use a function to do that.
-male = 0
-female = 0
+
+gender = column_to_list(data_list, -2)
+
+# gender2 = plt.hist(gender)
+
+is_male = lambda x : x == "Male"
+is_female = lambda x : x == "Female"
+is_blank = lambda x : x == ""
+
+indecisos = sum(list(map(is_blank, gender)))
+
+male = sum(list(map(is_male, gender)))
+female = sum(list(map(is_female, gender)))
+
 
 
 # Checking the result
@@ -87,8 +106,8 @@ input("Press Enter to continue...")
 # TODO: Create a function to count the genders. Return a list
 # Should return a list with [count_male, counf_female] (e.g., [10, 15] means 10 Males, 15 Females)
 def count_gender(data_list):
-    male = 0
-    female = 0
+    male = sum(list(map(lambda x : x == "Male", gender)))
+    female = sum(list(map(lambda x : x == "Female", gender)))
     return [male, female]
 
 
@@ -107,7 +126,12 @@ input("Press Enter to continue...")
 # TODO: Create a function to get the most popular gender and print the gender as string.
 # We expect to see "Male", "Female" or "Equal" as answer.
 def most_popular_gender(data_list):
-    answer = ""
+    if sum(list(map(lambda x : x == "Male", gender))) > sum(list(map(lambda x : x == "Female", gender))):
+        answer = "Male"
+    elif sum(list(map(lambda x : x == "Male", gender))) == sum(list(map(lambda x : x == "Female", gender))):
+        answer = "Equal"
+    else:
+        answer = "Female"
     return answer
 
 
@@ -136,6 +160,21 @@ input("Press Enter to continue...")
 # TODO: Plot a similar graph for user_types. Make sure the legend is correct.
 print("\nTASK 7: Check the chart!")
 
+user_types = column_to_list(data_list, -3)
+types = ["Customer", "Subscriber"]
+quantity = [sum(list(map(lambda x : x == "Customer", user_types))),sum(list(map(lambda x : x == "Subscriber", user_types)))]
+y_pos = list(range(len(types)))
+plt.bar(y_pos, quantity)
+plt.ylabel('Quantity')
+plt.xlabel('Gender')
+plt.xticks(y_pos, types)
+plt.title('Quantity by Gender')
+plt.show(block=True)
+
+
+#plt.hist(quantity)
+
+
 
 input("Press Enter to continue...")
 # TASK 8
@@ -143,8 +182,8 @@ input("Press Enter to continue...")
 male, female = count_gender(data_list)
 print("\nTASK 8: Why the following condition is False?")
 print("male + female == len(data_list):", male + female == len(data_list))
-answer = "Type your answer here."
-print("Answer:", answer)
+answer = "There are many rows with blank values to gender. {} rows with no values"
+print("Answer:", answer.format(indecisos))
 
 # ------------ DO NOT CHANGE ANY CODE HERE ------------
 assert answer != "Type your answer here.", "TASK 8: Write your own answer!"
@@ -156,10 +195,17 @@ input("Press Enter to continue...")
 # TODO: Find the Minimum, Maximum, Mean and Median trip duration.
 # You should not use ready functions to do that, like max() or min().
 trip_duration_list = column_to_list(data_list, 2)
-min_trip = 0.
-max_trip = 0.
-mean_trip = 0.
-median_trip = 0.
+
+conv_to_float = lambda x : float(x)
+
+df_float = list(map(conv_to_float, trip_duration_list))
+
+
+
+min_trip = sorted(df_float)[0]
+max_trip = sorted(df_float, reverse = True)[0]
+mean_trip = sum(df_float)/len(df_float)
+median_trip = sorted(df_float)[int(len(df_float)/2)]
 
 
 print("\nTASK 9: Printing the min, max, mean and median")
@@ -177,6 +223,15 @@ input("Press Enter to continue...")
 # Gender is easy because usually only have a few options. How about start_stations? How many options does it have?
 # TODO: Check types how many start_stations do we have using set()
 user_types = set()
+
+
+start_stations = column_to_list(data_list, 3)
+
+start_stations[0:20]
+
+user_types = set(start_stations)
+
+print(len(user_types)) # Resultado 582
 
 print("\nTASK 10: Printing start stations:")
 print(len(user_types))
