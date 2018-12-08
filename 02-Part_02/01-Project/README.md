@@ -10,7 +10,12 @@
 
 Complete the `chicago_bikeshare.py` file coding the 11 tasks.
 
-For further information read the [notes_project_01.md](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/01-Project/notes_project_01.md)
+For further information read the [notes_project_01.md](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/01-Project/udacity_nd110_project_01.md)
+
+#### Memo
+```
+jupyter notebook --notebook-dir='D:/'
+```
 
 ****************************************************
 ## 1. Project Overview
