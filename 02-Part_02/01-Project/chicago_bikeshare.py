@@ -1,9 +1,9 @@
 ##############################################################################################
-#                                                                           #                #
-#  Author:   Anderson Hitoshi Uyekita                                       #  VERSION: 1.0  #
-#  Project:  Explore Chicago Bikeshare Data                                 #                #
-#  Date:     07/12/2018                                                     ##################
-#  COD:      nd110                                                                           #
+#                                                                               VERSION: 1.1 #
+#  Author:   Anderson Hitoshi Uyekita                                                        #
+#  Project:  Explore Chicago Bikeshare Data                                                  #
+#  Date:     08/12/2018                                                                      #
+#  COD:      ND110                                                                           #
 #  Tags:     Udacity, Data Science, Python                                                   #
 #                                                                                            #
 ##############################################################################################
@@ -284,13 +284,16 @@ print("\nTASK 7: Check the chart!")
 # "Dependent" are exceptions, only 4 instances of this category. For this reason I removed from the graphic
 # because it is not a valueable information faced the number of "Customer" and "Subscriber".
 #
-# If my point of view is not correct, please, let me know. I can fix it and reply you as soon as possible.
+# If my point of view is not correct, please, let me know. I can fix it and resubmit you as soon as possible.
 
 # Selecting the desired column
 user_types = column_to_list(data_list, -3)
 
-# Selecting the unique categories and removing the "Dependent".
-types = list(set(user_types))[0:2]
+# Selecting the uniques categories.
+types = list(set(user_types))  # Three categories: Customer, Dependent and Subscriber
+
+# Removing the "Dependent" as commented above
+types = [sorted(types)[0], sorted(types)[-1]]
 
 # Calculating the quantity of each of types ("Customer" and "Subscriber")
 quantity = [sum(list(map(lambda x : x == types[0], user_types))),  # Due to the Task 5 requirements my function
@@ -314,7 +317,7 @@ male, female = count_gender(data_list)
 print("\nTASK 8: Why the following condition is False?")
 print("male + female == len(data_list):", male + female == len(data_list))
 
-answer = "There are many rows with blank values in gender's column. {} rows with no values"
+answer = "There are many rows with blank values in gender's column. Exactly {} rows with no values (blank)."
 
 print("Answer:", answer.format(undefined)) # undefined was calculated in Task 4.
 

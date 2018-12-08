@@ -1,6 +1,6 @@
 # Parte 02
 
-Essa primeira parte destina-se ao aprendizado da linguagem de programação Python.
+Essa segunda parte destina-se ao aprendizado da linguagem de programação Python.
 
 **Instrutora:** Juno Lee
 
@@ -13,6 +13,7 @@ As anotações de aula foram registradas em anotações e cada uma foi separada 
 * [notes_lesson04;](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson04.md)
 * [notes_lesson05;](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson05.md)
 * [notes_project_01.](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/01-Project/notes_project_01.md)
+
 #### Outline
 
 * [x] Lesson 01 - Why Python Programming
@@ -20,4 +21,4 @@ As anotações de aula foram registradas em anotações e cada uma foi separada 
 * [x] Lesson 03 - Control Flow
 * [x] Lesson 04 - Functions
 * [x] Lesson 05 - Scripting
-* [ ] Project 01 - Explore Chicago Bikeshare Data
+* [x] Project 01 - Explore Chicago Bikeshare Data

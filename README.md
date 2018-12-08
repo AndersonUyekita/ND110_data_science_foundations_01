@@ -19,7 +19,7 @@ Desenvolver novas habilidades que possam abrir novas experiências de vida.
 É constituído por 3 partes e dois projetos.
 
 * [x] [Parte 1 - Welcome](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/01-Part_01)
-* [ ] [Parte 2 - Python Introduction](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/02-Part_02)
+* [x] [Parte 2 - Python Introduction](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/02-Part_02)
 * [ ] [Parte 3 - Python for Data Analysis](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/03-Part_03)
 
 #### Organização
