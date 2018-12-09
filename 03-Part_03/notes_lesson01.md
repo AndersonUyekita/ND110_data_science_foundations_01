@@ -56,7 +56,7 @@ Although the process has divided into 5 step, these step are not statics and usu
 
 ### Step 1 - Ask a Question
 
-Usually all the analysis starts based on a question, which we would like to answer using data. This question must have 5 features:
+Usually all the analysis starts based on a question (good one), which we would like to answer using data. Sometimes we already have these data and we need to "think" what is a good question to this data (probabily later you'll need more data). Generally, you do not have data but you have a question and you'll need to find a good data set. This question must have 5 features:
 
 * Interest
 * Answerable
@@ -68,15 +68,200 @@ Keep in mind that the question must be specific. If the question is not specific
 
 ### Step 2 - Wrangle
 
-Here we perform the EDA (Exploratory Data Analysis), discover some patterns, descriptive analysis
+This step is quite different from the Roger one, because here we deal with:
 
-### Step 3
+* Gathering: If you do not have data you need to find it;
+    * Download from the database stored in the webs;
+    * API
+    * Web Scraping
+* Assess: Assess the quality of the data and the structure.
+    * Structural problems: Different files with same information, but distincts column names
+    * Missing data
+    * incorrect data type
+    * duplicates
+* Clean: Modifying the data to ensure the quality.
+
+All this steps were to prepare the data to an analysis.
+
+Sometimes Wrangling and EDA are binded into one step, but here are splited.
+
+### Step 3 - EDA
+
+Here we perform the EDA (Exploratory Data Analysis), discover some patterns, relationships, descriptive analysis, maximize the potential of the analysis, visualizations, and models. Also, removing outliers, and creating new descriptive features from existind data.
+
+* Exploring
+* Augment
+
+In this step usually we need to revisit the question and refine with the knowledge gathered (change the question or need more data).
+
+### Step 4 - Draw Conclusions
+
+This is step was to predict something (machine learning or inferencial statistics).
+
+### Step 5 - Communicate
+
+Communicate the results.
+
+## Packages
+
+In this course, three packages will be used massively.
+
+* Numpy
+
+
+* Pandas
+```{py}
+import pandas as pd
+```
+
+
+* matplotlib
+```{py}
+import pandas as pd
+% matplotlib inline
+```
+
+
+### Pandas
 
 
 
-### Step 4
 
 
+#### `read_csv()`
+```{py}
+import pandas as pd
 
+df = pd.read_csv('student_scores.csv')
+df = pd.read_csv('student_scores.csv', sep=':')
+```
+Import the dataframe.
 
-### Step 5
+#### `.head()`
+```{py}
+df.head()
+```
+Show the first 5 rows
+
+#### `.shape`
+```{py}
+df.shape()
+```
+Prints the dimenions.
+
+#### `.dtypes`
+
+Prints the types of each variable.
+
+#### `.info()`
+
+Display a summary of each variable.
+
+It is good to find missing values.
+
+#### `.nunique()`
+
+Return the number the unique values.
+
+#### `.describe()`
+
+This is a real summary.
+
+#### `.tail()`
+
+The last 5 rows.
+
+#### `loc` and `iloc`
+
+Selecting the columns using **names**.
+```{py}
+df_means = df.loc[:,'id':'fractal_dimension_mean']
+```
+Subsetting columns from "id" to "fractal_dimension_mean".
+
+Same range of columns but using **index**.
+```{py}
+# repeat the step above using index numbers
+df_means = df.iloc[:,:11]
+```
+#### `.duplicated()`
+
+Return a boolean vector., which could be useful to count the number of duplicated.
+
+#### `.drop_duplicated()`
+
+Show the data set cleaned withou duplicated, but do not update the original dataframe to do it so you need to set inplace as True.
+
+* inplace = True
+
+#### `.mean()`
+```{py}
+df["desired_column"].mean()
+```
+Mean function.
+
+#### `.fillna(X)`
+
+Fill the NA with X.
+
+* Alternativaly you can add inplace to update the current dataframe.
+
+#### `pd.to_daytime(df['time'])`
+
+Update the object of time, but you need to assign to the dataframe columns to change it.
+
+#### `.hist()`
+
+```{py}
+data.hist()
+
+data.hist(figsize = (8,8)) # Biger figures.
+
+data['age'].hist() # For a specific variable/featues.
+
+```
+Plot a simple histogram, beware because if you have many feactures, the histogram going to be crowded.
+
+#### .plot()
+```{py}
+data['age'].plot(kind='hist'); # Different way to plot a hist()
+data['age'].plot(kind='bar'); # Different way to plot a hist()
+data['age'].plot(kind='pie',figsize= (8,8)); # Different way to plot a hist()
+
+# Matrix
+pd.plotting.scatter_matrix(data,figsize=(15,15))
+
+# Scatter regular
+data.plot(x = "compactness", y = "concavity" , kind = "scatter")
+
+# Boxplot
+data['concave_points'].plot(kind = "box")
+
+```
+
+#### `value_counts()`
+
+Aggregates counts for each new unique value in a column. Shows a vector with this values.
+
+```{py}
+data['something'].value_counts().plot(kind = 'bar'); # Creates a bar ploat based on the value_counts created before.
+```
+
+## Subsetting
+
+```{py}
+data[data['anything'] == "M"] # data['anything'] == "M" -> will select each row with True.
+```
+
+## Indexing
+
+```{py}
+# Example 1
+ind = data['something'].value_counts().index
+data['something'].value_counts()[index].plot(kind='bar') # Indexing!!
+
+# Example 2
+ind = data['anything'].value_counts().index
+df['anything'].value_counts()[index].plot(kind='pie',figsize = (8,8))
+
+```
