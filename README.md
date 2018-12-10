@@ -29,17 +29,17 @@ Para uma melhor organização do repositório, os _folders_ ficarão organizados
 ```
 udacity_data_science_foundation_01
 |
-+--  01-Parte
++--  01-Part_01
 |           |
 |           +--  README.md      # Dados gerais dessa parte do curso
 |
-+--  02-Parte
++--  02-Part_02
 |           |
 |           +--  README.md      # Dados gerais dessa parte do curso
 |           +--  notes.md       # Anotações de aula
 |           +--  01-Project_01  # Projeto 01
 |
-+--  03-Parte
++--  03-Part_03
             |
             +--  README.md      # Dados gerais dessa parte do curso
             +--  notes.md       # Anotações de aula

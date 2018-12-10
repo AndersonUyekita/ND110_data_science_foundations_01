@@ -1,4 +1,4 @@
-# Parte 03
+# Part 03
 
 Após uma breve introdução à linguagem Python esta etapa do Nanodegree destina-se ao Processo de Análise de Dados.
 
@@ -14,8 +14,8 @@ As anotações de aula foram registradas em arquivos seprados por aula.
 
 #### Outline
 
-* [ ] Lesson 01 - The Data Analysis Process
-* [ ] Lesson 02 - Data Analysis Process - Case of Study I
+* [x] Lesson 01 - The Data Analysis Process
+* [x] Lesson 02 - Data Analysis Process - Case of Study I
 * [ ] Lesson 03 - Data Analysis Process - Case of Study II
 * [ ] Lesson 04 - Programmig Workflow for Data Analysis
 * [ ] Project 02 - Investigate a Dataset

@@ -188,7 +188,7 @@ Return a boolean vector., which could be useful to count the number of duplicate
 
 #### `.drop_duplicated()`
 
-Show the data set cleaned withou duplicated, but do not update the original dataframe to do it so you need to set inplace as True.
+Show the data set cleaned without duplicated, but do not update the original dataframe to do it so you need to set inplace as True.
 
 * inplace = True
 

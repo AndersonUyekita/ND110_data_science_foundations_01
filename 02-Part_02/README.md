@@ -1,4 +1,4 @@
-# Parte 02
+# Part 02
 
 Essa segunda parte destina-se ao aprendizado da linguagem de programação Python.
 
