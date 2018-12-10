@@ -107,13 +107,16 @@ Communicate the results.
 In this course, three packages will be used massively.
 
 * Numpy
-
+```{py}
+import numpy as np
+```
+Convention: Abbreviate numpy as np.
 
 * Pandas
 ```{py}
 import pandas as pd
 ```
-
+Convention: Pandas numpy as pd.
 
 * matplotlib
 ```{py}
@@ -121,17 +124,12 @@ import pandas as pd
 % matplotlib inline
 ```
 
+### `Methods`
 
-### Pandas
-
-
-
-
+Methods used during the course videos.
 
 #### `read_csv()`
 ```{py}
-import pandas as pd
-
 df = pd.read_csv('student_scores.csv')
 df = pd.read_csv('student_scores.csv', sep=':')
 ```

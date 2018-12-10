@@ -48,7 +48,7 @@ I have tested a bunch of softwares to run the python scripts, such as:
 
 I have also used the CodeSkulptor to test minor things.
 
-* [CodeSkulptor](https://py3.codeskulptor.org/).
+* [CodeSkulptor](https://py3.codeskulptor.org/). (I realized this is not a good option to study because sometimes the results is not correctly.)
 
 Lastly, my all purpose `py` file editor is the Atom.
 
@@ -125,19 +125,27 @@ This `py` skeleton of script has twelve (12) chunks to be complete with code. I 
 
 >TODO: Print the first 20 rows using a loop to identify the data.
 
-**My solution:**
+**First solution:**
 ```
 for i in range(0,20):
     print(data_list[i])
 ```
 Each element of this list represent a single row of the dataset chicago.csv, for this reason, I just need to `print()` the first 20 rows using a `for()`, but I minded that Python is a _zero-index_ programming language. The `range()` functions allows me to iterate from 0 to 19 (the `range()` function has the first argument inclusive and the second argument exclusive).
 
+In the first revision, the reviewer adviced me to change a little bit my code. He said to turn my code more "Pythonic".
+
+**Final solution**
+```
+for row in data_list[:20]:   # The first 20 rows - The first row in the header and the other 19 rows were observations
+    print(row)                # Printing
+```
+
 
 ```python
 print("\n\nTASK 1: Printing the first 20 samples")
 
-for i in range(0,20):   # The first 20 rows - The first row in the header and the other 19 rows were observations
-    print(data_list[i]) # Printing
+for row in data_list[:20]:   # The first 20 rows - The first row in the header and the other 19 rows were observations
+    print(row)                # Printing
 
 # Let's change the data_list to remove the header from it.
 data_list = data_list[1:]
@@ -175,20 +183,30 @@ data_list = data_list[1:]
 
 >TODO: Print the `gender` of the first 20 rows.
 
-**My solution:**
+All `list` are ordered and for this reason I can use the index to pick the exactly element inside of that list.
+
+**First solution:**
 ```
 for i in range(0,20):        # The first 20 rows
     print(data_list[i][6])   # Subsetting each row gathering the 7th element of this list and print
                              # I could also use data_list[i][-2]
 ```
-All `list` are ordered and for this reason I can use the index to pick the exactly element inside of that list.
+
+Due to a lack of descriptive names in my code, the reviewer also said to make an effort to turn this more readable.
+
+**Final solution:**
+```
+for row in range(0,20):       # The first 20 rows
+    print(data_list[row][6])  # The second index 6 means gender's column
+```
+Following the structions I convert it to a "Pythonic" way.
 
 
 ```python
 print("\nTASK 2: Printing the genders of the first 20 samples")
 
-for i in range(0,20):   # The first 20 rows
-    print(data_list[i][6])
+for row in data_list[:20]:       # The first 20 rows
+    print(row[6])                # The second index 6 means gender's column
 
 # Cool! We can get the rows(samples) iterating with a for and the columns(features) by index.
 # But it's still hard to get a column in a list. Example: List with all genders
@@ -222,14 +240,17 @@ for i in range(0,20):   # The first 20 rows
 
 >TODO: Create a function to add the columns(features) of a list in another list in the same order
 
-**My solution:**
+For this Task I have also updated my code to turn it more Pythonic also, although it was correctly.
+
+**Final solution:**
+
 ```
-def column_to_list(data, index):
+def column_to_list(data, column):
     """
     -----------------------------------------------------------------------------------------------------
     |DESCRIPTION:                                                                                       |
     |                                                                                                   |
-    |     This function selects a specific column (defined as index) of a data frame (here called       |
+    |     This function selects a specific column (defined as column) of a data frame (here called      |
     |     as data, but probabily will be data_list).                                                    |
     |                                                                                                   |
     -----------------------------------------------------------------------------------------------------
@@ -240,7 +261,7 @@ def column_to_list(data, index):
     |     data       list   The imported dataset of the Chicago Bikeshare, a 1551506 x 8 data frame     |
     |                       stored in a list.                                                           |
     |                                                                                                   |
-    |     index      int    The desireable column to be selected.                                       |
+    |     column     int    The desireable column to be selected.                                       |
     |                           0: Start Time                                                           |
     |                           1: End Time                                                             |
     |                           2: Trip Duration                                                        |
@@ -259,17 +280,20 @@ def column_to_list(data, index):
     |                                                                                                   |
     -----------------------------------------------------------------------------------------------------
     """
-    column_list = []
+    column_list = [] # Local variable
+    
     # Tip: You can use a for to iterate over the samples, get the feature by index and append into a list
-    for i in range(0,len(data)):
-        column_list.append(data[i][index])
-    return column_list
+    for row in data:                     # Iterates each row of data
+        column_list.append(row[column])  # select a specific element (column) of the row and append it
+    return column_list                   # Now in "Pythonic" way.
+
 ```
 I followed the instruction and created a `for()` loop and for each element of the input called data I appended to the local variable column_list, which will be returned as output.
 
 
+
 ```python
-def column_to_list(data, index):
+def column_to_list(data, column):
     """
     -----------------------------------------------------------------------------------------------------
     |DESCRIPTION:                                                                                       |
@@ -306,9 +330,9 @@ def column_to_list(data, index):
     """
     column_list = []
     # Tip: You can use a for to iterate over the samples, get the feature by index and append into a list
-    for i in range(0,len(data)):
-        column_list.append(data[i][index])
-    return column_list
+    for row in data:                     # Iterates each row of data
+        column_list.append(row[column])  # select a specific element (column) of the row and append it
+    return column_list                   # Now in "Pythonic" way.
 
 
 # Let's check with the genders if it's working (only the first 20)
@@ -321,9 +345,46 @@ print(column_to_list(data_list, -2)[:20])
     ['', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', '', '', '', 'Female', '', 'Male', 'Male', 'Female', 'Male', 'Male', 'Male', 'Female', 'Male']
     
 
+I have created an axuliary function to perform the summation, the reviewer said to do not use the built-in function. So I need to code my own codes.
+
+
+```python
+def sum_ahu(my_list):
+    """
+    -----------------------------------------------------------------------------------------------------
+    |DESCRIPTION:                                                                                       |
+    |                                                                                                   |
+    |     This function perform the summationof a given list.                                           |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |INPUT:                                                                                             |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     my_list    list   A list of integer or float.                                                 |
+    |                                                                                                   |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |OUTPUT:                                                                                            |
+    |                                                                                                   |
+    |     VARIABLE     TYPE    DESCRIPTION                                                              |
+    |                                                                                                   |
+    |     summation    float   I decided to return a float to avoid a loss of information.              |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    """
+    summation = 0 # Local variable to be updated in each iteration
+    
+    for index in range(0,len(my_list)):        # Loop used to "visit" each element of the list.
+        summation += float(my_list[index])     # Accumulating the values and updating the summation.
+            
+    return summation # Return the summation
+```
+
 ### Task 4
 
 >TODO: Count each gender. You should not use a function to do that.
+
+I have only changed the function `sum()` to `sum_ahu()`.
 
 **My solution:**
 ```
@@ -335,9 +396,9 @@ is_female = lambda x : x == "Female" # True to 1 and False to 0 to count the num
 is_blank = lambda x : x == ""        # I used the plt.hist(gender) function to find out the categories of
                                      # Gender's column.
 
-male = sum(list(map(is_male, gender)))        # Applying map() (for each column) and lambdas functions
-female = sum(list(map(is_female, gender)))    # I could count the number of each category. 
-undefined = sum(list(map(is_blank, gender)))  # Obs.: I "coerced" boolean to integer by the using of sum().
+male = sum_ahu(list(map(is_male, gender)))        # Applying map() (for each column) and lambdas functions
+female = sum_ahu(list(map(is_female, gender)))    # I could count the number of each category. 
+undefined = sum_ahu(list(map(is_blank, gender)))  # Obs.: I "coerced" boolean to integer by the using of sum().
 ```
 I figure out how to use the functions `map()` and the new concept learnt called _lambda expression_, binding these two concepts I realized I could you those two together in a very straightforward way.
 
@@ -387,6 +448,8 @@ print("Male: ", male, "\nFemale: ", female)
 
 > Should return a list with [count_male, counf_female] (e.g., [10, 15] means 10 Males, 15 Females)
 
+I also have changed the built-in function `sum` to my `sum_ahu`.
+
 **My solution:**
 ```
 def count_gender(data_list):
@@ -427,8 +490,8 @@ def count_gender(data_list):
     local_gender = column_to_list(data_list, -2) # Keep in mind this function has defined in the Task 3.
     
     # Based on the map() to find True or False and sum() to count.
-    male = sum(list(map(lambda x : x == "Male", local_gender)))     # Simplified version, now with one step less
-    female = sum(list(map(lambda x : x == "Female", local_gender))) # It's a bit clumsy but understandable.
+    male = sum_ahu(list(map(lambda x : x == "Male", local_gender)))     # Simplified version, now with one step less
+    female = sum_ahu(list(map(lambda x : x == "Female", local_gender))) # It's a bit clumsy but understandable.
     
     return [male, female] # Return of the total number of male and female.
 
@@ -475,8 +538,8 @@ def count_gender(data_list):
     local_gender = column_to_list(data_list, -2) # Keep in mind this function has defined in the Task 3.
     
     # Based on the map() to find True or False and sum() to count.
-    male = sum(list(map(lambda x : x == "Male", local_gender)))     # Simplified version, now with one step less
-    female = sum(list(map(lambda x : x == "Female", local_gender))) # It's a bit clumsy but understandable.
+    male = sum_ahu(list(map(lambda x : x == "Male", local_gender)))     # Simplified version, now with one step less
+    female = sum_ahu(list(map(lambda x : x == "Female", local_gender))) # It's a bit clumsy but understandable.
     
     return [male, female] # Return of the total number of male and female.
 
@@ -487,7 +550,7 @@ print(count_gender(data_list))
 
     
     TASK 5: Printing result of count_gender
-    [935854, 298784]
+    [935854.0, 298784.0]
     
 
 ### Task 6
@@ -608,6 +671,41 @@ print("Most popular gender is: ", most_popular_gender(data_list))
 
 If it's everything running as expected, check this graph!
 
+The same case of the summation. I will use this function a bunch of times, to save lines codes I decide to write an auxiliary function.
+
+
+```python
+def count_ahu(my_list):
+    """
+    -----------------------------------------------------------------------------------------------------
+    |DESCRIPTION:                                                                                       |
+    |                                                                                                   |
+    |     Counts the number of elements of a list. It is the same of len() function.                    |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |INPUT:                                                                                             |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     my_list    list   Any list.                                                                   |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |OUTPUT:                                                                                            |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     counter    int    The number of elements of a list.                                           |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    """
+    counter = 0 # Set the counter to zero.
+    
+    for element in my_list:  # Loop the list to be count
+        counter += 1             # For each element add 1 to the counter
+
+    return int(counter)          # Return the counter and ensure to be a integer.
+```
+
 
 ```python
 gender_list = column_to_list(data_list, -2)
@@ -623,7 +721,7 @@ plt.show(block=True)
 ```
 
 
-![png](output_23_0.png)
+![png](output_26_0.png)
 
 
 ### Task 7
@@ -641,13 +739,13 @@ types = list(set(user_types))  # Three categories: Customer, Dependent and Subsc
 types = [sorted(types)[0], sorted(types)[-1]]
 
 # Calculating the quantity of each of types ("Customer" and "Subscriber")
-quantity = [sum(list(map(lambda x : x == types[0], user_types))),  # Due to the Task 5 requirements my function
-            sum(list(map(lambda x : x == types[1], user_types)))]  # count_gender() is very specific and can not
+quantity = [sum_ahu(list(map(lambda x : x == types[0], user_types))),  # Due to the Task 5 requirements my function
+            sum_ahu(list(map(lambda x : x == types[1], user_types)))]  # count_gender() is very specific and can not
                                                                    # deal with a generic situation like this.
 
 # print(sum(list(map(lambda x : x == "Dependent", user_types)))) # Shows the number of Dependent category.
 
-y_pos = list(range(len(types)))
+y_pos = list(range(count_ahu(types)))
 plt.bar(y_pos, quantity)
 plt.ylabel('Quantity')              # Add the y axis
 plt.xlabel('User Types')            # Add the x axis
@@ -664,22 +762,14 @@ If my point of view is not correct, please, let me know. I can fix it and resubm
 
 
 ```python
+user_types = column_to_list(data_list, -3)
+
 # Number of categories of gender column
 print(set(user_types)) # Print the set()
 ```
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-13-4a23e9e64155> in <module>()
-          1 # Number of categories of gender column
-    ----> 2 print(set(user_types)) # Print the set()
+    {'Subscriber', 'Customer', 'Dependent'}
     
-
-    NameError: name 'user_types' is not defined
-
 
 
 ```python
@@ -699,7 +789,7 @@ plt.hist(user_types)
 
 
 
-![png](output_26_1.png)
+![png](output_29_1.png)
 
 
 
@@ -722,7 +812,7 @@ quantity = [sum(list(map(lambda x : x == types[0], user_types))),  # Due to the 
 
 # print(sum(list(map(lambda x : x == "Dependent", user_types)))) # Shows the number of Dependent category.
 
-y_pos = list(range(len(types)))
+y_pos = list(range(count_ahu(types)))
 plt.bar(y_pos, quantity)
 plt.ylabel('Quantity')              # Add the y axis
 plt.xlabel('User Types')            # Add the x axis
@@ -736,7 +826,7 @@ plt.show(block=True)
     
 
 
-![png](output_27_1.png)
+![png](output_30_1.png)
 
 
 ### Task 8
@@ -795,9 +885,61 @@ max_trip = round(sorted(trip_dur_float, reverse = True)[0]) # Could I use .sorte
 
 # Mean
 mean_trip = round(sum(trip_dur_float)/len(trip_dur_float)) # Could I use sum()?
+```
 
+
+```python
 # Median
-median_trip = round(sorted(trip_dur_float)[int(len(trip_dur_float)/2)]) # Could I use .sorted()?
+# I decided to encapsulated this function because I may reuse it later and I could properly document it.
+def median_ahu(my_list):
+    """
+    -----------------------------------------------------------------------------------------------------
+    |DESCRIPTION:                                                                                       |
+    |                                                                                                   |
+    |     This function returns the list median.                                                        |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |INPUT:                                                                                             |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     my_list    list   List compounded of int or float which I want to find the median.            |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |OUTPUT:                                                                                            |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     median     float  I think a convenient way is to return as float, because the average of      |
+    |                       num_1 and num_2 may be a float number, and coercing to an int could led a   |
+    |                       loss of information.                                                        |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |REQUIREMENT:                                                                                       |
+    |                                                                                                   |
+    |     NAME             SCOPE                                                                        |
+    |                                                                                                   |
+    |     count_ahu        Global                                                                       |
+    |                                                                                                   |
+    ----------------------------------------------------------------------------------------------------- 
+    """
+    my_list = sorted(my_list) # I must sort my_list to find the "middle".
+                              # NOTE: I use the sorted() built-in function!!
+    
+    if (count_ahu(my_list) % 2) == 1:               # When the lenght of list is odd. I have a "middle" in my list.
+        median = my_list[count_ahu(my_list) // 2]   # [0,1,2,3,4] has 5 elements and the median is located in index 2.
+        return median # Return median         
+    
+    else:                                               # When the lenght of list is even. I do not have a single "middle" numberin my list.
+        num_1 = my_list[count_ahu(my_list) // 2]        # So a need to calculated an average between two numbers, num_1 and num_2 are
+        num_2 = my_list[(count_ahu(my_list) // 2) - 1]  # these two numbers.
+        median = (num_1 + num_2)/2   # Calculate the mean of this two numbers, which is the median of the list.
+        return float(median)         # Return the median as float.
+```
+
+```
+# Median
+median_trip = round(median_ahu(trip_dur_float)) # I am not using any built-in function, except the sorted().
 
 # If the use of these built-in function or methods (.sorted(), sum() etc.) is not allowed, I could resubmit the project
 # and I will fix it using a loop approach or any other way to calculate those parameters.
@@ -828,10 +970,10 @@ min_trip = round(sorted(trip_dur_float)[0]) # Could I use .sorted()?
 max_trip = round(sorted(trip_dur_float, reverse = True)[0]) # Could I use .sorted()?
 
 # Mean
-mean_trip = round(sum(trip_dur_float)/len(trip_dur_float)) # Could I use sum()?
+mean_trip = round(sum_ahu(trip_dur_float)/len(trip_dur_float)) # Could I use sum()?
 
 # Median
-median_trip = round(sorted(trip_dur_float)[int(len(trip_dur_float)/2)]) # Could I use .sorted()?
+median_trip = round(median_ahu(trip_dur_float)) 
 
 print("\nTASK 9: Printing the min, max, mean and median")
 print("Min: ", min_trip, "Max: ", max_trip, "Mean: ", mean_trip, "Median: ", median_trip)
@@ -869,7 +1011,7 @@ print(user_types)
     
     TASK 10: Printing start stations:
     582
-    ['Halsted St & Blackhawk St (*)', 'Blue Island Ave & 18th St', 'Millennium Park', 'Indiana Ave & 31st St', 'Central St & Girard Ave', 'Clark St & Wrightwood Ave', 'Racine Ave & Randolph St', '63rd St Beach', 'State St & 79th St', 'Halsted St & Polk St', 'Ravenswood Ave & Lawrence Ave', 'Damen Ave & Cullerton St', 'Broadway & Granville Ave', 'Western Ave & Congress Pkwy', 'Broadway & Belmont Ave', 'Elizabeth St & 47th St', 'Broadway & Ridge Ave', 'Broadway & Wilson Ave', 'McCormick Place', 'Ada St & Washington Blvd', 'Clark St & Grace St', 'Sheffield Ave & Webster Ave', 'Lincoln Ave & Leavitt St', 'Dearborn Pkwy & Delaware Pl', 'Greenview Ave & Fullerton Ave', 'Drake Ave & Montrose Ave', 'Winchester Ave & Elston Ave', 'Normal Ave & Archer Ave', 'Southport Ave & Wellington Ave', 'Rockwell St & Eastwood Ave', 'Loomis St & Taylor St (*)', 'Glenwood Ave & Morse Ave', 'Western Blvd & 48th Pl', 'Halsted St & Roscoe St', 'Morgan St & 18th St', 'Clinton St & 18th St', 'Seeley Ave & Roscoe St', 'Leavitt St & Lawrence Ave', 'Sheridan Rd & Greenleaf Ave', 'Kingsbury St & Kinzie St', 'Ravenswood Ave & Balmoral Ave', 'Woodlawn Ave & 55th St', 'Loomis St & Lexington St', 'Pulaski Rd & Eddy St', 'Desplaines St & Kinzie St', 'Austin Blvd & Chicago Ave', 'Damen Ave & 51st St', 'Racine Ave & Fullerton Ave', 'Clark St & Jarvis Ave', 'Wells St & Evergreen Ave', 'California Ave & Cortez St', 'Kingsbury St & Erie St', 'Marshfield Ave & 44th St', 'Central Park Blvd & 5th Ave', 'MLK Jr Dr & 47th St', 'Franklin St & Quincy St', 'California Ave & Fletcher St', 'Broadway & Waveland Ave', 'Kimbark Ave & 53rd St', 'Wilton Ave & Diversey Pkwy', 'State St & 33rd St', 'Greenwood Ave & 47th St', 'Halsted St & Maxwell St', 'Lincoln Ave & Addison St', 'Halsted St & 56th St', 'Rhodes Ave & 32nd St', 'Damen Ave & Sunnyside Ave', 'Dodge Ave & Church St', 'Canal St & Adams St', 'Michigan Ave & Congress Pkwy', 'Western Ave & Granville Ave', 'Eastlake Ter & Rogers Ave', 'Damen Ave & Coulter St', 'LaSalle St & Adams St', 'Noble St & Milwaukee Ave', 'Ashland Ave & Augusta Blvd', 'LaSalle St & Jackson Blvd', 'Ashland Ave & Chicago Ave', 'Chicago Ave & Sheridan Rd', 'Monticello Ave & Irving Park Rd', 'Perry Ave & 69th St', 'Wabash Ave & Grand Ave', 'Lincoln Ave & Diversey Pkwy', 'Theater on the Lake', 'California Ave & Montrose Ave', 'Halsted St & Roosevelt Rd', 'Kedzie Ave & Roosevelt Rd', 'Clark St & Bryn Mawr Ave', 'East Ave & Madison St', 'Clinton St & Lake St', 'Seeley Ave & Garfield Blvd', 'Ashland Ave & 63rd St', 'Michigan Ave & Pearson St', 'Wells St & 19th St', 'Rush St & Superior St', 'State St & Pearson St', 'Kilbourn Ave & Milwaukee Ave', 'Lake Shore Dr & Ohio St', 'Ridge Blvd & Howard St', 'State St & Van Buren St', 'Hermitage Ave & Polk St', 'Stockton Dr & Wrightwood Ave', 'Damen Ave & Cortland St', 'Southport Ave & Irving Park Rd', 'Cottage Grove Ave & 51st St', 'Clark St & Lake St', 'McClurg Ct & Erie St', 'Western Ave & Lunt Ave', 'Jeffery Blvd & 67th St', 'Ellis Ave & 53rd St', 'California Ave & Lake St', 'Western Ave & Winnebago Ave', 'MLK Jr Dr & 56th St (*)', 'Campbell Ave & Fullerton Ave', 'Warren Park West', 'Kedzie Ave & Milwaukee Ave', 'Lake Shore Dr & Diversey Pkwy', 'Central Ave & Lake St', 'State St & 76th St', 'Elston Ave & Wabansia Ave', 'Valli Produce - Evanston Plaza', 'Lakefront Trail & Bryn Mawr Ave', 'Glenwood Ave & Touhy Ave', 'Racine Ave & Belmont Ave', 'California Ave & 23rd Pl', 'Damen Ave & Clybourn Ave', 'Damen Ave & Grand Ave', 'Princeton Ave & Garfield Blvd', 'Kimball Ave & Belmont Ave', 'Wells St & Concord Ln', 'Emerald Ave & 28th St', 'Calumet Ave & 35th St', 'Halsted St & 63rd St', 'Ashland Ave & Division St', 'Dearborn St & Erie St', 'Sheffield Ave & Wellington Ave', 'Laramie Ave & Gladys Ave', 'Ashland Ave & Wrightwood Ave', 'Southport Ave & Waveland Ave', 'Cottage Grove Ave & 83rd St', 'California Ave & Altgeld St', 'Oakley Ave & Touhy Ave', 'Ashland Ave & Pershing Rd', 'Halsted St & 59th St', 'State St & Pershing Rd', 'Prairie Ave & Garfield Blvd', '2112 W Peterson Ave', 'Lincoln Ave & Waveland Ave', 'Shields Ave & 28th Pl', 'Clarendon Ave & Gordon Ter', 'Kedzie Ave & Chicago Ave', 'Clinton St & Madison St', 'Greenview Ave & Diversey Pkwy', 'Marion St & South Blvd', 'Clinton St & Washington Blvd', 'Michigan Ave & Jackson Blvd', 'State St & 35th St', 'Leavitt St & Archer Ave', 'Michigan Ave & 18th St', 'Indiana Ave & 26th St', 'Ogden Ave & Congress Pkwy', 'Wabash Ave & 16th St', 'Ashland Ave & Garfield Blvd', 'Carpenter St & Huron St', 'Columbus Dr & Randolph St', 'Clarendon Ave & Junior Ter', 'Larrabee St & North Ave', 'Damen Ave & Augusta Blvd', 'Talman Ave & Addison St', 'Spaulding Ave & Division St', 'Damen Ave & Chicago Ave', 'Sheffield Ave & Fullerton Ave', 'Clark St & Leland Ave', 'May St & Cullerton St', 'Michigan Ave & Lake St', 'Ashland Ave & 69th St', 'Mason Ave & Madison St', 'Damen Ave & Pershing Rd', 'Leavitt St & Armitage Ave', 'Pulaski Rd & Congress Pkwy', 'Halsted St & Diversey Pkwy', 'Lincoln Ave & Roscoe St', 'Austin Blvd & Lake St', 'Southport Ave & Clark St', 'California Ave & Division St', 'Western Ave & Monroe St', 'Clinton St & Jackson Blvd', 'Wentworth Ave & 63rd St', 'Wolcott Ave & Polk St', 'Broadway & Cornelia Ave', 'Milwaukee Ave & Grand Ave', 'State St & Harrison St', 'Franklin St & Chicago Ave', 'Lincoln Ave & Belmont Ave', 'Michigan Ave & Oak St', 'May St & 69th St', 'Damen Ave & Melrose Ave', 'Dearborn St & Monroe St', 'Adler Planetarium', 'Princeton Ave & 47th St', 'Sedgwick St & Webster Ave', 'Orleans St & Merchandise Mart Plaza', 'Racine Ave & Congress Pkwy', 'Lake Park Ave & 56th St', 'Washtenaw Ave & Lawrence Ave', 'Kedzie Ave & Lake St', 'Prairie Ave & 43rd St', 'Avers Ave & Belmont Ave', 'Halsted St & 47th Pl', 'Eckhart Park', 'Clark St & Schiller St', 'Phillips Ave & 82nd St', 'Wells St & Huron St', 'Clifton Ave & Armitage Ave', 'Avondale Ave & Irving Park Rd', 'Broadway & Argyle St', 'Sheffield Ave & Wrightwood Ave', 'Damen Ave & Charleston St', 'Lake Shore Dr & North Blvd', 'Central Ave & Madison St', 'Lake Shore Dr & Wellington Ave', 'Troy St & Elston Ave', 'Benson Ave & Church St', 'Morgan St & Lake St', 'Clark St & Berwyn Ave', 'Broadway & Berwyn Ave', 'Orleans St & Ohio St', 'Halsted St & Archer Ave', 'Buckingham Fountain', 'Ridgeland Ave & Lake St', 'Bissell St & Armitage Ave', 'Clark St & Elm St', 'Stony Island Ave & 82nd St', 'Leavitt St & North Ave', 'Normal Ave & 72nd St', 'Indiana Ave & 40th St', 'Sedgwick St & Schiller St', 'Union Ave & Root St', 'Larrabee St & Division St', 'Kedzie Ave & Foster Ave', 'Eberhart Ave & 61st St', 'Clark St & Chicago Ave', 'Albany Ave & 26th St', 'Clinton St & Tilden St', 'Sheridan Rd & Montrose Ave', 'Halsted St & Willow St', 'Racine Ave & 18th St', 'Troy St & North Ave', 'Ashland Ave & Belle Plaine Ave', 'Western Ave & Leland Ave', 'Kostner Ave & Lake St', 'Campbell Ave & Montrose Ave', 'Morgan Ave & 14th Pl', 'Michigan Ave & Madison St', 'Lincoln Ave & Winona St', 'South Shore Dr & 67th St', 'State St & Kinzie St', 'Clark St & North Ave', 'Stave St & Armitage Ave', 'Hoyne Ave & 47th St', 'Dorchester Ave & 49th St', 'Halsted St & 37th St', 'Ellis Ave & 83rd St', 'Morgan St & 31st St', 'Western Ave & 28th St', 'Stony Island Ave & South Chicago Ave', 'Throop St & 52nd St', 'Clarendon Ave & Leland Ave', 'Laramie Ave & Kinzie St', 'Manor Ave & Leland Ave', 'Evans Ave & 75th St', 'Jeffery Blvd & 71st St', 'Paulina Ave & North Ave', 'Cottage Grove Ave & 78th St', 'Lombard Ave & Madison St', 'Conservatory Dr & Lake St', 'Milwaukee Ave & Cuyler Ave', 'Clark St & 9th St (AMLI)', 'Michigan Ave & Washington St', 'Clifton Ave & Lawrence Ave', 'Ravenswood Ave & Irving Park Rd', 'Canal St & Monroe St (*)', 'Montrose Harbor', 'Wabash Ave & Adams St', 'Albany Ave & Bloomingdale Ave', 'Lombard Ave & Garfield St', 'Laramie Ave & Madison St', 'Canal St & Harrison St', 'Wells St & Polk St', 'Calumet Ave & 18th St', 'Clark St & Touhy Ave', 'Sacramento Blvd & Franklin Blvd', 'Artesian Ave & Hubbard St', 'Paulina St & Howard St', 'Larrabee St & Armitage Ave', 'Sedgwick St & North Ave', 'Green St & Madison St', 'Wood St & Hubbard St', 'Chicago Ave & Washington St', 'Sheridan Rd & Lawrence Ave', 'Broadway & Thorndale Ave', 'Drake Ave & Addison St', 'Clark St & Lunt Ave', 'Federal St & Polk St', 'Clark St & Congress Pkwy', 'Knox Ave & Montrose Ave', 'Ogden Ave & Chicago Ave', 'Fort Dearborn Dr & 31st St', 'Aberdeen St & Monroe St', 'Kosciuszko Park', 'Harper Ave & 59th St', 'Canal St & Taylor St', 'Commercial Ave & 83rd St', 'Halsted St & 51st St', 'Wood St & Division St', 'St. Clair St & Erie St', 'Larrabee St & Webster Ave', 'Morgan St & Polk St', 'Woodlawn Ave & 75th St', 'Clark St & Randolph St', 'Ashland Ave & 13th St', 'Kedzie Ave & Palmer Ct', 'Peoria St & Jackson Blvd', 'Cuyler Ave & Augusta St', 'Sedgwick St & Huron St', 'Milwaukee Ave & Rockwell St', 'Clinton St & Polk St (*)', 'Ogden Ave & Roosevelt Rd', 'Kedzie Ave & Harrison St', 'Racine Ave & 35th St', 'Humboldt Blvd & Armitage Ave', 'Racine Ave & 61st St', 'Lake Shore Dr & Belmont Ave', 'Wells St & Walton St', 'Southport Ave & Roscoe St', 'Damen Ave & Madison St', 'Southport Ave & Clybourn Ave', 'MLK Jr Dr & 83rd St', 'State St & Randolph St', 'Cottage Grove Ave & 71st St', 'Marshfield Ave & Cortland St', 'Leavitt St & Addison St', 'Wabash Ave & 8th St', 'Wabash Ave & Cermak Rd', 'Kedzie Ave & 24th St', 'Pulaski Rd & Madison St', 'Wentworth Ave & Archer Ave', 'Racine Ave (May St) & Fulton St', 'Sawyer Ave & Irving Park Rd', 'May St & Taylor St', 'Larrabee St & Kingsbury St', 'Fairbanks Ct & Grand Ave', 'Western Ave & 24th St', 'Jefferson St & Monroe St', 'Southport Ave & Belmont Ave', 'Western Ave & Division St', 'Wood St & 35th St', 'Loomis St & Archer Ave', 'Oakley Ave & Roscoe St', 'Ashland Ave & McDowell Ave', 'Ellis Ave & 60th St', 'Damen Ave & Division St', 'Financial Pl & Congress Pkwy', 'Rush St & Cedar St', 'Dorchester Ave & 63rd St', 'Pulaski Rd & Lake St', 'Calumet Ave & 33rd St', 'Ashland Ave & Harrison St', 'Pine Grove Ave & Irving Park Rd', 'Ashland Ave & Grace St', 'Dusable Harbor', 'Sangamon St & Washington Blvd (*)', 'Calumet Ave & 71st St', 'Cicero Ave & Quincy St', 'MLK Jr Dr & 29th St', 'Forest Ave & Lake St', 'Vernon Ave & 79th St', 'Rainbow Beach', 'Western Ave & 21st St', 'Clinton St & Roosevelt Rd', 'Ashland Ave & Lake St', 'Washtenaw Ave & 15th St (*)', 'Stony Island Ave & 64th St', 'Wentworth Ave & 35th St', 'Calumet Ave & 51st St', 'Damen Ave & Leland Ave', 'California Ave & Francis Pl', 'Bennett Ave & 79th St', 'Aberdeen St & Jackson Blvd', 'Green St & Randolph St', 'Wells St & Elm St', 'Desplaines St & Randolph St', 'Clark St & Wellington Ave', 'Central St Metra', 'Sheffield Ave & Waveland Ave', 'Exchange Ave & 79th St', 'Shore Dr & 55th St', 'State St & 29th St', 'Ellis Ave & 55th St', 'Wilton Ave & Belmont Ave', 'Larrabee St & Oak St', 'Cornell Ave & Hyde Park Blvd', 'Lake Shore Dr & Monroe St', 'Ridge Blvd & Touhy Ave', 'Cottage Grove Ave & 67th St', 'Shedd Aquarium', 'Warren Park East', 'Oak Park Ave & Harrison St', 'Wolcott Ave & Fargo Ave', 'Paulina St & 18th St', 'Elmwood Ave & Austin St', 'Cottage Grove Ave & Oakwood Blvd', 'Halsted St & North Branch St', 'MLK Jr Dr & 63rd St', 'Clark St & Montrose Ave', 'Albany (Kedzie) Ave & Montrose Ave', 'Wabash Ave & Wacker Pl', 'Central Park Ave & Elbridge Ave', 'Marine Dr & Ainslie St', 'Wisconsin Ave & Madison St', 'Wallace St & 35th St', 'University Library (NU)', 'Michigan Ave & 14th St', 'Wabash Ave & 87th St', 'Ellis Ave & 58th St', 'Burnham Harbor', 'Western Ave & Howard St', 'Desplaines St & Jackson Blvd', 'Sheridan Rd & Irving Park Rd', 'Franklin St & Lake St', 'Broadway & Sheridan Rd', 'Racine Ave & 65th St', 'Fairfield Ave & Roosevelt Rd', 'Racine Ave & Wrightwood Ave', 'Cottage Grove Ave & 47th St', 'Racine Ave & Garfield Blvd', 'Morgan St & Pershing Rd', 'Kostner Ave & Adams St', 'Calumet Ave & 21st St', 'Ashland Ave & 21st St', 'Ravenswood Ave & Berteau Ave', 'Lakeview Ave & Fullerton Pkwy', 'Racine Ave & 13th St', 'Western Ave & Walton St', 'California Ave & 21st St', 'Wentworth Ave & 24th St', 'Drake Ave & Fullerton Ave', 'Halsted St & 18th St', 'Wabash Ave & 83rd St', 'Orleans St & Elm St (*)', 'Paulina St & Montrose Ave', 'Sheffield Ave & Kingsbury St', 'Bosworth Ave & Howard St', 'Loomis St & Jackson Blvd', 'Francisco Ave & Foster Ave', 'Sheridan Rd & Loyola Ave', 'Kedzie Ave & Bryn Mawr Ave', 'McClurg Ct & Illinois St', 'Kedzie Ave & 21st St', 'Vernon Ave & 75th St', 'Ritchie Ct & Banks St', 'Racine Ave & 15th St', 'MLK Jr Dr & Oakwood Blvd', 'Cottage Grove Ave & 63rd St', 'Damen Ave & Pierce Ave', 'Spaulding Ave & Armitage Ave', 'Woodlawn Ave & Lake Park Ave', 'Halsted St & 35th St (*)', 'Larrabee St & Menomonee St', 'Damen Ave & Wellington Ave', 'Dearborn St & Adams St', 'Clark St & Elmdale Ave', 'Kilbourn Ave & Irving Park Rd', 'Wentworth Ave & 33rd St', 'Cityfront Plaza Dr & Pioneer Ct', 'Clybourn Ave & Division St', 'California Ave & North Ave', '900 W Harrison St', 'Marshfield Ave & 59th St', 'Daley Center Plaza', 'DuSable Museum', 'Lawndale Ave & 23rd St', 'Damen Ave & Foster Ave', 'Sheffield Ave & Willow St', 'LaSalle St & Illinois St', 'Lincoln Ave & Belle Plaine Ave', 'California Ave & Milwaukee Ave', 'Franklin St & Jackson Blvd', 'Orleans St & Chestnut St (NEXT Apts)', 'Mies van der Rohe Way & Chestnut St', 'Richmond St & Diversey Ave', 'Rush St & Hubbard St', 'South Shore Dr & 71st St', 'Greenwood Ave & 79th St', 'Halsted St & Dickens Ave', 'Streeter Dr & Grand Ave', 'Museum of Science and Industry', 'Pine Grove Ave & Waveland Ave', 'Humphrey Ave & Ontario St', 'Michigan Ave & 8th St', 'Dayton St & North Ave', 'Clark St & Lincoln Ave', 'Mies van der Rohe Way & Chicago Ave', 'Central Ave & Chicago Ave', 'California Ave & 26th St', 'Ashland Ave & Archer Ave', 'Keystone Ave & Montrose Ave', 'Field Museum', 'Oakley Ave & Irving Park Rd', 'East Ave & Garfield St', 'Ashland Ave & Blackhawk St', 'Wood St & Milwaukee Ave', 'Central Park Ave & Ogden Ave', 'Franklin St & Monroe St', 'Ashland Ave & 50th St', 'Milwaukee Ave & Wabansia Ave', 'California Ave & Byron St', 'Cannon Dr & Fullerton Ave', 'Clark St & Schreiber Ave', 'Lake Park Ave & 35th St', 'St. Louis Ave & Balmoral Ave', 'Cottage Grove Ave & 43rd St', 'State St & 19th St', 'Budlong Woods Library', 'Ravenswood Ave & Montrose Ave (*)', 'Forest Ave & Chicago Ave', 'Sheridan Rd & Noyes St (NU)', 'Cicero Ave & Flournoy St', 'Jeffery Blvd & 76th St', 'Hampden Ct & Diversey Pkwy', 'Clark St & Winnemac Ave', 'Maplewood Ave & Peterson Ave', 'Cicero Ave & Lake St', 'Kenton Ave & Madison St', 'Canal St & Madison St', 'Blackstone Ave & Hyde Park Blvd', 'Lincoln Ave & Fullerton Ave', 'Ogden Ave & Race Ave', 'Ashland Ave & Wellington Ave', 'Oak Park Ave & South Blvd', 'Keystone Ave & Fullerton Ave', 'University Ave & 57th St', 'Yates Blvd & 75th St', 'Lake Park Ave & 53rd St', 'Southport Ave & Wrightwood Ave', 'South Shore Dr & 74th St', 'Ashland Ave & 66th St', 'Lake Park Ave & 47th St', 'South Chicago Ave & 83rd St', 'Central Park Ave & North Ave', 'Stetson Ave & South Water St', 'Sheridan Rd & Buena Ave', 'Ashland Ave & Grand Ave', 'Phillips Ave & 79th St', 'Greenview Ave & Jarvis Ave', 'Kedzie Ave & Leland Ave', 'Clark St & Armitage Ave', 'Damen Ave & 59th St', 'Clark St & Columbia Ave', 'Halsted St & Wrightwood Ave', 'Millard Ave & 26th St', 'Wabash Ave & Roosevelt Rd', 'Emerald Ave & 31st St', 'Shields Ave & 31st St', 'Wood St & Taylor St', 'Saginaw Ave & Exchange Ave', 'Logan Blvd & Elston Ave', 'Wacker Dr & Washington St', 'LaSalle St & Washington St', 'Claremont Ave & Hirsch St', 'Christiana Ave & Lawrence Ave', 'Halsted St & 21st St', 'Broadway & Barry Ave', 'Shields Ave & 43rd St', 'Stony Island Ave & 75th St', 'Halsted St & 69th St', 'Field Blvd & South Water St', 'Stony Island Ave & 67th St', 'Campbell Ave & North Ave', 'Central Ave & Harrison St', 'Stony Island Ave & 71st St', 'Indiana Ave & Roosevelt Rd']
+    ['Morgan St & 31st St', 'Pulaski Rd & Lake St', 'Larrabee St & Webster Ave', 'Halsted St & 69th St', 'Loomis St & Lexington St', 'Kedzie Ave & Foster Ave', 'Hoyne Ave & 47th St', 'Elizabeth St & 47th St', 'Morgan St & Lake St', 'Calumet Ave & 21st St', 'Talman Ave & Addison St', '63rd St Beach', 'Halsted St & Roscoe St', 'Wells St & 19th St', 'Troy St & North Ave', 'Keystone Ave & Montrose Ave', 'Wabash Ave & Cermak Rd', 'Wentworth Ave & 63rd St', 'Clark St & Touhy Ave', 'Clark St & Schiller St', 'Ashland Ave & 21st St', 'Kosciuszko Park', 'Wabash Ave & Roosevelt Rd', 'Winchester Ave & Elston Ave', 'Leavitt St & Addison St', 'State St & 79th St', 'Glenwood Ave & Morse Ave', 'Bennett Ave & 79th St', 'Clark St & Lake St', 'Sheridan Rd & Buena Ave', 'Racine Ave & Belmont Ave', 'Racine Ave & 13th St', 'Lakeview Ave & Fullerton Pkwy', 'Streeter Dr & Grand Ave', 'Loomis St & Jackson Blvd', 'Spaulding Ave & Division St', 'Dorchester Ave & 63rd St', 'Wabash Ave & 83rd St', 'Cottage Grove Ave & Oakwood Blvd', 'Clark St & Armitage Ave', 'Damen Ave & Cortland St', 'Sheridan Rd & Montrose Ave', 'Halsted St & 18th St', 'Shore Dr & 55th St', 'State St & Van Buren St', 'Canal St & Taylor St', 'MLK Jr Dr & 29th St', 'Halsted St & 63rd St', 'Ellis Ave & 53rd St', 'State St & Kinzie St', 'Museum of Science and Industry', 'Michigan Ave & Pearson St', 'Michigan Ave & 14th St', 'Desplaines St & Jackson Blvd', 'Sacramento Blvd & Franklin Blvd', 'Kimbark Ave & 53rd St', 'Jeffery Blvd & 67th St', 'Ravenswood Ave & Balmoral Ave', 'Seeley Ave & Garfield Blvd', 'Leavitt St & Archer Ave', 'Kedzie Ave & Milwaukee Ave', 'Orleans St & Chestnut St (NEXT Apts)', 'Conservatory Dr & Lake St', 'Hermitage Ave & Polk St', 'Evans Ave & 75th St', 'Franklin St & Chicago Ave', 'Adler Planetarium', 'State St & 33rd St', 'MLK Jr Dr & 47th St', 'Racine Ave & 61st St', 'Cicero Ave & Flournoy St', 'Racine Ave & Garfield Blvd', 'Stony Island Ave & 82nd St', 'Prairie Ave & Garfield Blvd', 'Sheffield Ave & Fullerton Ave', 'Shields Ave & 43rd St', 'Kedzie Ave & Leland Ave', 'Ashland Ave & Grand Ave', 'Ravenswood Ave & Montrose Ave (*)', 'Bissell St & Armitage Ave', 'Marine Dr & Ainslie St', 'Lawndale Ave & 23rd St', 'Clinton St & Jackson Blvd', 'Clark St & Randolph St', 'Racine Ave & Congress Pkwy', 'Kimball Ave & Belmont Ave', 'Clifton Ave & Armitage Ave', 'Ada St & Washington Blvd', 'Clinton St & Lake St', 'Carpenter St & Huron St', 'Ravenswood Ave & Lawrence Ave', 'Wentworth Ave & Archer Ave', 'Wells St & Concord Ln', 'Cicero Ave & Lake St', 'Greenview Ave & Diversey Pkwy', 'Lincoln Ave & Belmont Ave', 'Clark St & Lincoln Ave', 'Stetson Ave & South Water St', 'Union Ave & Root St', 'Fort Dearborn Dr & 31st St', 'Broadway & Berwyn Ave', 'Ashland Ave & 69th St', 'Jeffery Blvd & 71st St', 'Rainbow Beach', 'Ashland Ave & Pershing Rd', 'Eastlake Ter & Rogers Ave', 'Halsted St & Polk St', 'Lincoln Ave & Belle Plaine Ave', 'DuSable Museum', 'East Ave & Madison St', 'Rhodes Ave & 32nd St', 'May St & Taylor St', 'Franklin St & Jackson Blvd', 'Perry Ave & 69th St', 'Ridge Blvd & Howard St', 'Princeton Ave & 47th St', 'Desplaines St & Kinzie St', 'Albany (Kedzie) Ave & Montrose Ave', 'Southport Ave & Clybourn Ave', 'Kedzie Ave & Bryn Mawr Ave', 'Benson Ave & Church St', 'Morgan St & Pershing Rd', 'Sheffield Ave & Kingsbury St', 'Greenwood Ave & 47th St', 'Sangamon St & Washington Blvd (*)', 'Drake Ave & Montrose Ave', 'Sheffield Ave & Wellington Ave', 'Dusable Harbor', 'Broadway & Argyle St', 'Wood St & 35th St', 'Larrabee St & Kingsbury St', 'Racine Ave (May St) & Fulton St', 'Damen Ave & Clybourn Ave', 'Racine Ave & 15th St', 'Western Ave & Division St', 'Rush St & Hubbard St', 'MLK Jr Dr & 83rd St', 'Kingsbury St & Kinzie St', 'May St & Cullerton St', 'Albany Ave & Bloomingdale Ave', 'May St & 69th St', 'Dearborn St & Adams St', 'Austin Blvd & Lake St', 'Wallace St & 35th St', 'Wabash Ave & Wacker Pl', 'Lake Shore Dr & Belmont Ave', 'Indiana Ave & Roosevelt Rd', 'Broadway & Ridge Ave', 'Leavitt St & Armitage Ave', 'Lincoln Ave & Roscoe St', 'Buckingham Fountain', 'Damen Ave & Pershing Rd', 'Clark St & Leland Ave', 'Ashland Ave & Harrison St', 'Michigan Ave & 18th St', 'Kedzie Ave & 21st St', 'Stony Island Ave & 67th St', 'Ogden Ave & Race Ave', 'Woodlawn Ave & 75th St', 'Halsted St & Roosevelt Rd', 'Austin Blvd & Chicago Ave', 'Leavitt St & North Ave', 'Wacker Dr & Washington St', 'Blue Island Ave & 18th St', 'Kostner Ave & Lake St', 'Oakley Ave & Roscoe St', 'Ashland Ave & 63rd St', 'Sheffield Ave & Wrightwood Ave', 'Racine Ave & Randolph St', 'California Ave & Cortez St', 'Michigan Ave & Jackson Blvd', 'Lincoln Ave & Addison St', 'LaSalle St & Jackson Blvd', 'Halsted St & 51st St', 'Wilton Ave & Diversey Pkwy', 'Clarendon Ave & Gordon Ter', 'Dorchester Ave & 49th St', 'Artesian Ave & Hubbard St', 'Lincoln Ave & Fullerton Ave', 'California Ave & Byron St', 'Cottage Grove Ave & 78th St', 'Desplaines St & Randolph St', 'Damen Ave & 59th St', 'Wood St & Hubbard St', 'Prairie Ave & 43rd St', 'Racine Ave & 65th St', 'Ashland Ave & Garfield Blvd', 'Pulaski Rd & Madison St', '2112 W Peterson Ave', 'Paulina St & Montrose Ave', 'Eberhart Ave & 61st St', 'Lake Park Ave & 35th St', 'Milwaukee Ave & Grand Ave', 'Southport Ave & Roscoe St', 'Ashland Ave & McDowell Ave', 'Racine Ave & 35th St', 'Damen Ave & Chicago Ave', 'Avers Ave & Belmont Ave', 'Clark St & Elmdale Ave', 'California Ave & 26th St', 'Damen Ave & Sunnyside Ave', 'Damen Ave & Charleston St', 'Michigan Ave & Oak St', 'Noble St & Milwaukee Ave', 'Wabash Ave & Adams St', 'California Ave & 23rd Pl', 'Oakley Ave & Irving Park Rd', 'Ashland Ave & 50th St', 'Fairfield Ave & Roosevelt Rd', 'LaSalle St & Illinois St', 'California Ave & Montrose Ave', 'Shields Ave & 31st St', 'LaSalle St & Adams St', 'Canal St & Harrison St', 'Phillips Ave & 79th St', 'Ashland Ave & 66th St', 'Ashland Ave & Augusta Blvd', 'Lake Shore Dr & North Blvd', 'Paulina St & Howard St', 'Dearborn Pkwy & Delaware Pl', 'Wentworth Ave & 24th St', 'Blackstone Ave & Hyde Park Blvd', 'Kilbourn Ave & Irving Park Rd', 'Kedzie Ave & Harrison St', 'Emerald Ave & 31st St', 'Lincoln Ave & Diversey Pkwy', 'MLK Jr Dr & 56th St (*)', 'Jeffery Blvd & 76th St', 'Kenton Ave & Madison St', 'Cottage Grove Ave & 63rd St', 'Ellis Ave & 58th St', 'Central St & Girard Ave', 'Wabash Ave & Grand Ave', 'Damen Ave & Wellington Ave', 'Montrose Harbor', 'Princeton Ave & Garfield Blvd', 'Lake Shore Dr & Wellington Ave', 'Southport Ave & Irving Park Rd', 'Lake Shore Dr & Diversey Pkwy', 'Michigan Ave & Congress Pkwy', 'Wentworth Ave & 35th St', 'Wells St & Walton St', 'Logan Blvd & Elston Ave', 'Wentworth Ave & 33rd St', 'Warren Park West', 'Dearborn St & Monroe St', 'Cottage Grove Ave & 51st St', 'Kostner Ave & Adams St', 'Ellis Ave & 55th St', 'Sheridan Rd & Noyes St (NU)', 'Leavitt St & Lawrence Ave', 'State St & Harrison St', 'Cornell Ave & Hyde Park Blvd', 'Pine Grove Ave & Irving Park Rd', 'Burnham Harbor', 'Ashland Ave & Belle Plaine Ave', 'Stony Island Ave & 64th St', 'Greenview Ave & Jarvis Ave', 'Canal St & Monroe St (*)', 'MLK Jr Dr & 63rd St', 'Ravenswood Ave & Berteau Ave', 'Wood St & Division St', 'Kedzie Ave & Chicago Ave', 'Lake Park Ave & 47th St', 'Woodlawn Ave & 55th St', 'Yates Blvd & 75th St', 'Clark St & Winnemac Ave', 'State St & Pershing Rd', 'Broadway & Belmont Ave', 'Pulaski Rd & Eddy St', 'Lake Shore Dr & Ohio St', 'Clark St & Grace St', 'Racine Ave & Wrightwood Ave', 'State St & 29th St', 'Knox Ave & Montrose Ave', 'Milwaukee Ave & Rockwell St', 'Maplewood Ave & Peterson Ave', 'Orleans St & Elm St (*)', 'Michigan Ave & Washington St', 'Federal St & Polk St', 'Cityfront Plaza Dr & Pioneer Ct', 'Southport Ave & Wrightwood Ave', 'LaSalle St & Washington St', 'Shields Ave & 28th Pl', 'Halsted St & Dickens Ave', 'Damen Ave & Augusta Blvd', 'Saginaw Ave & Exchange Ave', 'Rockwell St & Eastwood Ave', 'Central Park Ave & Elbridge Ave', 'Valli Produce - Evanston Plaza', 'Franklin St & Lake St', 'Racine Ave & Fullerton Ave', 'California Ave & Fletcher St', 'Rush St & Cedar St', 'Damen Ave & 51st St', 'Millennium Park', 'Broadway & Granville Ave', 'Daley Center Plaza', 'Damen Ave & Melrose Ave', 'Halsted St & Willow St', 'Larrabee St & Armitage Ave', 'Mies van der Rohe Way & Chestnut St', 'Dayton St & North Ave', 'State St & 76th St', 'Millard Ave & 26th St', 'Western Ave & 28th St', 'Laramie Ave & Kinzie St', 'Peoria St & Jackson Blvd', 'Halsted St & 59th St', 'Emerald Ave & 28th St', 'Humphrey Ave & Ontario St', 'Orleans St & Merchandise Mart Plaza', 'Monticello Ave & Irving Park Rd', 'Southport Ave & Clark St', 'Wood St & Milwaukee Ave', 'Forest Ave & Chicago Ave', 'Western Ave & 21st St', 'Throop St & 52nd St', 'Keystone Ave & Fullerton Ave', 'Marshfield Ave & 44th St', 'Wells St & Evergreen Ave', 'Field Blvd & South Water St', 'Ashland Ave & Archer Ave', 'Wisconsin Ave & Madison St', 'Sedgwick St & Webster Ave', 'Broadway & Cornelia Ave', 'Central St Metra', 'State St & Pearson St', 'Indiana Ave & 31st St', 'McCormick Place', 'Clinton St & Madison St', 'Theater on the Lake', 'State St & Randolph St', 'Phillips Ave & 82nd St', 'Michigan Ave & 8th St', 'Rush St & Superior St', 'Southport Ave & Belmont Ave', 'Sheffield Ave & Webster Ave', 'Ridge Blvd & Touhy Ave', 'Sawyer Ave & Irving Park Rd', 'Lincoln Ave & Winona St', 'Western Ave & Congress Pkwy', 'Elston Ave & Wabansia Ave', 'Franklin St & Monroe St', 'Lombard Ave & Madison St', 'Sheridan Rd & Loyola Ave', 'Clinton St & Washington Blvd', 'California Ave & Altgeld St', 'Cottage Grove Ave & 67th St', 'Clarendon Ave & Junior Ter', 'Clifton Ave & Lawrence Ave', 'Orleans St & Ohio St', 'Clark St & North Ave', 'Clark St & Schreiber Ave', 'Cicero Ave & Quincy St', 'Lombard Ave & Garfield St', 'Western Ave & Howard St', 'Indiana Ave & 40th St', 'Sheffield Ave & Waveland Ave', 'Pulaski Rd & Congress Pkwy', 'South Chicago Ave & 83rd St', 'Stony Island Ave & 71st St', 'Field Museum', 'Claremont Ave & Hirsch St', 'Lincoln Ave & Waveland Ave', 'Campbell Ave & North Ave', 'Green St & Randolph St', 'Ogden Ave & Chicago Ave', 'South Shore Dr & 71st St', 'East Ave & Garfield St', 'Larrabee St & Division St', 'Kedzie Ave & 24th St', 'Southport Ave & Wellington Ave', 'Ellis Ave & 83rd St', 'Morgan St & 18th St', 'Central Ave & Harrison St', 'Halsted St & 35th St (*)', 'Kilbourn Ave & Milwaukee Ave', 'Ashland Ave & Blackhawk St', 'Western Ave & Granville Ave', 'Aberdeen St & Monroe St', 'Michigan Ave & Madison St', 'Racine Ave & 18th St', 'Oak Park Ave & Harrison St', 'Laramie Ave & Madison St', 'Wells St & Huron St', 'Campbell Ave & Fullerton Ave', 'Halsted St & Diversey Pkwy', 'Central Ave & Madison St', 'Clinton St & Polk St (*)', 'Kingsbury St & Erie St', 'Francisco Ave & Foster Ave', 'Marshfield Ave & 59th St', 'Ravenswood Ave & Irving Park Rd', 'Loomis St & Archer Ave', 'Albany Ave & 26th St', 'Broadway & Wilson Ave', 'Milwaukee Ave & Cuyler Ave', 'Ashland Ave & 13th St', 'Western Ave & Monroe St', 'Western Blvd & 48th Pl', 'Fairbanks Ct & Grand Ave', 'Exchange Ave & 79th St', 'Cuyler Ave & Augusta St', 'Dearborn St & Erie St', 'California Ave & Milwaukee Ave', 'Green St & Madison St', 'Lake Park Ave & 56th St', 'Halsted St & North Branch St', 'Normal Ave & 72nd St', 'Larrabee St & Oak St', 'Larrabee St & Menomonee St', 'Halsted St & Blackhawk St (*)', 'Eckhart Park', 'Broadway & Sheridan Rd', 'Normal Ave & Archer Ave', 'California Ave & 21st St', 'Clark St & Congress Pkwy', 'Halsted St & Wrightwood Ave', 'Budlong Woods Library', 'Kedzie Ave & Roosevelt Rd', 'Drake Ave & Addison St', 'Clark St & Bryn Mawr Ave', 'Ogden Ave & Roosevelt Rd', 'Clinton St & Tilden St', 'Wells St & Elm St', 'California Ave & Division St', 'Damen Ave & Pierce Ave', '900 W Harrison St', 'Drake Ave & Fullerton Ave', 'University Library (NU)', 'Sheridan Rd & Lawrence Ave', 'Shedd Aquarium', 'Cannon Dr & Fullerton Ave', 'Canal St & Madison St', 'Halsted St & 21st St', 'Commercial Ave & 83rd St', 'Wells St & Polk St', 'Mies van der Rohe Way & Chicago Ave', 'Greenview Ave & Fullerton Ave', 'Loomis St & Taylor St (*)', 'St. Louis Ave & Balmoral Ave', 'Aberdeen St & Jackson Blvd', 'Lakefront Trail & Bryn Mawr Ave', 'Damen Ave & Madison St', 'California Ave & Lake St', 'Wolcott Ave & Fargo Ave', 'Damen Ave & Cullerton St', 'Ogden Ave & Congress Pkwy', 'Greenwood Ave & 79th St', 'Ashland Ave & Division St', 'Glenwood Ave & Touhy Ave', 'Damen Ave & Coulter St', 'Ridgeland Ave & Lake St', 'Manor Ave & Leland Ave', 'Ashland Ave & Grace St', 'Troy St & Elston Ave', 'Forest Ave & Lake St', 'State St & 19th St', 'Ashland Ave & Lake St', 'Wilton Ave & Belmont Ave', 'Wabash Ave & 87th St', 'Halsted St & 37th St', 'State St & 35th St', 'Cottage Grove Ave & 71st St', 'Stave St & Armitage Ave', 'Clarendon Ave & Leland Ave', 'Clark St & Montrose Ave', 'Stony Island Ave & 75th St', 'Marshfield Ave & Cortland St', 'Seeley Ave & Roscoe St', 'Ritchie Ct & Banks St', 'Halsted St & 47th Pl', 'Clark St & Berwyn Ave', 'Clark St & Wrightwood Ave', 'Damen Ave & Foster Ave', 'Broadway & Waveland Ave', 'Sheridan Rd & Greenleaf Ave', 'Vernon Ave & 79th St', 'Western Ave & Winnebago Ave', 'Morgan St & Polk St', 'Chicago Ave & Washington St', 'Central Ave & Chicago Ave', 'Wood St & Taylor St', 'Sedgwick St & North Ave', 'McClurg Ct & Illinois St', 'Clark St & Wellington Ave', 'Canal St & Adams St', 'Ashland Ave & Wrightwood Ave', 'Damen Ave & Grand Ave', 'Campbell Ave & Montrose Ave', 'Morgan Ave & 14th Pl', 'Clark St & Jarvis Ave', 'Financial Pl & Congress Pkwy', 'Clinton St & 18th St', 'South Shore Dr & 67th St', 'Elmwood Ave & Austin St', 'California Ave & North Ave', 'Ellis Ave & 60th St', 'Clark St & Elm St', 'Lincoln Ave & Leavitt St', 'Avondale Ave & Irving Park Rd', 'Chicago Ave & Sheridan Rd', 'Washtenaw Ave & Lawrence Ave', 'Ashland Ave & Chicago Ave', 'Richmond St & Diversey Ave', 'Columbus Dr & Randolph St', 'Calumet Ave & 35th St', 'Wabash Ave & 8th St', 'Cottage Grove Ave & 47th St', 'Calumet Ave & 33rd St', 'Sedgwick St & Schiller St', 'Halsted St & Archer Ave', 'University Ave & 57th St', 'Clinton St & Roosevelt Rd', 'Western Ave & Leland Ave', 'Broadway & Barry Ave', 'Paulina St & 18th St', 'South Shore Dr & 74th St', 'Laramie Ave & Gladys Ave', 'Clark St & Chicago Ave', 'Halsted St & 56th St', 'Indiana Ave & 26th St', 'Central Park Ave & Ogden Ave', 'Broadway & Thorndale Ave', 'Calumet Ave & 71st St', 'Clybourn Ave & Division St', 'Central Park Blvd & 5th Ave', 'Damen Ave & Division St', 'Damen Ave & Leland Ave', 'Hampden Ct & Diversey Pkwy', 'California Ave & Francis Pl', 'Central Ave & Lake St', 'Paulina Ave & North Ave', 'Western Ave & Lunt Ave', 'Humboldt Blvd & Armitage Ave', 'Sheridan Rd & Irving Park Rd', 'Southport Ave & Waveland Ave', 'St. Clair St & Erie St', 'Jefferson St & Monroe St', 'Michigan Ave & Lake St', 'Washtenaw Ave & 15th St (*)', 'Stockton Dr & Wrightwood Ave', 'Clark St & Lunt Ave', 'Marion St & South Blvd', 'Oak Park Ave & South Blvd', 'Pine Grove Ave & Waveland Ave', 'Larrabee St & North Ave', 'Halsted St & Maxwell St', 'Vernon Ave & 75th St', 'Dodge Ave & Church St', 'McClurg Ct & Erie St', 'Western Ave & Walton St', 'Sheffield Ave & Willow St', 'Lake Park Ave & 53rd St', 'Wolcott Ave & Polk St', 'Sedgwick St & Huron St', 'Franklin St & Quincy St', 'Stony Island Ave & South Chicago Ave', 'Milwaukee Ave & Wabansia Ave', 'Bosworth Ave & Howard St', 'Mason Ave & Madison St', 'Western Ave & 24th St', 'Oakley Ave & Touhy Ave', 'Spaulding Ave & Armitage Ave', 'Warren Park East', 'Kedzie Ave & Lake St', 'Wabash Ave & 16th St', 'Kedzie Ave & Palmer Ct', 'Woodlawn Ave & Lake Park Ave', 'Lake Shore Dr & Monroe St', 'Ashland Ave & Wellington Ave', 'MLK Jr Dr & Oakwood Blvd', 'Clark St & Columbia Ave', 'Cottage Grove Ave & 83rd St', 'Calumet Ave & 51st St', 'Harper Ave & 59th St', 'Christiana Ave & Lawrence Ave', 'Central Park Ave & North Ave', 'Calumet Ave & 18th St', 'Clark St & 9th St (AMLI)', 'Cottage Grove Ave & 43rd St']
     
 
 ### Task 11
@@ -924,8 +1066,8 @@ def count_items(column_list):
     count_items = []
     
     # Loop to calculated the number each element from item_types
-    for i in range(0,len(item_types)):
-        count_items.append(sum(list(map(lambda x : x == item_types[i], column_list))))
+    for i_type in item_types:
+        count_items.append(sum(list(map(lambda x : x == i_type, column_list))))
         
     return item_types, count_items # Return two lists
 ```
@@ -968,9 +1110,9 @@ def count_items(column_list):
     count_items = []
     
     # Loop to calculated the number each element from item_types
-    for i in range(0,len(item_types)):
-        count_items.append(sum(list(map(lambda x : x == item_types[i], column_list))))
-        
+    for i_type in item_types:
+        count_items.append(sum(list(map(lambda x : x == i_type, column_list))))
+    
     return item_types, count_items # Return two lists
 ```
 
@@ -993,5 +1135,5 @@ if answer == "yes":
 
     
     TASK 11: Printing results for count_items()
-    Types: ['', 'Female', 'Male'] Counts: [316867, 298784, 935854]
+    Types: ['', 'Male', 'Female'] Counts: [316867, 935854, 298784]
     

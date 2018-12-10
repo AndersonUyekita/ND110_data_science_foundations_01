@@ -1,10 +1,46 @@
 ##############################################################################################
-#                                                                               VERSION: 1.1 #
+#                                                                               VERSION: 2.0 #
 #  Author:   Anderson Hitoshi Uyekita                                                        #
 #  Project:  Explore Chicago Bikeshare Data                                                  #
-#  Date:     08/12/2018                                                                      #
+#  Date:     09/12/2018                                                                      #
 #  COD:      ND110                                                                           #
 #  Tags:     Udacity, Data Science, Python                                                   #
+#                                                                                            #
+##############################################################################################
+
+##############################################################################################
+#                                                                                            #
+#  VERSION 1.1:                                                                              #
+#      Submited: 08/12/2018                                                                  #
+#                                                                                            #
+#      Issues:                                                                               #
+#             1) Loops and conditional statements are used to process the data correctly.    #
+#                                                                                            #
+#                  a) In some tasks , we expect that you don't use pyhton functions like     #
+#                     sum or count to process the data.                                      #
+#                                                                                            #
+#                     Reply: I have written my own summation function called sum_ahu and     #
+#                            count_ahu.                                                      #
+#                                                                                            #
+#                  b) Loops and conditional statements should be used to process the data    #
+#                     correctly.                                                             #
+#                                                                                            #
+#                     Reply: OK.                                                             #
+#                                                                                            #
+#                  c) Also, the median is being calculated incorrectly.                      #
+#                                                                                            #
+#                     Reply: I fix it defining a function median_ahu.                        #
+#                                                                                            #
+#             2) Comments, function and variable names enable readability of the code.       #
+#                                                                                            #
+#                  a) All variables of your code should have descriptive names.              #
+#                                                                                            #
+#                     Reply: I got it! No more a simple "i" to iterate any for() loop.       #
+#                                                                                            #
+#                  b) I added more information and suggestions about it on the Code Review   #
+#                     tab.                                                                   #
+#                                                                                            #
+#                     Reply: OK! Thank you!                                                  #
 #                                                                                            #
 ##############################################################################################
 
@@ -39,8 +75,9 @@ input("Press Enter to continue...")
 # TODO: Print the first 20 rows using a loop to identify the data.
 print("\n\nTASK 1: Printing the first 20 samples")
 
-for i in range(0,20):   # The first 20 rows - The first row in the header and the other 19 rows were observations
-    print(data_list[i]) # Printing
+for row in data_list[:20]:   # The first 20 rows - The first row in the header and the other 19 rows were observations
+    print(row)               # Printing
+                             # Now in "Pythonic" way.
 
 # Let's change the data_list to remove the header from it.
 data_list = data_list[1:]
@@ -54,8 +91,9 @@ input("Press Enter to continue...")
 
 print("\nTASK 2: Printing the genders of the first 20 samples")
 
-for i in range(0,20):   # The first 20 rows
-    print(data_list[i][6])
+for row in data_list[:20]:       # The first 20 rows
+    print(row[6])                # The second index 6 means gender's column
+                                 # Now in Pythonic way.
 
 # Cool! We can get the rows(samples) iterating with a for and the columns(features) by index.
 # But it's still hard to get a column in a list. Example: List with all genders
@@ -63,12 +101,12 @@ for i in range(0,20):   # The first 20 rows
 input("Press Enter to continue...")
 # TASK 3
 # TODO: Create a function to add the columns(features) of a list in another list in the same order
-def column_to_list(data, index):
+def column_to_list(data, column):
     """
     -----------------------------------------------------------------------------------------------------
     |DESCRIPTION:                                                                                       |
     |                                                                                                   |
-    |     This function selects a specific column (defined as index) of a data frame (here called       |
+    |     This function selects a specific column (defined as column) of a data frame (here called      |
     |     as data, but probabily will be data_list).                                                    |
     |                                                                                                   |
     -----------------------------------------------------------------------------------------------------
@@ -79,7 +117,7 @@ def column_to_list(data, index):
     |     data       list   The imported dataset of the Chicago Bikeshare, a 1551506 x 8 data frame     |
     |                       stored in a list.                                                           |
     |                                                                                                   |
-    |     index      int    The desireable column to be selected.                                       |
+    |     column     int    The desireable column to be selected.                                       |
     |                           0: Start Time                                                           |
     |                           1: End Time                                                             |
     |                           2: Trip Duration                                                        |
@@ -98,11 +136,12 @@ def column_to_list(data, index):
     |                                                                                                   |
     -----------------------------------------------------------------------------------------------------
     """
-    column_list = []
+    column_list = [] # Local variable
+    
     # Tip: You can use a for to iterate over the samples, get the feature by index and append into a list
-    for i in range(0,len(data)):
-        column_list.append(data[i][index])
-    return column_list
+    for row in data:                     # Iterates each row of data
+        column_list.append(row[column])  # select a specific element (column) of the row and append it
+    return column_list                   # Now in "Pythonic" way.
 
 
 # Let's check with the genders if it's working (only the first 20)
@@ -120,6 +159,38 @@ input("Press Enter to continue...")
 # TASK 4
 # TODO: Count each gender. You should not use a function to do that.
 
+# Creating an auxiliary function to perform the summation.
+# Reason: I will use it more than twice, it's convenient for me to create this function, although this is not a task.
+def sum_ahu(my_list):
+    """
+    -----------------------------------------------------------------------------------------------------
+    |DESCRIPTION:                                                                                       |
+    |                                                                                                   |
+    |     This function perform the summationof a given list.                                           |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |INPUT:                                                                                             |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     my_list    list   A list of integer or float.                                                 |
+    |                                                                                                   |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |OUTPUT:                                                                                            |
+    |                                                                                                   |
+    |     VARIABLE     TYPE           DESCRIPTION                                                       |
+    |                                                                                                   |
+    |     summation    float or int   Accordding to the input list.                                     |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    """
+    summation = 0 # Local variable to be updated in each iteration
+    
+    for index in my_list:             # Loop used to "visit" each element of the list.
+        summation += index            # Accumulating the values and updating the summation.
+            
+    return summation # Return the summation
+
 gender = column_to_list(data_list, -2) # Selecting the Gender's column of data_list dataframe.
 
 # Lambda Expressions
@@ -128,9 +199,10 @@ is_female = lambda x : x == "Female" # True to 1 and False to 0 to count the num
 is_blank = lambda x : x == ""        # I used the plt.hist(gender) function to find out the categories of
                                      # Gender's column.
 
-male = sum(list(map(is_male, gender)))        # Applying map() (for each column) and lambdas functions
-female = sum(list(map(is_female, gender)))    # I could count the number of each category. 
-undefined = sum(list(map(is_blank, gender)))  # Obs.: I "coerced" boolean to integer by the using of sum().
+
+male = sum_ahu(list(map(is_male, gender)))        # Applying map() (for each column) and lambdas functions
+female = sum_ahu(list(map(is_female, gender)))    # I could count the number of each category. 
+undefined = sum_ahu(list(map(is_blank, gender)))  # Obs.: I "coerced" boolean to integer by the using of sum_ahu().
 
 # Checking the result
 print("\nTASK 4: Printing how many males and females we found")
@@ -177,14 +249,16 @@ def count_gender(data_list):
     |                                                                                                   |
     |     column_to_list   Global                                                                       |
     |                                                                                                   |
+    |     sum_ahu          Global                                                                       |
+    |                                                                                                   |
     -----------------------------------------------------------------------------------------------------    
     """
     # Selecting the Gender's column as a local variable.
     local_gender = column_to_list(data_list, -2) # Keep in mind this function has defined in the Task 3.
     
     # Based on the map() to find True or False and sum() to count.
-    male = sum(list(map(lambda x : x == "Male", local_gender)))     # Simplified version, now with one step less
-    female = sum(list(map(lambda x : x == "Female", local_gender))) # It's a bit clumsy but understandable.
+    male = sum_ahu(list(map(lambda x : x == "Male", local_gender)))     # Simplified version, now with one step less
+    female = sum_ahu(list(map(lambda x : x == "Female", local_gender))) # It's a bit clumsy but understandable (I hope so).
     
     return [male, female] # Return of the total number of male and female.
 
@@ -260,6 +334,38 @@ assert type(most_popular_gender(data_list)) is str, "TASK 6: Wrong type returned
 assert most_popular_gender(data_list) == "Male", "TASK 6: Returning wrong result!"
 # -----------------------------------------------------
 
+# The same case of the summation. I will use this function a bunch of times, to save lines codes I decide
+# to write an auxiliary function.
+def count_ahu(my_list):
+    """
+    -----------------------------------------------------------------------------------------------------
+    |DESCRIPTION:                                                                                       |
+    |                                                                                                   |
+    |     Counts the number of elements of a list. It is the same of len() function.                    |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |INPUT:                                                                                             |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     my_list    list   Any list.                                                                   |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |OUTPUT:                                                                                            |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     counter    int    The number of elements of a list.                                           |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    """
+    counter = 0 # Set the counter to zero.
+    
+    for element in my_list:  # Loop the list to be count
+        counter += 1             # For each element add 1 to the counter
+
+    return int(counter)          # Return the counter and ensure to be a integer.
+
 # If it's everything running as expected, check this graph!
 gender_list = column_to_list(data_list, -2)
 types = ["Male", "Female"]
@@ -296,13 +402,13 @@ types = list(set(user_types))  # Three categories: Customer, Dependent and Subsc
 types = [sorted(types)[0], sorted(types)[-1]]
 
 # Calculating the quantity of each of types ("Customer" and "Subscriber")
-quantity = [sum(list(map(lambda x : x == types[0], user_types))),  # Due to the Task 5 requirements my function
-            sum(list(map(lambda x : x == types[1], user_types)))]  # count_gender() is very specific and can not
-                                                                   # deal with a generic situation like this.
+quantity = [sum_ahu(list(map(lambda x : x == types[0], user_types))),  # Due to the Task 5 requirements my function
+            sum_ahu(list(map(lambda x : x == types[1], user_types)))]  # count_gender() is very specific and can not
+                                                                       # deal with a generic situation like this.
 
 # print(sum(list(map(lambda x : x == "Dependent", user_types)))) # Shows the number of Dependent category.
 
-y_pos = list(range(len(types)))
+y_pos = list(range(count_ahu(types)))
 plt.bar(y_pos, quantity)
 plt.ylabel('Quantity')              # Add the y axis
 plt.xlabel('User Types')            # Add the x axis
@@ -350,13 +456,57 @@ min_trip = round(sorted(trip_dur_float)[0]) # Could I use .sorted()?
 max_trip = round(sorted(trip_dur_float, reverse = True)[0]) # Could I use .sorted()?
 
 # Mean
-mean_trip = round(sum(trip_dur_float)/len(trip_dur_float)) # Could I use sum()?
+mean_trip = round(sum_ahu(trip_dur_float)/count_ahu(trip_dur_float)) # Could I use sum()?
 
 # Median
-median_trip = round(sorted(trip_dur_float)[int(len(trip_dur_float)/2)]) # Could I use .sorted()?
+# I decided to encapsulated this function because I may reuse it later and I could properly document it.
+def median_ahu(my_list):
+    """
+    -----------------------------------------------------------------------------------------------------
+    |DESCRIPTION:                                                                                       |
+    |                                                                                                   |
+    |     This function returns the list median.                                                        |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |INPUT:                                                                                             |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     my_list    list   List compounded of int or float which I want to find the median.            |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |OUTPUT:                                                                                            |
+    |                                                                                                   |
+    |     VARIABLE   TYPE   DESCRIPTION                                                                 |
+    |                                                                                                   |
+    |     median     float  I think a convenient way is to return as float, because the average of      |
+    |                       num_1 and num_2 may be a float number, and coercing to an int could led a   |
+    |                       loss of information.                                                        |
+    |                                                                                                   |
+    -----------------------------------------------------------------------------------------------------
+    |REQUIREMENT:                                                                                       |
+    |                                                                                                   |
+    |     NAME             SCOPE                                                                        |
+    |                                                                                                   |
+    |     count_ahu        Global                                                                       |
+    |                                                                                                   |
+    ----------------------------------------------------------------------------------------------------- 
+    """
+    my_list = sorted(my_list) # I must sort my_list to find the "middle".
+                              # NOTE: I use the sorted() built-in function!!
+    
+    if (count_ahu(my_list) % 2) == 1:               # When the lenght of list is odd. I have a "middle" in my list.
+        median = my_list[count_ahu(my_list) // 2]   # [0,1,2,3,4] has 5 elements and the median is located in index 2.
+        return median # Return median         
+    
+    else:                                               # When the lenght of list is even. I do not have a single "middle" numberin my list.
+        num_1 = my_list[count_ahu(my_list) // 2]        # So a need to calculated an average between two numbers, num_1 and num_2 are
+        num_2 = my_list[(count_ahu(my_list) // 2) - 1]  # these two numbers.
+        median = (num_1 + num_2)/2   # Calculate the mean of this two numbers, which is the median of the list.
+        return float(median)         # Return the median as float.
 
-# If the use of these built-in function or methods (.sorted(), sum() etc.) is not allowed, I could resubmit the project
-# and I will fix it using a loop approach or any other way to calculate those parameters.
+# Median
+median_trip = round(median_ahu(trip_dur_float)) # I am not using any built-in function, except the sorted().
 
 print("\nTASK 9: Printing the min, max, mean and median")
 print("Min: ", min_trip, "Max: ", max_trip, "Mean: ", mean_trip, "Median: ", median_trip)
@@ -437,16 +587,28 @@ def count_items(column_list):
     |     count_items   str    Returns the total of each category in item_type.                         |                                                                       |
     |                                                                                                   |
     -----------------------------------------------------------------------------------------------------
+    |REQUIREMENT:                                                                                       |
+    |                                                                                                   |
+    |     NAME             SCOPE                                                                        |
+    |                                                                                                   |
+    |     sum_ahu        Global                                                                         |
+    |                                                                                                   |
+    ----------------------------------------------------------------------------------------------------- 
     """
     # Selecting unique elements from column_list
-    item_types = list(set(column_list))
+    item_types = list(set(column_list))   # set() is used to "filter" the unique values
+                                          # list() to convert into a list.
     
     # Initializing coun_items
     count_items = []
     
-    # Loop to calculated the number each element from item_types
-    for i in range(0,len(item_types)):
-        count_items.append(sum(list(map(lambda x : x == item_types[i], column_list))))
+    # Loop to calculated the total number of each element from item_types
+    for i_type in item_types:
+        count_items.append(sum_ahu(list(map(lambda x : x == i_type, column_list))))
+        # This loop will verify for each element of the column_list the given lambda expression (True or False)
+        # after that I will convert it into a list, coerce it to an int, and sum the 0 and 1 to calculate the summation.
+        # Finally, I will append it in count_items as the number of instance which this item_types appears in the
+        # column_list, in other words, I will counting the numbers of occurencies of each item_types in the column_list.
         
     return item_types, count_items # Return two lists
 
