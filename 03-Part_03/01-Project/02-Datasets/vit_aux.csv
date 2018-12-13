@@ -1,16 +1,16 @@
 ﻿id_ra;reg_adm;nbh;pop_2000;pop_2010;male;female;avg_inc_mon
-1;Centro;Centro;9240;9838;4416;5422;1.791,15
+1;Centro;Centro;9240;9838;4416;5422;1791,15
 1;Centro;Do Moscoso;854;795;369;426;647,05
 1;Centro;Fonte Grande;1459;1231;592;639;706,03
 1;Centro;Ilha do Príncipe;2810;2613;1194;1419;623,21
-1;Centro;Parque Moscoso;1708;1773;791;982;1.754,79
+1;Centro;Parque Moscoso;1708;1773;791;982;1754,79
 1;Centro;Piedade;611;323;149;174;782,31
-1;Centro;Santa Clara;1429;1608;761;847;0
+1;Centro;Santa Clara;1429;1608;761;847;0,00
 1;Centro;Vila Rubim;1437;1430;667;763;897,74
 2;Santo Antônio;Ariovaldo Favalessa;794;787;343;444;750,98
 2;Santo Antônio;Bela Vista;3934;4371;2102;2269;592,07
 2;Santo Antônio;Caratoíra;5526;5149;2370;2779;551,45
-2;Santo Antônio;Do Cabral;1688;1623;779;844;563,1
+2;Santo Antônio;Do Cabral;1688;1623;779;844;563,10
 2;Santo Antônio;Do Quadro;1093;1041;488;553;512,51
 2;Santo Antônio;Estrelinha;2073;2381;1175;1206;564,88
 2;Santo Antônio;Grande Vitória;3960;4402;2087;2315;518,89
@@ -18,49 +18,49 @@
 2;Santo Antônio;Mário Cypreste;1278;1145;561;584;598,36
 2;Santo Antônio;Santa Tereza;3131;3343;1567;1776;740,99
 2;Santo Antônio;Santo Antônio;6669;5947;2712;3235;842,24
-2;Santo Antônio;Universitário;570;918;459;459;1.092,32
-3;Jucutuquara;Bento Ferreira;5375;5569;2594;2975;2.653,09
+2;Santo Antônio;Universitário;570;918;459;459;1092,32
+3;Jucutuquara;Bento Ferreira;5375;5569;2594;2975;2653,09
 3;Jucutuquara;Consolação;2009;2766;1284;1482;805,36
 3;Jucutuquara;Cruzamento;2384;2407;1198;1209;562,08
-3;Jucutuquara;De Lourdes;1943;1920;896;1024;1.971,71
+3;Jucutuquara;De Lourdes;1943;1920;896;1024;1971,71
 3;Jucutuquara;Forte São João;2115;1553;723;830;768,41
-3;Jucutuquara;Fradinhos;1737;1756;855;901;2.144,62
-3;Jucutuquara;Gurigica;6850;5997;2877;3120;515,4
-3;Jucutuquara;Horto;162;98;48;50;1.010,35
+3;Jucutuquara;Fradinhos;1737;1756;855;901;2144,62
+3;Jucutuquara;Gurigica;6850;5997;2877;3120;515,40
+3;Jucutuquara;Horto;162;98;48;50;1010,35
 3;Jucutuquara;Ilha de Santa Maria;2487;2325;1086;1239;949,36
 3;Jucutuquara;Jesus de Nazareth;3374;2565;1238;1327;523,82
-3;Jucutuquara;Jucutuquara;1338;1515;689;826;1.507,56
+3;Jucutuquara;Jucutuquara;1338;1515;689;826;1507,56
 3;Jucutuquara;Monte Belo;2233;1988;921;1067;922,69
-3;Jucutuquara;Nazareth;646;586;274;312;1.527,04
+3;Jucutuquara;Nazareth;646;586;274;312;1527,04
 3;Jucutuquara;Romão;3205;3096;1511;1585;583,48
 4;Maruípe;Andorinhas;2113;2031;977;1054;619,56
-4;Maruípe;Bonfim;8594;7106;3374;3732;690,8
+4;Maruípe;Bonfim;8594;7106;3374;3732;690,80
 4;Maruípe;Da Penha;6650;5603;2678;2925;613,82
-4;Maruípe;Itararé;7585;7913;3771;4142;673,4
+4;Maruípe;Itararé;7585;7913;3771;4142;673,40
 4;Maruípe;Joana D'Arc;2486;2853;1394;1459;893,17
-4;Maruípe;Maruípe;3911;3859;1789;2070;1.464,98
-4;Maruípe;Santa Cecília;1363;1264;591;673;1.814,43
+4;Maruípe;Maruípe;3911;3859;1789;2070;1464,98
+4;Maruípe;Santa Cecília;1363;1264;591;673;1814,43
 4;Maruípe;Santa Martha;6913;8456;4097;4359;741,85
 4;Maruípe;Santos Dumont;1940;1850;866;984;682,94
-4;Maruípe;São Benedito;1365;2789;1338;1451;447,9
+4;Maruípe;São Benedito;1365;2789;1338;1451;447,90
 4;Maruípe;São Cristóvão;4087;4182;2026;2156;927,64
 4;Maruípe;Tabuazeiro;6305;6496;3118;3378;839,29
-5;Praia do Canto;Barro Vermelho;3773;5629;2634;2995;3.911,04
-5;Praia do Canto;Enseada do Suá;735;1062;516;546;3.595,16
-5;Praia do Canto;Ilha do Boi;1176;1111;542;569;4.902,69
-5;Praia do Canto;Ilha do Frade;353;418;206;212;10.843,74
-5;Praia do Canto;Praia do Canto;12730;15147;6845;8302;4.321,90
-5;Praia do Canto;Praia do Suá;2975;2885;1407;1478;1.300,28
-5;Praia do Canto;Santa Helena;1739;2372;1110;1262;4.570,84
-5;Praia do Canto;Santa Lúcia;3808;4367;2050;2317;2.793,91
-5;Praia do Canto;Santa Luíza;1004;1245;578;667;2.442,52
-6;Goiabeiras;Aeroporto;73;0;0;0;0
-6;Goiabeiras;Antônio Honório;1332;1347;599;748;1.508,96
+5;Praia do Canto;Barro Vermelho;3773;5629;2634;2995;3911,04
+5;Praia do Canto;Enseada do Suá;735;1062;516;546;3595,16
+5;Praia do Canto;Ilha do Boi;1176;1111;542;569;4902,69
+5;Praia do Canto;Ilha do Frade;353;418;206;212;10843,74
+5;Praia do Canto;Praia do Canto;12730;15147;6845;8302;4321,90
+5;Praia do Canto;Praia do Suá;2975;2885;1407;1478;1300,28
+5;Praia do Canto;Santa Helena;1739;2372;1110;1262;4570,84
+5;Praia do Canto;Santa Lúcia;3808;4367;2050;2317;2793,91
+5;Praia do Canto;Santa Luíza;1004;1245;578;667;2442,52
+6;Goiabeiras;Aeroporto;73;0;0;0;0,00
+6;Goiabeiras;Antônio Honório;1332;1347;599;748;1508,96
 6;Goiabeiras;Goiabeiras;2350;2633;1255;1378;988,91
-6;Goiabeiras;Jabour;983;1066;540;526;1.665,65
+6;Goiabeiras;Jabour;983;1066;540;526;1665,65
 6;Goiabeiras;Maria Ortiz;11559;13197;6264;6933;780,59
-6;Goiabeiras;Segurança do Lar;424;550;263;287;1.238,86
-6;Goiabeiras;Solon Borges;1473;1523;706;817;1.121,10
+6;Goiabeiras;Segurança do Lar;424;550;263;287;1238,86
+6;Goiabeiras;Solon Borges;1473;1523;706;817;1121,10
 7;São Pedro;Comdusa;744;894;438;456;375,82
 7;São Pedro;Conquista;1651;1914;926;988;558,11
 7;São Pedro;Ilha das Caieiras;1356;1845;906;939;486,54
@@ -71,11 +71,11 @@
 7;São Pedro;Santos Reis;963;1049;483;566;451,47
 7;São Pedro;São José;3265;4480;2190;2290;516,93
 7;São Pedro;São Pedro;4141;4294;2042;2252;570,89
-8;Jardim Camburi;Jardim Camburi;23882;39157;18230;20927;2.259,94
-8;Jardim Camburi;Parque Industrial;0;0;0;0;0
-9;Jardim da Penha;Jardim da Penha;24623;30571;13702;16869;2.510,89
-9;Jardim da Penha;Boa Vista;1098;1183;557;626;1.035,54
-9;Jardim da Penha;Mata da Praia;9317;10594;5005;5589;4.119,31
-9;Jardim da Penha;Morada de Camburi;1102;1164;549;615;2.649,64
-9;Jardim da Penha;Pontal de Camburi;992;889;452;437;1.498,52
-9;Jardim da Penha;República;3884;3760;1697;2063;1.556,77
+8;Jardim Camburi;Jardim Camburi;23882;39157;18230;20927;2259,94
+8;Jardim Camburi;Parque Industrial;0;0;0;0;0,00
+9;Jardim da Penha;Jardim da Penha;24623;30571;13702;16869;2510,89
+9;Jardim da Penha;Boa Vista;1098;1183;557;626;1035,54
+9;Jardim da Penha;Mata da Praia;9317;10594;5005;5589;4119,31
+9;Jardim da Penha;Morada de Camburi;1102;1164;549;615;2649,64
+9;Jardim da Penha;Pontal de Camburi;992;889;452;437;1498,52
+9;Jardim da Penha;República;3884;3760;1697;2063;1556,77
