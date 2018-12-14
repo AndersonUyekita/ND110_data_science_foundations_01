@@ -16,6 +16,6 @@ As anotações de aula foram registradas em arquivos seprados por aula.
 
 * [x] Lesson 01 - The Data Analysis Process
 * [x] Lesson 02 - Data Analysis Process - Case of Study I
-* [ ] Lesson 03 - Data Analysis Process - Case of Study II
-* [ ] Lesson 04 - Programmig Workflow for Data Analysis
-* [ ] Project 02 - Investigate a Dataset
+* [x] Lesson 03 - Data Analysis Process - Case of Study II
+* [x] Lesson 04 - Programmig Workflow for Data Analysis
+* [x] Project 02 - Investigate a Dataset
