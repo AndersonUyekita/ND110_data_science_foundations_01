@@ -1,18 +1,38 @@
-# Data Science 01
+# UD110 - Data Science I - Nanodegree Foundation
 
 Curso introdutório à _Data Science_ oferecida pela Udacity Br.
 
 * Dedicação : 10 horas/semana (sugerido)
 * Início    : 05/12/2018
-* Término   : 17/02/2018
+* Término   : 14/12/2018
 * Título    : Data Science I - Foundation Nanodegree Program
-* Código    : nd110
+* Código    : ND110
 
 Obs.: Os vídeos estão ministrados em inglês.
 
 ## Objetivos
 
 Desenvolver novas habilidades que possam abrir novas experiências de vida.
+
+## Anotações
+
+* [Part 02 - Lesson 02][2]
+* [Part 02 - Lesson 03][3]
+* [Part 02 - Lesson 04][4]
+* [Part 02 - Lesson 05][5]
+* PROJECT 01
+* Part 03 - Lesson 01
+* Part 03 - Lesson 02
+* Part 03 - Lesson 03
+* PROJECT 02
+
+[2]: https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson02.md
+[3]: https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson03.md
+[4]: https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson02.md
+[5]: https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson03.md
+
+
+
 
 #### Syllabus
 
@@ -27,7 +47,7 @@ Desenvolver novas habilidades que possam abrir novas experiências de vida.
 Para uma melhor organização do repositório, os _folders_ ficarão organizados da seguinte maneira:
 
 ```
-udacity_data_science_foundation_01
+ND110_data_science_foundation_01
 |
 +--  01-Part_01
 |           |
@@ -45,7 +65,30 @@ udacity_data_science_foundation_01
             +--  notes.md       # Anotações de aula
             +--  01-Project_02  # Projeto 02
 ```
+
 #### Boas Práticas
 
 * Todos os _deliverables_ serão registrados no [`GitKraken Glo`](https://www.gitkraken.com/invite/5Ua2spL4) para um acompanhamento das datas limites;
 * Anotações de aula em [`Markdown`](https://en.wikipedia.org/wiki/Markdown).
+
+#### Atom + Hydrogen
+
+How to fix my problem.
+
+1. Git Bash in root and run:
+
+```
+python -m pip install ipykernel
+python -m ipykernel install --user
+```
+[Source][atom]
+
+[atom]: https://github.com/nteract/hydrogen/issues/1074
+
+#### How to open Jupyter Notebook
+
+In Anaconda Prompt:
+
+```
+jupyter notebook --notebook-dir='D:/'
+```
