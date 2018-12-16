@@ -1,4 +1,4 @@
-# UD110 - Data Science I - Nanodegree Foundation
+# ND110 - Data Science I - Nanodegree Foundation
 
 Curso introdutório à _Data Science_ oferecida pela Udacity Br.
 
@@ -7,6 +7,9 @@ Curso introdutório à _Data Science_ oferecida pela Udacity Br.
 * Término   : 14/12/2018
 * Título    : Data Science I - Foundation Nanodegree Program
 * Código    : ND110
+* Certificado: [NT5UAQFD][certificado]
+
+[certificado]: https://confirm.udacity.com/NT5UAQFD
 
 Obs.: Os vídeos estão ministrados em inglês.
 
