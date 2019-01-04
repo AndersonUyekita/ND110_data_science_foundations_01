@@ -1,78 +1,91 @@
 # ND110 - Data Science I - Nanodegree Foundation
 
-Curso introdutório à _Data Science_ oferecida pela Udacity Br.
+This is the first course of the Nanodegree of Data Science from Udacity.
 
-* Dedicação : 10 horas/semana (sugerido)
-* Início    : 05/12/2018
-* Término   : 14/12/2018
-* Título    : Data Science I - Foundation Nanodegree Program
-* Código    : ND110
-* Certificado: [NT5UAQFD][certificado]
+* [My repository to the second course][repo_nd111].
+
+[repo_nd111]: https://github.com/AndersonUyekita/ND111_data_science_foundations_02
+
+#### Tags
+
+* Author       : AH Uyekita
+* Dedication   : 10 hours/week (suggested)
+* Start        : 05/12/2018
+* End          : 14/12/2018
+* Title        : Data Science I - Foundations Nanodegree Program
+    * COD          : ND110
+    * **Certificado:** [NT5UAQFD][certificado]
 
 [certificado]: https://confirm.udacity.com/NT5UAQFD
 
-Obs.: Os vídeos estão ministrados em inglês.
+## Objectives
 
-## Objetivos
+Finish the course in less than two weeks.
 
-Desenvolver novas habilidades que possam abrir novas experiências de vida.
+## Documentation
 
-## Anotações
-
-* [Part 02 - Lesson 02][2]
-* [Part 02 - Lesson 03][3]
-* [Part 02 - Lesson 04][4]
-* [Part 02 - Lesson 05][5]
-* PROJECT 01
-* Part 03 - Lesson 01
-* Part 03 - Lesson 02
-* Part 03 - Lesson 03
-* PROJECT 02
-
-[2]: https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson02.md
-[3]: https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson03.md
-[4]: https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson02.md
-[5]: https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Part_02/notes_lesson03.md
-
-
-
+* Bookdown
+* Project 01
+* Project 02
 
 #### Syllabus
 
-É constituído por 3 partes e dois projetos.
+This course is divided into three chapters and two projects.
 
-* [x] [Parte 1 - Welcome](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/01-Part_01)
-* [x] [Parte 2 - Python Introduction](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/02-Part_02)
-* [x] [Parte 3 - Python for Data Analysis](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/03-Part_03)
+* [x] [Chapter 1 - Welcome](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/01-Part_01)
+    * [x] Lesson 01 -
+    * [x] Lesson 02 -
+* [x] [Chapter 2 - Python Introduction](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/02-Part_02)
+    * [x] Lesson 01 -
+    * [x] Lesson 02 -
+    * [x] Lesson 03 -
+    * [x] Lesson 04 -
+    * [x] Lesson 05 -
+* [x] [Chapter 3 - Python for Data Analysis](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/tree/master/03-Part_03)
+    * [x] Lesson 01 -
+    * [x] Lesson 02 -
+    * [x] Lesson 03 -
+    * [x] Lesson 04 -
 
-#### Organização
+#### Repository Structure
 
-Para uma melhor organização do repositório, os _folders_ ficarão organizados da seguinte maneira:
+I have structured the repository _folder_ in this way:
 
 ```
-ND110_data_science_foundation_01
+ND110_data_science_foundation_02
 |
-+--  01-Part_01
++--  01-Chapter_01
 |           |
-|           +--  README.md      # Dados gerais dessa parte do curso
+|           +--  README.md                       # General information
 |
-+--  02-Part_02
++--  02-Chapter_02
 |           |
-|           +--  README.md      # Dados gerais dessa parte do curso
-|           +--  notes.md       # Anotações de aula
-|           +--  01-Project_01  # Projeto 01
+|           +--  README.md                       # General information
+|           +--  00-Project_01                   # Project 01
+|           +--  01-Lesson_01                    # Files from Lesson 01
+|           |        +--  README.md              # Notes from Lesson 01 from Chapter 02
+|           +--  02-Lesson_02                    # Files from Lesson 02
+|           |        +--  README.md              # Notes from Lesson 02 from Chapter 02
+|           .
 |
-+--  03-Part_03
-            |
-            +--  README.md      # Dados gerais dessa parte do curso
-            +--  notes.md       # Anotações de aula
-            +--  01-Project_02  # Projeto 02
++--  03-Chapter_03
+|           |
+|           +--  README.md                       # General information
+|           +--  00-Project_02                   # Project 02
+|           +--  01-Lesson_01                    # Files from Lesson 01
+|           |        +--  README.md              # Notes from Lesson 01 from Chapter 02
+|           +--  02-Lesson_02                    # Files from Lesson 02
+|           |        +--  README.md              # Notes from Lesson 02 from Chapter 02
+|           .
 ```
 
-#### Boas Práticas
+#### Best practice
 
-* Todos os _deliverables_ serão registrados no [`GitKraken Glo`](https://www.gitkraken.com/invite/5Ua2spL4) para um acompanhamento das datas limites;
-* Anotações de aula em [`Markdown`](https://en.wikipedia.org/wiki/Markdown).
+* Add all _deliverables_ in the [`GitKraken Glo`][bp_1];
+* Take notes using the [`Markdown`][bp_2].
+
+[bp_1]: https://www.gitkraken.com/invite/5Ua2spL4
+[bp_2]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 #### Atom + Hydrogen
 
