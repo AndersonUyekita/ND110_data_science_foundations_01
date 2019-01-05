@@ -1,0 +1,126 @@
+--- 
+title: "ND110 - Data Science I - Notebook"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+# Course Info {-}
+
+<h4>Tags</h4>
+
+* Author       : AH Uyekita
+* Dedication   : 10 hours/week (suggested)
+* Start        : 14/12/2018
+* End (Planned): 28/12/2018
+* Title        : Data Science I - Foundations Nanodegree Program
+    * COD      : ND110
+
+<h4>Related Courses</h4>
+
+* [ND110 - Data Science I - Nanodegree Foundations][nd110]
+
+[nd110]: https://br.udacity.com/course/python-fundamentos-data-science--nd110
+
+***************************************************************************************************
+
+<h2>Objectives</h2>
+
+I want to finish this course in two weeks. It includes the Optional videos and chapters.
+
+<h2>Syllabus</h2>
+
+* [x] Chapter 1 - Welcome
+    * [x] Lesson 01 -
+    * [x] Lesson 02 -
+* [x] Chapter 2 - Python Introduction
+    * [x] Lesson 01 -
+    * [x] Lesson 02 -
+    * [x] Lesson 03 -
+    * [x] Lesson 04 -
+    * [x] Lesson 05 -
+* [x] Chapter 3 - Python for Data Analysis
+    * [x] Lesson 01 -
+    * [x] Lesson 02 -
+    * [x] Lesson 03 -
+    * [x] Lesson 04 -
+
+<h3>Repository Structure</h3>
+
+This is the structure of this repository, each course's chapters (or parts) will be stored in different folders.
+
+```
+ND110_data_science_foundation_01
+|
++--  01-Chapter_01
+|           |
+|           +--  README.md                       # General information
+|
++--  02-Chapter_02
+|           |
+|           +--  README.md                       # General information
+|           +--  00-Project_01                   # Project 01
+|           +--  01-Lesson_01                    # Files from Lesson 01
+|           |        +--  README.md              # Notes from Lesson 01 from Chapter 02
+|           +--  02-Lesson_02                    # Files from Lesson 02
+|           |        +--  README.md              # Notes from Lesson 02 from Chapter 02
+|           .
+|
++--  03-Chapter_03
+|           |
+|           +--  README.md                       # General information
+|           +--  00-Project_02                   # Project 02
+|           +--  01-Lesson_01                    # Files from Lesson 01
+|           |        +--  README.md              # Notes from Lesson 01 from Chapter 02
+|           +--  02-Lesson_02                    # Files from Lesson 02
+|           |        +--  README.md              # Notes from Lesson 02 from Chapter 02
+|           .
+```
+
+<h3>Best practice</h3>
+
+* Add all _deliverables_ in the [`GitKraken Glo`][bp_1];
+* Take notes using the [`Markdown`][bp_2].
+
+[bp_1]: https://www.gitkraken.com/invite/5Ua2spL4
+[bp_2]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib')
+```
+
+```{r,message=FALSE,include=FALSE}
+# Saving the original Work Directory
+original_wd <- getwd()
+
+# Goes to the parents level (\docs) - Where the files will be rendered
+setwd('..')
+
+# Creating a list of all html files.
+rm_html <- list.files(pattern = c('*.html'))
+
+# Cleaning the \docs, removing all html files.
+file.remove(rm_html)
+
+# Saving the \docs path
+destino <- getwd()
+
+# Returning to original path
+setwd(original_wd)
+
+# Defining _book as work directory
+setwd('_book')
+
+# List of files to be copied
+html_files_folders <- list.files()
+
+# Copying the files from _books to \docs folder
+file.copy(html_files_folders, to = destino, overwrite = TRUE, recursive = TRUE)
+
+# Defining the original Work Directory
+setwd(original_wd)
+```

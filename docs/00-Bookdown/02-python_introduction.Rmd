@@ -1,0 +1,1170 @@
+# Python Introduction
+
+## Why Python Programming
+
+### Instructor
+
+Python will be taught by Juno! As a data scientist, Juno built neural networks to analyze and categorize product images, a recommendation system to personalize shopping experiences for each user, and tools to generate insight into user behavior.
+
+### Welcome To Introduction To Python!
+
+In this course, we use Python version 3 (or simply Python 3). If you'd like more details on previous versions of Python and how version 3 differs from previous versions, check out the History of Python on Wikipedia. If you're new to Python or programming in general, this article will make more sense after you've completed a lesson or two, so you may want to hold off for now. All you need to know now is that your solution code for the programming exercises in this course will be graded based on Python 3 code.
+
+### Programming In Python
+As you learn Python throughout this course, there are a few things you should keep in mind.
+
+* Python is case sensitive.
+* Spacing is important.
+* Use error messages to help you learn.
+
+Let’s get started!
+
+## Data Types and Operators
+
+
+### Conceitos Gerais
+
+A maior parte do curso destina-se aos conceitos básicos.
+
+* A indentação é importante para o Python porque ele define quando termina um _loop_ e começa o outro ou quando termina um _statement_ do _if_;
+* Como muitas outras linguagens de programação o Python é _case sensitive_, isto é, maiúsculas e minúsculas definem variáveis diferentes;
+* Os comentários dentro do código pode ser feito a partir do uso do `#`.
+**********************************************************
+### Boas práticas
+
+* Utilizar os espaçamentos de maneira adequada para que as fórmulas fiquem fáceis de ler e consequentemente de entender;
+* Comentar as linhas de código, pois o maior beneficiário desses comentários será você daqui 6 meses quando estiver revisando esse código;
+
+**********************************************************
+### Configuração
+
+Instalei o [Anaconda](https://www.anaconda.com/download/) e estou rodando o Spyder 3.3.1. para simular/rodar o Python. O [CodeSkulptor 3](https://py3.codeskulptor.org) é um alternativa.
+
+#### Classes de Variáveis
+
+Define-se as variáveis conforme as suas características e do seu uso, por exemplo, um `32` pode ser um número inteiro, até mesmo um número flutuante e um caracter. Tudo dependerá de como se define ele, usando-se as aspas ter-se-á um caracter, sem o "ponto final" é um número inteiro e com o ponto final o número de ponto flutuante (mais conhecido como _float_).
+
+A tabela abaixo foi retirada do 39._Summary_ da _lesson_ 02.
+
+|Data Structure|Ordered|Mutable|Constructor|Example|
+|:-:|:-:|:-:|:-:|:-:|
+|int|NA|NA|`int()`|5|
+|float|NA|NA|`float()`|6.5|
+|string|Yes|No|' ' ou " " ou `str()`|"teste"|
+|bool|NA|NA|NA|`True` ou `False`|
+|list|Yes|Yes|[  ] ou `list()`|list[1,2]|
+|tuple|Yes|No|( ) ou `tuple()`|tuple(1,2)|
+|set|NA|Yes|{ } ou `set()`|set(1,2)|
+|dictionary|NA|Keys: No|{ } ou `dict()`|dict("jul":1,"jun":2)|
+
+
+#### Inteiros e _float_'s
+
+Como atribuir um `integer` e um `float` nas variáveis?
+
+```
+# Integer
+teste_int = 100    # É um inteiro (não colocar o ponto final)
+teste_int = 123    # É um inteiro (não colocar o ponto final)
+
+# Float
+teste_flo = 100.8  # É um float (só adicionar o ponto final)
+teste_flo = 123.   # É um float (só adicionar o ponto final)
+```
+Note que haverá um conversão (ou _data coercion_ ) de `integer` para `float` caso tenha alguma operação envolvendo os dois tipos de variáveis.
+
+```
+# A nova variável será do tipo float
+teste_new = teste_int + teste_flo
+```
+Observe que as variáveis podem ser convertidas para `integer`, `float` etc. Contudo, deve-se ressaltar que para os casos de conversão de `float` para `integer` pode-se ter uma perda de informação significativa.
+```
+teste = 100.987      # Variável float
+
+teste = int(100.987) # Convertendo para integer
+
+print(teste)         # Note que o valor impresso é 100
+                     # perdeu-se tudo o que estava após a vírgula
+```
+
+#### Boolean `bool`
+
+Além de `integer` e `float`, também há o `bool` que se refere aos booleanos (`True` e `False`). Observe que para o Python `True` e `False` (1 e 0) devem ser escritos exatamete como está neste texto, em `R` eles são escritos todos em caixa alta.
+
+#### Strings `str`
+
+O `strings` é uma cadeia de letras, um exemplo é o texto que estou escrevendo agora.
+
+```
+print("Hello World")  # É a impressão de uma simples string "Hello World", mas poderia
+                      # ser bem mais complexa.
+
+meu_texto = "Vamos fazer um teste!111"   # Note que esse exemplo é um pouco mais complexo
+print(meu_texto)                         # já que tem espaços, números e caracteres especiais.
+```
+
+Surpreenda-se pois no Python pode-se usar os operadores (`+`, `*` etc.) para realizar algumas funções.
+
+* `+` Une/concatena duas `strings`;
+* `*` Multiplica a `string`.
+
+#### Containers
+
+A `list` é uma estrutura de dados que pode conter `integer`, `floats`, `strings` e `booleans`. Os benefícios das `lists` é que elas podem ser alteradas (_mutability_) e também podem ser reorganizadas.
+
+```
+minha_lista = [33 , "anderson" , True , 123.45] # Pode ser tudo misturado
+minha_lista[0]                                  # Começa no zero - zero index based
+minha_lista[-1]                                 # Tem os seus truques! Último elemento.
+minha_lista[2:]                # Slicing        # Retorna os elementos cujo index é maior que 2
+minha_lista[:2]                # Slicing        # Retorna os elementos cujo index é menor ou igual a 2
+minha_lista[2:3]               # Slicing        # Retorna os elementos cujo index é maior que 2 e menor ou igual a 3
+```
+
+Uma variable da classe `tuple` é um tipo de lista imutável, isto é, não tem como usar `.sorted()`. Eles possuem uso específico, por exemplo, em latitude e longitude, pois sempre estão juntos.
+
+```{py}
+# Defining a tuple variable
+my_name = "anderson","uyekita"
+
+# Tuple unpacking
+pri_nom,sob_nom = my_name
+
+# Editing/Updating a tuple variable
+my_name = "jose","silva"
+```
+Observe que não é necessário o uso dos parêntesis. Há a particularidade do "tuple unpacking" que é atribuir todos os valores do `tuple` de uma só vez em outras variáveis, conforme o exemplo.
+
+Uma variável do tipo `set` possui algumas características marcantes como: é mutável, portanto, pode-se alterar os valores desse container de elementos, mas ela não é ordenada, ou seja, não se tem ideia de quem é o primeiro ou último elemento. Além dessas características, ela não admite valores duplicados.
+
+```{py}
+# Definição de uma lista simples
+minha_lista = [1,2,3,1,2,3,4,5,6] # há valores duplicados
+
+meu_set = set(minha_lista)        # {4, 3, 2, 1, 5, 6}
+                                  # Agora é um <class 'set'>
+```
+Como o `set` é _unordered_ todas as vezes que imprimir essa variável dessa classe a sequencia dos elementos alterará. Ressalta-se que o `in` funciona nas variáveis da classe `set`. Además, há `methods` específicos para essa classe que será descrita adiante.
+
+O _dictionary_ é uma estrutura de dados peculiar que possui um _key_ que pode ser usado para mapear sendo esse _key_ tendo um _value_.
+
+```
+# Example dictionary
+elements = {"anderson": 1, "hitoshi": 2, "uyekita": 3}
+
+elements["key"] = "value"      # Add value mapped by key
+elements["teste"] = 9          # Add a new variable in the dictionary
+elements["uma_lista"] = [1,2]  # Add a list
+elements["100"] = "a"          # Other example
+```
+Observe que o _dictionary_ é bem eclético, tem de tudo e aceita tudo. Pode-se usar o operador `in` o qual terá um retorno `booleano`. O método `.get()` é usado para ter o retorno do _value_ da um dado _key_.
+
+O _nested dictionary_ é o uso de um _dictionary_ tendo os seus _values_ um outro _dictionary_.
+
+```
+# Exemplo retirado do site da Udacity.
+elements = {"hydrogen": {"number": 1,
+                         "weight": 1.00794,
+                         "symbol": "H"},
+              "helium": {"number": 2,
+                         "weight": 4.002602,
+                         "symbol": "He"}}
+```
+Sendo assim possível organizar informações estruturadas.
+
+**********************************************************
+### Operadores
+
+São os operadores matemáticos básicos:
+
+#### `+` Adição
+
+Adiciona dois elementos.
+
+```
+print(5 + 3) # Somando dois números inteiros
+
+print("Hello" + " " + "World") # Somando três strings
+```
+
+#### `-` Subtração
+
+Subtrai dois elementos.
+
+```
+print(5 - 3)
+```
+
+#### `*` Multiplicação
+
+Multiplica dois elementos.
+
+```
+print(5 * 3)
+
+print("Ha" * 5)  # Terá como saída HaHaHaHaHa
+```
+#### `/` Divisão
+
+Divide dois elementos.
+
+```
+print(5 / 3) # Retorna um float
+```
+#### `%` Resto da Divisão
+Divide dois elementos e retorna o resto da divisão.
+
+```
+print(5 % 3) # Retorna 2
+```
+#### `**` Exponenciação
+Eleva o primeiro termo ao segundo (normalmente anotamos como 5^3).
+
+```
+print(5 ** 3) # Retorna cinco elevado à terceira potência 5^3
+```
+#### `//` Retorna o Quociente da Divisão
+Divide dois elementos e retorna o quociente da divisão.
+
+```
+print(5 // 3) # Retorna 1
+```
+
+#### `in` e `not it` Possui/Pertecen/Tem
+O retorno desse operador é um valor booleano resultante da busca do primeiro elemento no segundo.
+```
+print("hitoshi" in ["anderson","hitoshi","uyekita"])       # Retorna True
+print("hitoshi" not in ["anderson","hitoshi","uyekita"])   # Retorna False
+```
+**********************************************************
+### _Assignment Operators_
+
+Conforme abordado em sala de aula, essa forma de notação é para simplificar o código. É muito parecido com o `i++`(que é o mesmo que `i=i+1`) do C++.
+
+#### `+=`
+
+Atualização da variável a partir de soma.
+
+```
+teste = teste + 100   # Como eu faço
+teste += 100          # Como um programador faz
+```
+
+#### `-=`
+
+Atualização da variável a partir de uma subtração.
+
+```
+teste = teste - 100   # Como eu faço
+teste -= 100          # Como um programador faz
+```
+
+#### `*=`
+
+Atualização da variável a partir de uma multiplicação.
+
+```
+teste = teste * 100   # Como eu faço
+teste *= 100          # Como um programador faz
+```
+
+#### `/=`
+
+Atualização da variável a partir de uma divisão.
+
+```
+teste = teste / 100   # Como eu faço
+teste /= 100          # Como um programador faz
+```
+
+#### `//=`
+
+Atualização da variável pelo quociente de uma divisão.
+
+```
+teste = teste // 100   # Como eu faço
+teste //= 100          # Como um programador faz
+```
+#### `%=`
+
+Atualização da variável pelo resto de uma divisão.
+
+```
+teste = teste % 100   # Como eu faço
+teste %= 100          # Como um programador faz
+```
+
+#### `**=`
+
+Atualização da variável pelo resto de uma divisão.
+
+```
+teste = teste ** 100  # Como eu faço
+teste %= 100          # Como um programador faz
+```
+Há outros mais complicados no site do [Programiz](https://www.programiz.com/python-programming/operators).
+
+**********************************************************
+### _Comparison Operators_
+
+Lógica básica de comparação entre dois argumentos, igual a qualquer outra linguagem de programação.
+
+#### `<` Menor
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 < 90  # 100 é menor que 90
+False     # Não
+```
+#### `>` Maior
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 > 90  # 100 é maior que 90
+True      # Sim
+```
+#### `<=` Menor ou igual
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 <= 90  # 100 é menor ou igual a 90
+False      # Não
+```
+#### `>=` Maior ou igual
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 > 90  # 100 é maior ou igual a 90
+True      # Sim
+```
+#### `==` Igual
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 == 90  # 100 é igual (ou idêntico) a 90
+False      # Não
+```
+#### `!=` Diferente (ou _não igual_)
+Compara dois elementos e retorna `True` ou `False`.
+
+```
+100 != 90  # 100 é differente de 90
+True       # Sim
+```
+**********************************************************
+### _Logical Operators_
+
+O Python possui 3 operadores de lógica que são: `and`, `or` e `not`. Eles devem ser escritos necessariamente em letras minúsculas.
+
+#### `and`
+
+Comporta-se conforme a tabela abaixo
+
+|a|b|**s**|
+|:-:|:-:|:-:|
+|0|0|**0**|
+|0|1|**0**|
+|1|0|**0**|
+|1|1|**1**|
+
+#### `or`
+
+Comporta-se conforme a tabela abaixo
+
+|a|b|**s**|
+|:-:|:-:|:-:|
+|0|0|**0**|
+|0|1|**1**|
+|1|0|**1**|
+|1|1|**1**|
+
+#### `not`
+
+Retorna o booleano contrário.
+
+|a|**s**|
+|:-:|:-:|
+|0|**1**|
+|1|**0**|
+
+**********************************************************
+
+### Built-in functions
+
+Esta será um lista das funções e qualquer outra coisa que foi apresentado em sala de aula.
+
+### `print()`
+```
+print("Hello World")  # Imprime Hello World
+```
+Imprime a variável.
+
+### `type()`
+```
+teste = type(100)    # Atribui o resultado da função em teste
+print(teste)         # Imprime a classe da variável dentro do type()
+                     # que no caso é 100. Logo, será <class 'int'>
+```
+Retorna o tipo de variável.
+
+### `len()`
+```
+print(len("Hello World"))  # Retorna 11, pois conta o espaço também.
+```
+Retorna o comprimento de uma `strings`, isto é, a quantidade de caracteres. E para os casos de um vetor retorna o comprimento.
+
+### `int()`
+```
+int(43.3)
+```
+Converte o elemento declarado na função para um `integer`.
+
+### `str()`
+```
+str(43.3)
+```
+Converte o elemento declarado na função para um `string`.
+
+### `float()`
+```
+str(43)
+```
+Converte o elemento declarado na função para um `float`.
+
+### `max()`
+```
+print(max([100,40,50,30,20]))                                       # Retorna 100
+print(max(["anderson","hitoshi","uyekita","mogi","das","cruzes"]))  # Retorna uyekita
+```
+Retorna o maior número dentro de uma lista. Note que só funcionará quando a lista for só de um tipo de variável.
+
+### `min()`
+```{py}
+print(min([100,40,50,30,20]))                                       # Retorna 20
+print(min(["anderson","hitoshi","uyekita","mogi","das","cruzes"]))  # Retorna anderson
+```
+Retorna o maior número dentro de uma lista. Note que só funcionará quando a lista for só de um tipo de variável.
+
+### `sorted()`
+```{py}
+print(sorted(["anderson","hitoshi","uyekita","mogi","das","cruzes"]))                  # Retorna uma lista começando por anderson e terminando com uyekita
+print(sorted(["anderson","hitoshi","uyekita","mogi","das","cruzes"], reverse = True))  # Retorna uma lista começando por uyekita e terminando com anderson
+```
+Conforme a sua tradução, ordenará a lista de forma alfabética ou do menor para o maior. Ele pode reverter a forma de ordenar os retornos "setando" o argumento `reverse` para `True`.
+
+### Methods
+
+Como o Python é uma linguagem orientada a objeto, há alguns `methods` relacionado a alguma `classe`. O funcionamento de um método é similar ao de uma função, contudo o método está ligado a alguma classe e só será útil para essa classe. Isto quer dizer que não há possibilidade de usar o `.title()` num número `integer` ou `float`.
+
+### `.title()`
+```
+meu_nome = "anderson uyekita"
+print(meu_nome.title())
+```
+
+O retorno da aplicação do método `.title()` é a substituição das primeiras letras minúsculas do meu nome para maiúsculas, ficando assim " **A**nderson **U**yekita "
+
+
+### `.islower()`
+```
+meu_nome = "anderson uyekita"
+print(meu_nome.lower())
+```
+
+O retorno da aplicação deste método retorna um `booleano` e significa se há ou não alguma letra maiúscula, se sim `False` senão `True`.
+
+### `.format()`
+```
+# Exemplo 1
+print("Eu sou o Hitoshi e tenho {} anos".format(33))
+
+# Exemplo 2 (retirado das notas de aula)
+animal = "dog"
+action = "bite"
+print("Does your {} {}?".format(animal, action))
+```
+O retorno desse método é a substituição dos `{}` pelo `33`.
+
+### `.split()`
+```
+meu_nome = "anderson hitoshi uyekita"
+
+print(meu_nome.split())  # Como resultado tem-se uma lista
+                         # ['anderson', 'hitoshi', 'uyekita']
+```
+Conforme o nome diz, divide uma `string` baseado em algum separador que pode ser o espaço (_default_), tabulação, traços, pontos, etc.
+
+### `.join()`
+```
+print(" ".join(["anderson","hitoshi","uyekita","mogi","das","cruzes"])) # Retorna uma string com espaços separando os elementos da lista.
+```
+É o inverso do `.split()`. Atente-se que o "separador" é declarado antes do método `.join()`, neste exemplo é o `" "` é o espaço.
+
+### `.append()`
+```
+meu_nome = ["anderson","hitoshi"] # Minha lista
+meu_nome.append("uyekita")        # Agregando na minha lista o meu sobrenome
+```
+Esse `method` altera a lista original `meu_nome`.
+
+### `.add()`
+```
+meu_nome = {"anderson","uyekita"}  # Para criar um set basta usar os {}
+
+meu_nome.add("hitoshi")            # {"anderson","uyekita","hitoshi"}
+```
+A função adiciona um novo elemento (ou novos elementos) na variável set designada.
+
+### `.pop()`
+```
+meu_nome = {"anderson","uyekita","hitoshi"}  # Para criar um set basta usar os {}
+
+meu_nome.pop("hitoshi")                      # Retira um elemento randomicamente
+```
+Isso é um pouco bizarro, mas o método `.pop()` remove um elemento aleatório do set designado.
+
+### `.get()`
+```
+meu_nome = {"anderson":1,"uyekita":2,"hitoshi":3}  # Para criar um set basta usar os {} e adicionar os values
+
+print(meu_nome.get("hitoshi"))                     # Retorna 3
+```
+Isso é um pouco bizarro, mas o método `.pop()` remove um elemento aleatório do set designado. Deve-se ressaltar também que caso o `.get()` nenhum valor que procurar ele poderá retornar um valor _default_, sendo assim `.get("hitoshi",0)` ao invés de retornar "None", retornará 0.
+
+### Referências
+
+* [String methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
+
+
+
+
+
+## Control Flow
+
+### _Control Flow_
+Nesta aula serão abordados temas como:
+
+* _Conditional statements_ (Famoso _if_ e _else_)
+* Expressões booleanas
+* Loops usando _for_ e _while_
+* Como uma estratégia de parada dos loops _break_ e _continue_
+* Zip e enumerate (Isso eu num sei o que é)
+* List comprehensions (idem, _no idea_)
+
+#### Revisão da `Lesson02`
+
+|Data Structure|Ordered|Mutable|Constructor|Example|
+|:-:|:-:|:-:|:-:|:-:|
+|int|NA|NA|`int()`|5|
+|float|NA|NA|`float()`|6.5|
+|string|Yes|No|' ' ou " " ou `str()`|"teste"|
+|bool|NA|NA|NA|`True` ou `False`|
+|list|Yes|Yes|[  ] ou `list()`|list[1,2]|
+|tuple|Yes|No|( ) ou `tuple()`|tuple(1,2)|
+|set|NA|Yes|{ } ou `set()`|set(1,2)|
+|dictionary|NA|Keys: No|{ } ou `dict()`|dict("jul":1,"jun":2)|
+
+Maiores informações acerca das `built-in` _functions_ e `methods` somente acessando as [notes_lesson02.md](https://github.com/AndersonUyekita/udacity_data_science_foundation_01/blob/master/02-Parte/notes_lesson02.md).
+
+### Expressões Booleanas
+
+Algumas expressões booleanas dignas de nota:
+
+#### a < b < c ou a > b > c
+
+Essa expressão pode ser uma condição de avaliação de uma _conditinal statement_, por exemplo.
+
+```{py}
+# Exemplo do video
+if 18.5 <= weight / height**2 < 25:       # A relação weight / height**2 deve estar
+    print("BMI is considered 'normal'")   # entre 18.5 e 25 para que a condição seja aceita
+```
+
+**********************************************************
+### _Conditional statements_
+
+Note que no Python diferentemente de outras linguagem de programação não possui o maldito abre e fecha de `{}` para definir quando um _conditinal statement_ começa e termina, por este motivo a indentação é fundamental para que a linguagem seja interpretada corretamente pelo compilador. **Não se esquecer do `:`**.
+
+O exemplo abaixo possui dois _if_'s _nested_.
+
+```
+if condição:
++---+------------------+      # 1: Espaços necessários para indentar corretamente;
+| 1 |        2         |      # 2: área do código que deverá ser executada caso
++---+------------------+      #    a condição seja verdadeira
+
+else:
+    if condição2:
+    +---+---------------------+  # 3: Espaços necessários para indentar corretamente;
+    | 3 |         4           |  # 4: área de código
+    +---+---------------------+
+    else:
+    +---+---------------------+
+    | 3 |         4           |
+    +---+---------------------+
+```
+
+#### `if()`
+```{py}
+if dinheiro < 200:      # Condição
+    dinheiro += 200     # Ações caso a condição
+    banco -= 200        # seja satisfeita
+```
+É o principal _conditional statement_ e serve para filtrar, separar, eleger etc. algum elemento para sofrer uma determinada sequencia de comandos.
+
+#### `else`
+```{py}
+if (numero % 2) == 0:                # Se o resto for igual a zero, é um número par
+    print(str(numero) + " é par")    # Imprime texto se a condição for verdadeira
+else:
+    print(str(numero) + " é ímpar")  # Imprime texto se a condição for falsa.
+```
+É o complemento do _if_ e não requer condição (já que é o resto da condição do _if_), possui uma dualidade entre `0` e `1`, mas em alguns casos há mais de dois estados, nestas situações usa-se o `elif()`.
+
+#### `elif()`
+```{py}
+if numero > 100:
+    print("maior que 100")
+
+elif numero > 50:
+    print("maior que 50 e menor e igual a 100")
+
+else:
+    print("número menor ou igual a 50")
+```
+Note que o o `elif()` é um intermediário entre o `if()` e o else, onde ele desempenha um papel de diminuir a quantidade de _nested if_.
+
+**********************************************************
+### _Loops_
+
+As estruturas (que seriam os bloquinhos de código) do _f0r_ e do _while_ são parecidos com aqueles do _conditional statements_, pois os _loops_ baseiam-se também pela indentação do código.
+
+```
+for condição:
++---+------------------+      # 1: Espaços necessários para indentar corretamente;
+| 1 |        2         |      # 2: área do código que deverá ser executada caso
++---+------------------+      #    a condição seja verdadeira
+```
+
+#### `for()`
+```{py}
+for i in n:     # i é a variável e n é uma lista de elementos
+    print(i)    # imprime todos os elementos da lista n
+```
+O laço for será executado para cada elemento da lista _n_. Após percorrer a lista o laço termina.
+
+#### `while()`
+```{py}
+money = 0
+while money < 1000:     # o laço será executo indefinidamente até que a condição seja False
+    money += 100        # imprime money
+```
+A diferença entre _for_ e _while_ é que o segundo não possui limites, ele poderá ser executado indefinidamente até que a condição de parada seja atingida.
+
+### _List Comprehensions_
+
+Isso é algo único da linguagem Python, segundo a **Juno Lee** só em Python tem essa coisa aí.
+
+```{py}
+minha_lista = ["anderson", "hitoshi", "uyekita"] # Lista qualquer
+nova_lista =[] # Uma nova lista
+
+# Um loop de exemplo.
+for nom in minha_lista:
+    nova_lista.append(nom.title())
+
+print(nova_lista) # imprime o resultado para comparar
+
+# Em uma linha faz-se tudo.
+nova_lista = [nom.title() for nom in minha_lista]
+
+print(nova_lista) # para conferir.
+```
+
+Note que o mesmo código que foi feito utilizando algumas linhas, pode ser realizada usando uma única linha.
+
+**********************************************************
+### Built-in functions
+
+Esta será um lista das funções e qualquer outra coisa que foi apresentado em sala de aula.
+
+#### `range()`
+```{py}
+start,end,step = 1,6,2 # inicializa os dados
+                            # start possui valor default de zero
+                            # step possui valor default de 1
+lista = range(1,6,2)   # cria um objeto classe range
+                            # print(lista) é um <class 'range'>
+                             # A lista implícita é: [1, 3, 5]
+```
+A variável criada _lista_ é um objeto de classe _range_ e só será útil se caso a utilize em associação com o _for_ (ainda não encontrei outras casos de uso do `range()`).
+
+#### `sum()`
+```{py}
+minha_lista = [10, 20, 30, 40] # Um exemplo de lista
+sum(minha_lista)               # Retorna a soma dos elementos da lista
+```
+Simplesmente retorna a soma de todos os elementos de dada lista.
+
+#### `Break`
+
+Interrompe a instância de _for_ ou _while_ saindo totalmente do laço.
+
+#### `Continue`
+
+Pula a iteração para a próxima. É melhor porque não interrompe repentinamente a execução do _script_.
+
+#### `zip()`
+```{py}
+nome = ["anderson", "hitoshi", "uyekita"] # Uma lista qualquer
+index = [1, 2, 3]                         # Outra lista qualquer
+print(zip(nome,index))                    # Unindo as duas listas para criar uma lista de tuples
+                                          # Note que se pode usar o unpacking também
+```
+Observe que é possível criar uma lista de _tuple_'s, conforme o exemplo acima, mas para realizar o _unpacking_ deve-se utilizar um "operador" que ainda não foi abordado, mas de uso específico que é o "*".
+
+```{py}
+lista_tuples = [('anderson', 1), # lista qualquer de tuples
+                ('hitoshi', 2),  # é só um exemplo
+                ('uyekita', 3)]
+
+nome, index = zip(*lista_tuples) # Unpacking usando o *
+```
+Isso é bem prático quando tempos uma lista de _tuple_'s.
+
+#### `enumerate`
+```{py}
+letters = ['anderson', 'hitoshi', 'uyekita']  # Uma lista qualquer.
+
+for i in enumerate(letters):                  # Cria uma lista de tuple's.
+    print(i)                                  # Imprime cada tuple da lista criada.
+```
+A única maneira de entender essa função é aplicando a num _for_. O resultado é a criação de _tuple_'s.
+
+**********************************************************
+### Methods
+
+#### `.items()`
+```{py}
+apelidos = {"Chico": 'Francisco',    # Declarando uma biblioteca
+            "Tião": 'Sebastião',
+            "Zé": 'José'}
+
+for key,value in apelidos.items():   # Emprego do .items()
+    print("Apelido: {} e Nome:{}".format(key,value))
+```
+
+Nos casos onde é necessário as informações dos _values_ de uma biblioteca, usa-se o `.items()`.
+
+
+
+
+
+## Functions
+
+A função nada mais é que a abstração de uma rotina (ou _script_) encapsulado num simples _call_ de uma função _built-in_ (parece mas não é _built-in_ porque nós que a criamos).
+
+### Conteúdo da aula
+
+Essa lição abordou:
+
+* Defining Functions
+* Variable Scope
+* Documentation
+* Lambda Expressions
+* Iterators and Generators
+
+### Estrutura de uma função
+
+A função possui uma estrutura que deve ser seguida para que o devido funcionamento.
+
+* Sempre começa com `def`;
+* Deve ser indentada;
+* Possui argumento;
+* Pode ou não retornar (_return_) algum valor (_None_ se não for retornar nada).
+
+```
+def my_function(arg1, arg2)
++---+----------------------------+
+|   |                            |
+| 1 |           2                |
+|   |return                      |  # Note que não é uma exigência que tenha o return
++---+----------------------------+
+
+1: área de indentação
+2: área de código
+```
+Ressalta-se que as funções podem ter variáveis locais (_local variable_), isto é, as variáveis internas à função não afetam o _environment_ externo dela (aqui eles chamam de _variable scope_). Contudo, as variáveis definidas no _global scope_ podem ser usadas dentro da função e podem ser até modificadas caso essa variável for um dos argumentos da função.
+
+Além disso, pode-se declarar variáveis _default_ para cada argumento (igual o R). Outra similaridade com o R é com relação ao uso da função.
+
+* Declarar argumentos por posição: my_function(10,5)
+* Declarar argumentos por nomes: my_function(arg2 = 5, arg1 = 10)
+
+### _Lambda Expressions_
+
+Não deixa de ser uma função, mas com um escopo menor, não possui nome (por isso que é uma função anônima) e provelmente será empregada para fins mais simples. Abaixo uma comparação entre uma função dita normal/convencional e a lambda.
+
+```{py}
+# Função convencional
+def multiply(x, y):
+    return x * y
+
+# Lambda Expression
+multiply = lambda x, y: x * y
+```
+Note que é possível reduzir a quantidade de linhas, mas o principal é não ter que definir um novo nome para uma função que provavelmente não terá muito uso ao longo do corpo do código.
+
+Conforme a **Juno Lee** as _lambdas expressions_ tornarão importantes no futuro, quando o a quantidade de funções definidas é grande, isto é, fazendo-se pequenas alterações ou combinações entre as funções já definidas o poder da _lambda expression_ pode ser muito grande. Só evoluindo para confirmar isso.
+
+Um exemplo de como podemos associar funções regulares com o _lambda expressions_.
+
+```{py}
+def teste(arg1):    # Eleva ao quadrado
+    return arg1**2
+
+def teste2(arg2):   # Divide por 100
+    return arg2/100
+
+teste3 = lambda x,y: teste(x) * teste2(y) # Lambda Expression que usa as duas funções
+
+print(teste3(3,1)) # Espera-se que imprima o resultado de 9/100
+```
+
+### _Documentation_
+
+Asssim já como comentado na `Lesson02`, documentação nada mais que as boas práticas da programação.
+
+* Explicar de maneira clara e concisa o que essa função faz;
+* Quais são as entradas e que tipo de variáveis são (`int`, `float`, `list` etc.);
+* Qual é a saída (`None`, `list`, `dict` etc.).
+
+Conforme a convenção do PEP (eu acho que é isso) tem uma forma de anotar a documentação que é:
+
+* Usar três `"` para abrir a documentação e outros três para fechar;
+* Primeira linha: Discorrer sobre o uso geral da função;
+* INPUT: quais são;
+* OUTPUT: qual é.
+
+Agora um exemplo de como comentar:
+
+```{py}
+def my_function(arg1,arg2):
+    """
+    Função que não faz nada só serve como exemplo
+
+    INPUT: arg1 é um int - É o tamanho da minha paciência em escrever essas anotações
+    OUTPUT: arg2 é um flota - É a expectativa de dias melhores
+    """
+```
+
+**********************************************************
+### Built-in functions
+
+Esta será um lista das funções e qualquer outra coisa que foi apresentado em sala de aula.
+
+#### `map()`
+```{py}
+my_df = [[10,20,30],[5,5,10],[1,50,1]] # Criei uma lista de lista
+
+print(map(sum,my_df)) # Para cada lista irá aplicar a soma
+                      # [60, 20, 52]
+```
+É como se estivesse aplicando as funções da família `apply`.
+
+#### `filter()`
+```{py}
+my_df = [10,20,30] # lista qualquer
+
+teste = lambda x : x > 20 # lambda expression para avaliar
+
+print(filter(teste,my_df)) # filter
+                           # retornará os valores que forem avaliados como True da função lambda teste
+```
+Filtra os elementos com base numa função que avalia.
+
+### Referências para Iteratos e Generators
+
+https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/
+
+
+## Scripting
+
+Escrever e editar _scripts_, tendo até entradas de dadas externas (_inputs_) do usuário.
+
+### Conteúdo da aula
+
+Essa lição abordou:
+
+* Python Installation and Environment Setup
+* Running and Editing Python Scripts
+* Interacting with User Input
+* Handling Exceptions
+* Reading and Writing Files
+* Importing Local, Standard, and Third-Party Modules
+* Experimenting with an Interpreter
+
+### Erros e Exceções
+
+Os _Syntax Erros_ são quando o "interpretador do código" não consegue interpretar o código, isto pode ser ocasionado por uma má digitação (famoso _typo_). Seguramente, esses erros podem ser corrigidos antes de executar o código.
+
+Ao passo que as _Exceptions_ são mais complexos, pois o "interpretador do código" conseguiu ler, mas há alguma inconsistência. Note que esse erro ocorre durante a execução do programa. Há diferentes tipos de _exceptions_:
+
+#### ValueError
+```{py}
+x = int(input("Digite um número: "))
+```
+Caso a entrada seja um texto, por exemplo, "ten". Ocorrerá o problema de _ValueError_.
+
+Tradução: Quando o objeto está correto, mas o valor declarado/passado como input é inapropriado para aquela função (_built-in_ ou auela que criamos mesmo).
+
+#### AssertionError:
+Tradução: Quando uma condição assetiva falha...
+
+#### NameError
+```{py}
+# ValueError: Quando a variável a não foi declarada ainda
+sum(a + 1)
+```
+#### IndexError:
+```{py}
+teste = ["a","b"]
+
+print(teste[100])
+```
+Ultrapassagem dos limites de uma lista.
+
+#### TypeError
+```{py}
+# TypeError: Tipo erro de quando soma _str_ com _int_
+sum("a" + 1)
+```
+Tentar somar um _str_ com um _int_.
+**********************************************************
+### _Importing scripts_
+
+Geralmente todo _script_ importado deve ser declarado, por convenção, no início do arquivo.
+
+```{py}
+import my_script
+```
+O local desse _script_ tem que ser no mesmo diretório.
+
+```
+meu_recente_trabalho.py
+|
++-my_script.py
+```
+
+**********************************************************
+### `Built-in` _functions_
+
+Esta será um lista das funções e qualquer outra coisa que foi apresentado em sala de aula.
+
+#### `input()`
+```{py}
+qualquer_coisa = input("Escreva-me algo interessante: ")
+print(str("Isso é interessante hein!") + qualquer_coisa)
+```
+Pode-se obter informações a partir de entradas usando o _input_. Esse dado de entrada pode ser transformado em _int_, _float_ etc..
+
+#### `try()`
+```{py}
+try:     # Opção a prova de tonterías
+    int(input("Digite um número legal: "))  # Digita um número aí... 51
+except:  # Caso o operador faça uma burrada o script não vai interromper bruscamente
+    print("Tá de sacanagem né!? Eu pedi um número e não uma string!")  # Vai chamar a atenção dele.
+```
+O _try statement_ juntamente com o `except()` possibilitará que o programador utilize diferentes estratégias para contar possíveis problemas de _inputs_, neste caso exemplo, aparecerá apenas um aviso e nada mais, há a possibilidade de retornar a solicitar um número, mas esse deve ser feito com um _loop_ `while()`.
+
+```{py}
+while True:  # Com esse loop o script fica teimoso, só sai quando o operador inserir um número.
+    try:
+        x = int(input("Digite um número legal: "))
+        break # Depois de muita teimosia, por fim, digitou um número. Daí sai do While infinto.
+    except:
+        print("tá de sacanagem né!?")
+
+print("Se você ler isso é que saiu do loop") # Só para enviar uma mensagem de aviso
+```
+Observe que se não fosse o `try()` este _script_ teria sido interrompido.
+
+#### `except()`
+```{py}
+while True:
+    try:
+        x = int(input("Digite um número legal: "))
+        break
+    except ValueError:
+        print("tá de sacanagem né!?")
+	  except KeyboardInterrupt:
+        print("Apertou Ctrl+C")
+        break
+    finally:
+        print("Digite um valor válido")
+```
+Note que o `except()` pode ter formas específicas de atuação:
+
+* ValueError: Quando um valor não esperado é atribuído, neste caso quando se digita um texto ao invés de um número;
+* KeyboardInterrupt: Quando se interrompe o _script_ ao apertar o <kbd>Ctrl+C</kbd>.
+
+#### `finally()`
+```{py}
+while True:
+    try:
+        x = int(input("Digite um número legal: "))
+        break
+    except:
+        print("tá de sacanagem né!?")
+    finally:
+        print("Digite um valor válido")
+```
+O `finally()` será executado sempre caindo no `try()` ou no `except()`. Não vi muita utilidade **agora**, mas em breve entenderei mais sobre o uso dele. A _Juno Lee_ disse que há um uso muito interessante para os casos de usar o `try()` para carregar (_load_) arquivos, pois quando isso é feito (não sei o porquê) abre-se alguma coisa (ótimo hein) e o `finally()` serviria para fechar essa "abertura".
+
+> Lendo o link do [Stack](https://stackoverflow.com/questions/11551996/why-do-we-need-the-finally-clause-in-python), pode ser útil quando há um `return` no `except`, neste caso o `finally()` será executado **antes** do return.
+
+#### `open()`
+```{py}
+data = open("path/file.txt","r")  # Carregando um arquivo txt localizado pelo path.
+                                  # O argumento "r" significa read only.
+dataset = data.read()
+data.close()
+```
+O resultado do `open()` será um _file object_, caso seja necessário alguma alteração neste arquivo que é apenas leitura, pode-se usar o _method_ `.read()` para acessar o conteúdo desse arquivo.
+
+Ressalta-se também que o argumento pode ser alterado para `w`, o que significa que o arquivo estará sendo aberto para ser gravado. Tenha cuidado porque o conteúdo desse arquivo será deletado para ser sobreescrito. O `method` usado para a gravação é o `.write()`.
+
+### `Methods`
+
+#### `.read()`
+```{py}
+data = open("path/file.txt","r")  # Carregando um arquivo txt localizado pelo path.
+                                  # O argumento "r" significa read only.
+dataset = data.read()
+data.close()
+```
+Este _method_ transforma o _file object_ numa string, sendo assim possível a edição e análise.
+
+#### `.close()`
+```{py}
+data = open("path/file.txt","r")  # Carregando um arquivo txt localizado pelo path.
+                                  # O argumento "r" significa read only.
+dataset = data.read()
+data.close()
+```
+Não me pergunte o por quê, mas se deve fechar o `open()` e por isso que tem essa coisa aqui. Caso isso fique aberto, haverá um uso desnecessário de memória para mantê-lo aberto.
+
+#### `.write()`
+
+Serve para gravar um arquivo tipo `txt`.
+
+
+
+
+## Project Overview (Instructions)
+
+### Overview
+
+In this project, you will make use of Python to explore data related to bike share systems for Chicago. You will write code to import the data and answer interesting questions about it by computing descriptive statistics. You will also create some important functions and plot charts.
+
+### What Software Do I Need?
+
+To complete this project, the following software requirements apply:
+
+* Python 3. The following packages in the Python Standard Library will likely be useful: csv and matplotlib.
+* A text editor, like Sublime or Atom.
+* A terminal application (Terminal on Mac and Linux or Cygwin on Windows).
+
+### 2. Project Details
+
+#### Bike Share Data
+
+Over the past decade, bicycle-sharing systems have been growing in number and popularity in cities across the world. Bicycle-sharing systems allow users to rent bicycles on a very short-term basis for a price. This allows people to borrow a bike from point A and return it at point B, though they can also return it to the same location if they'd like to just go for a ride. Regardless, each bike can serve several users per day.
+
+Thanks to the rise in information technologies, it is easy for a user of the system to access a dock within the system to unlock or return bicycles. These technologies also provide a wealth of data that can be used to explore how these bike-sharing systems are used.
+
+In this project, you will use data provided by Motivate, a bike share system provider for many major cities in the United States, to uncover bike share usage patterns. You will use the data from one of the largest cities of United States: Chicago.
+
+#### The Datasets
+
+Data for the first six months of 2017 are provided. The data file contain six (6) columns:
+
+* Start Time (e.g. 2017-01-01 00:07:57)
+* End Time (e.g. 2017-01-01 00:20:53)
+* Trip Duration (in seconds, e.g., 776)
+* Start Station (e.g. Broadway & Barry Ave)
+* End Station (e.g. Sedgwick St & North Ave)
+* User Type (Subscriber or Customer)
+* Gender (Male or Female)
+* Birth Year (e.g., 1980)
+
+
+The original files, which can be accessed here (Chicago, New York City, Washington), had more columns and they differed in format in many cases. Some data wrangling has been performed to condense these files to the above core six columns to make your analysis and the evaluation of your Python skills more straightforward. In the Data Wrangling course that follows this course in the Data Analyst Nanodegree program, students learn how to wrangle the dirtiest, messiest datasets so don't fret if you worried about missing out.
+
+#### The Questions
+
+You will write code to complete the following tasks:
+
+* Task 1: Print the first 20 samples(rows) from the database
+* Task 2: Print the gender(column) of the first 20 samples
+* Task 3: Create a function to get the columns as a list
+* Task 4: Count how many of each gender do we have
+* Task 5: Create a function to count the genders
+* Task 6: Show the most popular gender
+* Task 7: Plot a a chart using the previous data
+* Task 8: Answer why summing the number of Males and Females doesn't match the number of samples
+* Task 9: Find the minimum, maximum, mean and median duration of the trips
+* Task 10: Get all the start stations of the dataset
+* Task 11: Create a function count the occurrence of any given column (optional)
+
+#### The Files
+
+To answer these questions using Python, you will need to write a Python script. To help guide your work in this project, a template with helper code and comments is provided as a downloadable .py file. You will also need the dataset file. All of the following files are available for download.
+
+chicago_bikeshare_pt.zip
+
+* bikeshare.py
+* chicago.csv
+*
+Once you have downloaded this zip file, move to the next page for more details on the code you will be writing.
+
+### 3. Code Walkthrough
+
+#### _TODOs_
+All of the code you must fill out in chicago_bikeshare_en.py is marked in comments that start with "TODO". Take a detailed read through that file to get a gauge for how the script flows and the additions you will have to make to complete this project.
+
+#### _ASSERTs_
+We are using the assert to make sure your code is returning an expected value or an output in the right format. DO NOT CHANGE IT. If you can't pass through an assert, ask for help.
+
+#### _The `csv` Module_
+The csv module is core to completing this project. One thing to be careful about—these bikeshare CSV files are quite large so iterating through them will be costly in terms of compute time.
+
+* Be sure to bite off bits of code that you can chew and regularly test your code as you develop it. Print statements are your friend.
+* Do not try to open the CSV with a text editor. It may crash your computer.
+* Load each CSV file into a data structure once at the beginning of the script rather than at the beginning of every function. Hint: You may use the code as it was proposet (with a list of lists), but converting the DictReader iterator into a list of dictionaries (as described in this Stack Overflow post) could be handy! You only need to do the properly changes.
+
+If you are familiar with NumPy and/or pandas, you may realize that using the csv module is much less efficient than these libraries tailored for data analysis. The csv module is used in this project so foundational programming skills can be tested, as well as to gain an appreciation for the speed at which NumPy and pandas (which are taught later) can do their calculations on large files. Do not use those libraries.
+
+### 4. Project Submission `Due Jan 04/2019`
+
+In this project, you will write Python code deal with the Chicago bike share data and answer interesting questions about it by computing descriptive statistics. You will also write practical functions to show your skills in Python. The initial code and dataset is available here.
+
+### Before You Submit
+
+#### Check the Rubric
+
+Your project will be evaluated by a Udacity reviewer according to this Project Rubric. Be sure to review it thoroughly before you submit. Your project "meets specifications" only if it meets specifications in all the criteria. If you see room for improvement in any category in which you do not meet specifications, be sure to take some time to revise your work until you feel it is up to expectations. In particular, there is one section of the rubric that cares about the quality of your code. It is important that you not only obtain the correct answers with your code, but that you have followed good coding practices to obtain your solutions.
+
+#### Gather Submission Materials
+
+All you need to submit for this project is:
+
+* chicago_bikeshare_en.py: Your code
+
+There is no need for you to include any data files with your submission.
+
+### Submitting the Project
+
+When you're ready, click on the "Submit Project" button to go to the project submission page. You can submit your files as a .zip archive or you can link to a GitHub repository containing your project files. If you go with GitHub, note that your submission will be a snapshot of the linked repository at the time of submission. It is recommended that you keep each of your projects in a separate repository to avoid any potential confusion: if a reviewer gets multiple folders representing multiple projects, there might be confusion regarding what project is to be evaluated.
+
+It can take us up to a week to grade the project, but in most cases it is much faster. You will get an email once your submission has been reviewed. If you are having any problems submitting your project or wish to check on the status of your submission, please email us at suporte@udacity.com. In the meantime, you should feel free to proceed with your learning journey by continuing on to the next module in the program.

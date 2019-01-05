@@ -1,0 +1,390 @@
+# Python for Data Analysis
+
+## The Data Analysis Process
+
+The Data Analysis Process is divided into 5 steps:
+
+1. Question
+2. Wrangle
+3. Explore
+4. Draw Conclusions
+5. Communicate
+
+This view it is the same presented by Roger Peng in Managing Data Analysis (a course of Executive Data Science Specialization), the next table shows a comparison between both:
+
+**Table 1 - Comparison between methods**
+
+|Step|Juno Lee|Roger Peng**|
+|:-:|:-:|:-:|
+|1|Question|Stating and refining the question|
+|2|Wrangle|Exploring the data|
+|3|Explore|Building formal statistical models|
+|4|Draw Conclusions|Interpreting the results|
+|5|Communicate|Communicating the results|
+
+(**): Part of this table was extracted from the Coursera website.
+
+The Figure 1 shows a summary of each step (this picture was picked from the book of Roger Peng called Art of Data Science).
+
+![Figure 1](03-img/1.png)
+
+Although the process has divided into 5 step, these step are not statics and usually this is not a linear from 1 to 5. There are a lot of iterations until the last step.
+
+### Step 1 - Ask a Question
+
+Usually all the analysis starts based on a question (good one), which we would like to answer using data. Sometimes we already have these data and we need to "think" what is a good question to this data (probabily later you'll need more data). Generally, you do not have data but you have a question and you'll need to find a good data set. This question must have 5 features:
+
+* Interest
+* Answerable
+* Specific
+* Pausible
+* Not already answered
+
+Keep in mind that the question must be specific. If the question is not specific, we must refine it.
+
+### Step 2 - Wrangle
+
+This step is quite different from the Roger one, because here we deal with:
+
+* Gathering: If you do not have data you need to find it;
+    * Download from the database stored in the webs;
+    * API
+    * Web Scraping
+* Assess: Assess the quality of the data and the structure.
+    * Structural problems: Different files with same information, but distincts column names
+    * Missing data
+    * incorrect data type
+    * duplicates
+* Clean: Modifying the data to ensure the quality.
+
+All this steps were to prepare the data to an analysis.
+
+Sometimes Wrangling and EDA are binded into one step, but here are splited.
+
+### Step 3 - EDA
+
+Here we perform the EDA (Exploratory Data Analysis), discover some patterns, relationships, descriptive analysis, maximize the potential of the analysis, visualizations, and models. Also, removing outliers, and creating new descriptive features from existind data.
+
+* Exploring
+* Augment
+
+In this step usually we need to revisit the question and refine with the knowledge gathered (change the question or need more data).
+
+### Step 4 - Draw Conclusions
+
+This is step was to predict something (machine learning or inferencial statistics).
+
+### Step 5 - Communicate
+
+Communicate the results.
+
+### Packages
+
+In this course, three packages will be used massively.
+
+* Numpy
+```{py}
+import numpy as np
+```
+Convention: Abbreviate numpy as np.
+
+* Pandas
+```{py}
+import pandas as pd
+```
+Convention: Pandas numpy as pd.
+
+* matplotlib
+```{py}
+import pandas as pd
+% matplotlib inline
+```
+
+### `Methods`
+
+Methods used during the course videos.
+
+#### `read_csv()`
+```{py}
+df = pd.read_csv('student_scores.csv')
+df = pd.read_csv('student_scores.csv', sep=':')
+```
+Import the dataframe.
+
+#### `.head()`
+```{py}
+df.head()
+```
+Show the first 5 rows
+
+#### `.shape`
+```{py}
+df.shape()
+```
+Prints the dimenions.
+
+#### `.dtypes`
+
+Prints the types of each variable.
+
+#### `.info()`
+
+Display a summary of each variable.
+
+It is good to find missing values.
+
+#### `.nunique()`
+
+Return the number the unique values.
+
+#### `.describe()`
+
+This is a real summary.
+
+#### `.tail()`
+
+The last 5 rows.
+
+#### `loc` and `iloc`
+
+Selecting the columns using **names**.
+```{py}
+df_means = df.loc[:,'id':'fractal_dimension_mean']
+```
+Subsetting columns from "id" to "fractal_dimension_mean".
+
+Same range of columns but using **index**.
+```{py}
+# repeat the step above using index numbers
+df_means = df.iloc[:,:11]
+```
+#### `.duplicated()`
+
+Return a boolean vector., which could be useful to count the number of duplicated.
+
+#### `.drop_duplicated()`
+
+Show the data set cleaned without duplicated, but do not update the original dataframe to do it so you need to set inplace as True.
+
+* inplace = True
+
+#### `.mean()`
+```{py}
+df["desired_column"].mean()
+```
+Mean function.
+
+#### `.fillna(X)`
+
+Fill the NA with X.
+
+* Alternativaly you can add inplace to update the current dataframe.
+
+#### `pd.to_daytime(df['time'])`
+
+Update the object of time, but you need to assign to the dataframe columns to change it.
+
+#### `.hist()`
+
+```{py}
+data.hist()
+
+data.hist(figsize = (8,8)) # Biger figures.
+
+data['age'].hist() # For a specific variable/featues.
+
+```
+Plot a simple histogram, beware because if you have many feactures, the histogram going to be crowded.
+
+#### .plot()
+```{py}
+data['age'].plot(kind='hist'); # Different way to plot a hist()
+data['age'].plot(kind='bar'); # Different way to plot a hist()
+data['age'].plot(kind='pie',figsize= (8,8)); # Different way to plot a hist()
+
+# Matrix
+pd.plotting.scatter_matrix(data,figsize=(15,15))
+
+# Scatter regular
+data.plot(x = "compactness", y = "concavity" , kind = "scatter")
+
+# Boxplot
+data['concave_points'].plot(kind = "box")
+
+```
+
+#### `value_counts()`
+
+Aggregates counts for each new unique value in a column. Shows a vector with this values.
+
+```{py}
+data['something'].value_counts().plot(kind = 'bar'); # Creates a bar ploat based on the value_counts created before.
+```
+
+### Subsetting
+
+```{py}
+data[data['anything'] == "M"] # data['anything'] == "M" -> will select each row with True.
+```
+
+### Indexing
+
+```{py}
+# Example 1
+ind = data['something'].value_counts().index
+data['something'].value_counts()[index].plot(kind='bar') # Indexing!!
+
+# Example 2
+ind = data['anything'].value_counts().index
+df['anything'].value_counts()[index].plot(kind='pie',figsize = (8,8))
+
+```
+
+
+
+
+
+## Data Analysis Process - Case Study I
+
+
+
+
+
+
+
+
+## Data Analysis Process - Case Study II
+
+
+
+
+
+
+
+## Programming Workflow for Data Analysis
+
+
+
+
+
+
+
+## Project Overview (Instructions)
+
+
+### Overview
+
+In this project, you will analyze a dataset and then communicate your findings about it. You will use the Python libraries NumPy, pandas, and Matplotlib to make your analysis easier.
+
+Preparation for this project with: [Intro to Data Analysis][1]
+
+[1]: https://classroom.udacity.com/courses/ud170-nd
+
+
+### What do I need to install?
+
+You will need an installation of Python, plus the following libraries:
+
+```
+* pandas
+* NumPy
+* Matplotlib
+* csv
+```
+We recommend installing Anaconda, which comes with all of the necessary packages, as well as iPython notebook. You can find installation instructions here.
+
+### Why this Project?
+
+In this project, you'll go through the data analysis process and see how everything fits together. Later Nanodegree projects will focus on individual pieces of the data analysis process.
+
+You'll use the Python libraries NumPy, pandas, and Matplotlib, which make writing data analysis code in Python a lot easier! Not only that, these are sought-after skills by employers!
+
+### What will I learn?
+
+After completing the project, you will:
+
+* Know all the steps involved in a typical data analysis process
+* Be comfortable posing questions that can be answered with a given dataset and then answering those questions
+* Know how to investigate problems in a dataset and wrangle the data into a format you can use
+* Have practice communicating the results of your analysis
+* Be able to use vectorized operations in NumPy and pandas to speed up your data analysis code
+* Be familiar with pandas' Series and DataFrame objects, which let you access your data more conveniently
+* Know how to use Matplotlib to produce plots showing your findings
+
+### 2. Project Details
+
+#### How do I Complete this Project?
+
+This project is connected with the Introduction to Data Analysis course, but depending on your background knowledge, you may not need to take the whole class to complete this project.
+
+#### Introduction
+
+For the final project, you will conduct your own data analysis and create a file to share that documents your findings. You should start by taking a look at your dataset and brainstorming what questions you could answer using it. Then you should use Pandas and NumPy to answer the questions you are most interested in, and create a report sharing the answers. You will not be required to use inferential statistics or machine learning to complete this project, but you should make it clear in your communications that your findings are tentative. This project is open-ended in that we are not looking for one right answer.
+
+#### Step One - Choose Your Data Set
+
+Click this link to open a document with links and information about data sets that you can investigate for this project. You must choose one of these datasets to complete the project.
+
+#### Step Two - Get Organized
+
+Eventually you’ll want to submit your project (and share it with friends, family, and employers). Get organized before you begin. We recommend creating a single folder that will eventually contain:
+
+* The report communicating your findings
+* Any Python code you wrote as part of your analysis
+* The data set you used (which you will not need to submit)
+
+You may wish to use Jupyter notebook, in which case you can submit both the code you wrote and the report of your findings in the same document. Otherwise, you will need to submit your report and code separately. If you would like a notebook template to help organize your investigation, you can find a link in the resources at the bottom of the page or you can click here. You can also complete and submit the project in the classroom by going to the Project Notebook part of this lesson.
+
+#### Step Three - Analyze Your Data
+
+Brainstorm some questions you could answer using the data set you chose, then start answering those questions. You can find some questions in the data set options to help you get started.
+
+Try and suggest questions that promote looking at relationships between multiple variables. You should aim to analyze at least one dependent variable and three independent variables in your investigation. Make sure you use NumPy and Pandas where they are appropriate!
+
+#### Step Four - Share Your Findings
+
+Once you have finished analyzing the data, create a report that shares the findings you found most interesting. If you use a Jupyter notebook, share your findings alongside the code you used to perform the analysis. make sure that your report text is contained in Markdown cells to clearly distinguish your comments and findings from your code work. You should also feel free to use other tools and software to craft your final report, but make sure that you can submit your report as an HTML or PDF file so that it can be opened easily.
+
+#### Step Five - Review
+
+Use the Project Rubric to review your project. If you are happy with your submission, then you're ready to submit your project. If you see room for improvement, keep working to improve your project!
+
+
+### 3. Video
+
+
+### 4. Investigate a Dataset
+
+### Project Submission
+
+Choose one of Udacity's curated datasets and investigate it using NumPy and pandas. Go through the entire data analysis process, starting by posing a question and finishing by sharing your findings.
+
+### Evaluation
+
+Use the Project Rubric to review your project. If you are happy with your submission, then you are ready to submit! If you see room for improvement in any category in which you do not meet specifications, keep working!
+
+Your project will be evaluated by a Udacity reviewer according to the same Project Rubric. Your project must "meet specifications" or "exceed specifications" in each category in order for your submission to pass.
+
+### Submission
+
+#### What to include in your submission
+
+1. A PDF or HTML file containing your analysis. This file should include:
+  * A note specifying which dataset you analyzed
+  * A statement of the question(s) you posed
+  * A description of what you did to investigate those questions
+  * Documentation of any data wrangling you did
+  * Summary statistics and plots communicating your final results
+2. Code you used to perform your analysis. If you used a Jupyter notebook, you can submit your .ipynb. Otherwise, you should submit the code separately in .py file(s).
+3. A list of Web sites, books, forums, blog posts, github repositories, etc. that you referred to or used in creating your submission (add N/A if you did not use any such resources).
+
+#### Jupyter notebook instructions
+
+If you used a Jupyter notebook on your computer to create your project, you can include all your code and analysis in the notebook and do not need to create additional files for your analysis. You will still need to export your work in a PDF or HTML format also (see point 1 above), and include this in your submission as well. To download your notebook as an HTML file, click on File -> Download.As -> HTML (.html) within the notebook. If you get an error about "No module name", then open a terminal and try installing the missing module using pip install <module_name> (don't include the "<" or ">" or any words following a period in the module name).
+
+#### Ready to submit your project?
+Click on the "Submit Project" button and follow the instructions to submit!
+
+It can take us up to a week to grade the project, but in most cases it is much faster. You will get an email when your submission has been reviewed.
+
+If you are having any problems submitting your project or wish to check on the status of your submission, please email us at review-support@udacity.com.

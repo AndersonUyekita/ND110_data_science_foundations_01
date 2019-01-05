@@ -25,8 +25,8 @@ Finish the course in less than two weeks.
 ## Documentation
 
 * Bookdown
-* Project 01
-* Project 02
+* Project 01: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AndersonUyekita/ND110_data_science_foundations_01/master?filepath=%2F02-Chapter_02%2F00-Project_01%2Fudacity_nd110_project_01.ipynb)
+* Project 02: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AndersonUyekita/ND110_data_science_foundations_01/master?filepath=%2F03-Chapter_03%2F00-Project_02%2Fudacity_nd110_project_02.ipynb)
 
 #### Syllabus
 

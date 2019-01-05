@@ -1,0 +1,6 @@
+book_filename: "nd110_-_data_science_i"
+repo: https://github.com/AndersonUyekita/ND111_data_science_foundations_02/tree/master/docs/00-Bookdown
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
