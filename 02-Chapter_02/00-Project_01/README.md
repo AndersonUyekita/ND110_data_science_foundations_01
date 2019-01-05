@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AndersonUyekita/ND110_data_science_foundations_01/master?filepath=%2F02-Chapter_02%2F00-Project_01%2Fudacity_nd110_project_01.ipynb)
+
 # Project 01 - Explore Chicago Bikeshare Data
 
 #### Tags

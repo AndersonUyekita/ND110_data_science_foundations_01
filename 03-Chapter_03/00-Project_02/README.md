@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AndersonUyekita/ND110_data_science_foundations_01/master?filepath=%2F03-Chapter_03%2F00-Project_02%2Fudacity_nd110_project_02.ipynb)
+
 # Project 02 - Investigate a Dataset
 
 #### Tags
@@ -6,9 +8,6 @@
 * Date: 07/12/2018
 * Cod: nd110
 
-
-
-
 ****************************************************
 ## 1. Project Overview (Instructions)
 
@@ -16,7 +15,7 @@
 
 In this project, you will analyze a dataset and then communicate your findings about it. You will use the Python libraries NumPy, pandas, and Matplotlib to make your analysis easier.
 
-Prepare for this project with: [Intro to Data Analysis][1]
+Preparation for this project with: [Intro to Data Analysis][1]
 
 [1]: https://classroom.udacity.com/courses/ud170-nd
 
