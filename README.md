@@ -14,9 +14,9 @@ This is the first course of the Nanodegree of Data Science from Udacity.
 * End          : 14/12/2018
 * Title        : Data Science I - Foundations Nanodegree Program
     * COD          : ND110
-    * **Certificado:** [NT5UAQFD][certificado]
+    * **Certificate:** [NT5UAQFD][certificate]
 
-[certificado]: https://confirm.udacity.com/NT5UAQFD
+[certificate]: https://confirm.udacity.com/NT5UAQFD
 
 ## Objectives
 
